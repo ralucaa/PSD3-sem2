@@ -1,11 +1,11 @@
-package helpers;
+package stub_mycampus;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public abstract class DatabaseAdapter {
+public abstract class MyCampusDatabaseAdapter {
 	private static final String DB_DRIVER = "org.sqlite.JDBC";
-	private static final String DB_CONNECTION = "jdbc:sqlite:res/PSD3.s3db";
+	private static final String DB_CONNECTION = "jdbc:sqlite:res/stub_mycampus/MyCampusDB.s3db";
 
 	/**
 	 * Attempts to create a connection and returns it.

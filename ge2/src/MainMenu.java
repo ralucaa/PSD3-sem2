@@ -1,10 +1,10 @@
-import stubs.MyCampusStub;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import functions.ImportMyCampusCourses;
 import objects.Account;
+import stub_mycampus.MyCampusStub;
 
 public class MainMenu {
 	private static final String INVALID_OPTION = "Invalid input. Your options are:\n";
@@ -96,7 +96,7 @@ public class MainMenu {
 				} else if (option.equals("3")){
 					//TODO Helen
 				} else if (option.equals("4")){
-					//TODO Vlad
+					ImportMyCampusCourses.startImport(reader);
 				} else if (option.equals("q")){
 					break;
 				} else {
