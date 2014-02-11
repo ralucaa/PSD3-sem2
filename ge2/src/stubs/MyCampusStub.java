@@ -1,4 +1,6 @@
-package helpers;
+package stubs;
+
+import helpers.DatabaseAdapter;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +9,14 @@ import java.sql.SQLException;
 
 import objects.Account;
 
-public class DatabaseFacade {
-
+public class MyCampusStub {
+	/**
+	 * Authenticates the user through MyCampus' single sign-on service.
+	 * THIS IS A STUB! Will validate if username and password match and the user exists in the database.
+	 * @param username - The username.
+	 * @param password - The password.
+	 * @return an Account object that contains the user's details or null if invalid credentials
+	 */
 	public static Account authenticate(String username, String password){
 		//Require username and password to match.
 		if (!username.equals(password)){

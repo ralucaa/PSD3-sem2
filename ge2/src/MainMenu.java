@@ -1,4 +1,4 @@
-import helpers.DatabaseFacade;
+import stubs.MyCampusStub;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class MainMenu {
 			String username = reader.readLine();
 			System.out.print("Password: ");
 			String password = reader.readLine();
-			account = DatabaseFacade.authenticate(username, password);
+			account = MyCampusStub.authenticate(username, password);
 			if (account != null){
 				break;
 			}
@@ -45,6 +45,10 @@ public class MainMenu {
 
 		if (account.getType().equals(Account.TYPE_LECTURER)){
 			displayLecturerMenu(reader);
+		}
+		
+		if (account.getType().equals(Account.TYPE_TUTOR)){
+			displayTutorMenu(reader);
 		}
 
 		if (account.getType().equals(Account.TYPE_STUDENT)){
@@ -94,6 +98,26 @@ public class MainMenu {
 				} else if (option.equals("4")){
 					//TODO Vlad
 				} else if (option.equals("q")){
+					break;
+				} else {
+					System.out.println(INVALID_OPTION);
+				}
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+				break;
+			}
+		}
+	}
+	
+	private static void displayTutorMenu(BufferedReader reader){
+		while (true) {
+			try {
+				System.out.println(
+						"No options available!\n" +
+						"q. Quit"
+				);
+				String option = reader.readLine();
+				if (option.equals("q")){
 					break;
 				} else {
 					System.out.println(INVALID_OPTION);
