@@ -8,6 +8,7 @@ import functions.AddSessionToCourse;
 import functions.AssignRoomToTimetableSlot;
 import functions.BookTimetableSlot;
 import functions.CheckCompulsoryCourses;
+import functions.CheckSessionDetails;
 import functions.CreateTimetableSlotForSession;
 import functions.ImportMyCampusCourses;
 import functions.SpecifySessionFrequency;
@@ -101,7 +102,7 @@ public class MainMenu {
 				);
 				String option = reader.readLine();
 				if (option.equals("1")){
-					//TODO Tomasz
+					CheckSessionDetails.Check(reader);
 				} else if (option.equals("2")){
 					SpecifySessionFrequency.scheduler(reader);
 				} else if (option.equals("3")){
