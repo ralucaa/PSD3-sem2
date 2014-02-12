@@ -1,12 +1,11 @@
 package functions;
 
-import helpers.DatabaseAdapter;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import database_adapter.DatabaseAdapter;
 import objects.Account;
 
 public class CheckCompulsoryCourses {
