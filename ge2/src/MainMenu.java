@@ -2,13 +2,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import objects.Account;
+import stub_mycampus.MyCampusStub;
 import functions.AssignRoomToTimetableSlot;
 import functions.BookTimetableSlot;
 import functions.CheckCompulsoryCourses;
 import functions.CreateTimetableSlotForSession;
 import functions.ImportMyCampusCourses;
-import objects.Account;
-import stub_mycampus.MyCampusStub;
+import functions.SpecifySessionFrequency;
 
 public class MainMenu {
 	private static final String INVALID_OPTION = "Invalid input. Your options are:\n";
@@ -101,7 +102,7 @@ public class MainMenu {
 				if (option.equals("1")){
 					//TODO Tomasz
 				} else if (option.equals("2")){
-					//TODO Helen
+					SpecifySessionFrequency.scheduler(reader);
 				} else if (option.equals("3")){
 					//TODO Helen
 				} else if (option.equals("4")){
