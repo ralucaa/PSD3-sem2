@@ -34,7 +34,7 @@ public class AssignRoomToTimetableSlot {
 			System.out.println("Please select a timetable slot:");
 			
 			for (Session session : sessions) {				
-				System.out.println(session.getId() + " - " + getCourse(session.getCourse()) + " " + session.getType());
+				System.out.println(session.getId() + " - " + getCourse(session.getCourse()).getTitle() + " " + session.getType());
 			}
 
 			System.out.println("q: Quit");
