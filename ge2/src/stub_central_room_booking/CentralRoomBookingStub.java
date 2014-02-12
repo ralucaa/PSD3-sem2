@@ -6,10 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import objects.Account;
-import objects.Course;
 import objects.Room;
-import stub_mycampus.MyCampusDatabaseAdapter;
+
 
 public class CentralRoomBookingStub {
 	
@@ -27,7 +25,7 @@ public class CentralRoomBookingStub {
 		
 		try {
 			// Get the database connection.
-			con = MyCampusDatabaseAdapter.getConnection();
+			con = CentralRoomBookingDatabaseAdapter.getConnection();
 			// Prepare the SQL statement.
 			preparedStatement = con.prepareStatement(query);
 			// Add the parameters.
@@ -39,6 +37,7 @@ public class CentralRoomBookingStub {
 			// Return the value.
 			return new Room(id, rs.getString(1), rs.getString(2));
 		} catch (SQLException ex) {
+			System.out.println("ERROR: getRoom()");
 			System.out.println(ex.getMessage());
 		} finally {
 			//Close the connections.
@@ -65,7 +64,7 @@ public class CentralRoomBookingStub {
 	 */
 	public static ArrayList<Room> getRooms() {		
 		
-		ArrayList<Room> r = null;
+		ArrayList<Room> r = new ArrayList<Room>();
 		
 		// Retrieve room details from the database
 		String query = "SELECT * FROM Room";
@@ -74,7 +73,7 @@ public class CentralRoomBookingStub {
 
 		try {
 			// Get the database connection.
-			con = MyCampusDatabaseAdapter.getConnection();
+			con = CentralRoomBookingDatabaseAdapter.getConnection();
 			// Prepare the SQL statement.
 			preparedStatement = con.prepareStatement(query);
 			// Execute the statement and get the result.			
@@ -88,6 +87,7 @@ public class CentralRoomBookingStub {
 			return r;
 			
 		} catch (SQLException ex) {
+			System.out.println("ERROR: getRooms()");
 			System.out.println(ex.getMessage());
 		} finally {
 			// Close the connections.

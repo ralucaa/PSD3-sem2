@@ -13,8 +13,6 @@ import objects.Course;
 import objects.Room;
 import objects.Session;
 import stub_central_room_booking.CentralRoomBookingStub;
-import stub_mycampus.MyCampusDatabaseAdapter;
-import stub_mycampus.MyCampusStub;
 
 public class AssignRoomToTimetableSlot {
 
@@ -34,8 +32,8 @@ public class AssignRoomToTimetableSlot {
 		while(true) {
 
 			System.out.println("Please select a timetable slot:");
-
-			for (Session session : sessions) {
+			
+			for (Session session : sessions) {				
 				System.out.println(session.getId() + " - " + getCourse(session.getCourse()) + " " + session.getType());
 			}
 
@@ -79,7 +77,7 @@ public class AssignRoomToTimetableSlot {
 	 */
 	private static ArrayList<Session> getSessions() {		
 
-		ArrayList<Session> r = null;
+		ArrayList<Session> r = new ArrayList<Session>();
 
 		// Retrieve room details from the database
 		String query = "SELECT * FROM Session";
@@ -88,7 +86,7 @@ public class AssignRoomToTimetableSlot {
 
 		try {
 			// Get the database connection
-			con = MyCampusDatabaseAdapter.getConnection();
+			con = DatabaseAdapter.getConnection();
 			// Prepare the SQL statement
 			preparedStatement = con.prepareStatement(query);
 			// Execute the statement and get the result			
@@ -148,7 +146,7 @@ public class AssignRoomToTimetableSlot {
 
 		try {
 			// Get the database connection.
-			con = MyCampusDatabaseAdapter.getConnection();
+			con = DatabaseAdapter.getConnection();
 			// Prepare the SQL statement.
 			preparedStatement = con.prepareStatement(query);
 			// Add the parameters.
