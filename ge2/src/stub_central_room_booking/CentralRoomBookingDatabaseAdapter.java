@@ -1,4 +1,4 @@
-package stub_mycampus;
+package stub_central_room_booking;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
