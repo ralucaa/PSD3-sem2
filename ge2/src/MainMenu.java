@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import functions.AssignRoomToTimetableSlot;
+import functions.BookTimetableSlot;
 import functions.CheckCompulsoryCourses;
 import functions.ImportMyCampusCourses;
 import objects.Account;
@@ -143,7 +144,7 @@ public class MainMenu {
 				);
 				String option = reader.readLine();
 				if (option.equals("1")){
-					//TODO Martynas
+					BookTimetableSlot.scheduler(reader, account);
 				} else if (option.equals("2")){
 					CheckCompulsoryCourses.CheckIfFullyRegistered(account);
 				} else if (option.equals("q")){
