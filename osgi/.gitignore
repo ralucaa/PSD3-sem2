@@ -1,0 +1,8 @@
+/bin
+/bundle
+/felix-cache
+/lib
+*.class
+*.jar
+*~
+
