@@ -4,11 +4,12 @@ Open a terminal in this folder.
 Run "ant init" to begin.
 Run "ant resolve" to download library jars.
 Run "ant compile" to compile the classes.
-Run "ant bundles" to build the bundle jars.
+Run "ant bundles" to build the bundle jars (does the previous steps automatically).
+
 Run "ant run" to start Felix.
 
 At the Felix prompt:
-"install file:example1.jar" installs example1.jar for the first time (does not update it!)
+"install file:jars/example1.jar" installs example1.jar for the first time (does not update it!)
 (example2.jar similarly)
 "lb" lists bundles with their ID numbers.
 "start <bundleID>" starts the bundle.

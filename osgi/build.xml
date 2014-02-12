@@ -23,6 +23,7 @@
 	>
 		
 		<delete dir="bin" />
+		<delete dir="jars" />
 	
 	</target>
 	
@@ -44,6 +45,7 @@
 	>
 		
 		<mkdir dir="bin"/>
+		<mkdir dir="jars"/>
 		
 	</target>
 
@@ -80,15 +82,15 @@
 		depends="compile"
 	>
 
-		<jar update="no" destfile="example1.jar" manifest="config/osgi/EXAMPLE1.MF">
+		<jar update="no" destfile="jars/example1.jar" manifest="config/osgi/EXAMPLE1.MF">
 			<fileset dir="bin/" includes="tutorial/example1/*.class" />
 		</jar>
 		
-		<jar update="no" destfile="example2.jar" manifest="config/osgi/EXAMPLE2.MF">
+		<jar update="no" destfile="jars/example2.jar" manifest="config/osgi/EXAMPLE2.MF">
 			<fileset dir="bin/" includes="tutorial/example2/*.class tutorial/example2/service/*.class " />
 		</jar>
 		
-		<jar update="no" destfile="mycampus.jar" manifest="config/osgi/MYCAMPUS.MF">
+		<jar update="no" destfile="jars/mycampus.jar" manifest="config/osgi/MYCAMPUS.MF">
 			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/mycampus/*.class 
 			    uk/ac/gla/psdteamk/mycampus/service/*.class" />
 		</jar>
