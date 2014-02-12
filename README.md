@@ -1,4 +1,4 @@
-PSD3 - Component Based System simulation
+PSD3
 =========
 
-
+Component Based System simulation
