@@ -64,7 +64,10 @@ public class Session {
 		return end_time;
 	}
 
-	public void setEnd_time(Time end_time) {
+	public void setEnd_time(Time end_time) throws Exception {
+		if (this.start_time == null || this.start_time.after(end_time)){
+			throw new Exception("The end time cannot be earlier than the start time (" + start_time.toString() + ")!");
+		}
 		this.end_time = end_time;
 	}
 
@@ -99,8 +102,13 @@ public class Session {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return id + ": course=" + course + ", date=" + date
+				+ ", start_time=" + start_time + ", end_time=" + end_time
+				+ ", frequency=" + frequency + ", room=" + room + ", capacity="
+				+ capacity + ", type=" + type;
+	}
 	
 }

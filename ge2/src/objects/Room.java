@@ -2,6 +2,10 @@ package objects;
 
 public class Room {
 	
+	@Override
+	public String toString() {
+		return id + ": building=" + building + ", room=" + room;
+	}
 	private int id;
 	private String building;
 	private String room; // i.e. F161

@@ -21,13 +21,13 @@ public class AssignRoomToTimetableSlot {
 
 	private AssignRoomToTimetableSlot() {
 		this.rooms = CentralRoomBookingStub.getRooms();
-		this.sessions = getSessions();
+		this.sessions = getAllSessions();
 	}
 
 	public static void allocator(BufferedReader reader) {
 
 		rooms = CentralRoomBookingStub.getRooms();
-		sessions = getSessions();
+		sessions = getAllSessions();
 		
 		while(true) {
 
@@ -75,7 +75,7 @@ public class AssignRoomToTimetableSlot {
 	 * Retrieve all sessions from the database
 	 * @return an ArrayList of Session objects
 	 */
-	private static ArrayList<Session> getSessions() {		
+	private static ArrayList<Session> getAllSessions() {		
 
 		ArrayList<Session> r = new ArrayList<Session>();
 

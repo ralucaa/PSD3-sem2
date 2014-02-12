@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import functions.AssignRoomToTimetableSlot;
 import functions.BookTimetableSlot;
 import functions.CheckCompulsoryCourses;
+import functions.CreateTimetableSlotForSession;
 import functions.ImportMyCampusCourses;
 import objects.Account;
 import stub_mycampus.MyCampusStub;
@@ -12,12 +13,13 @@ import stub_mycampus.MyCampusStub;
 public class MainMenu {
 	private static final String INVALID_OPTION = "Invalid input. Your options are:\n";
 	private static Account account;
+	private static BufferedReader reader;
 
 	public static void main(String args[]){
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Welcome!\nPlease input your credentials: \n");
 		try {
-			attemptLogin(reader);
+			attemptLogin();
 		}
 		catch(IOException ex){
 			System.out.println(ex.getMessage());
@@ -25,10 +27,10 @@ public class MainMenu {
 		}
 
 		System.out.println("Welcome " + account.getType() + " " + account.getName() + "!");
-		displayCustomMenu(reader);
+		displayCustomMenu();
 	}
 
-	private static void attemptLogin(BufferedReader reader) throws IOException{
+	private static void attemptLogin() throws IOException{
 		while(true){
 			System.out.print("Username: ");
 			String username = reader.readLine();
@@ -41,36 +43,38 @@ public class MainMenu {
 		}
 	}
 
-	private static void displayCustomMenu(BufferedReader reader){
+	private static void displayCustomMenu(){
 		if (account.getType().equals(Account.TYPE_ADMIN)){
-			displayAdminMenu(reader);
+			displayAdminMenu();
 		}
 
 		if (account.getType().equals(Account.TYPE_LECTURER)){
-			displayLecturerMenu(reader);
+			displayLecturerMenu();
 		}
 		
 		if (account.getType().equals(Account.TYPE_TUTOR)){
-			displayTutorMenu(reader);
+			displayTutorMenu();
 		}
 
 		if (account.getType().equals(Account.TYPE_STUDENT)){
-			displayStudentMenu(reader);
+			displayStudentMenu();
 		}
 	}
 
-	private static void displayAdminMenu(BufferedReader reader){
+	private static void displayAdminMenu(){
 		
 		while (true) {
 			try {
 				System.out.println(
-						"1. Assign room to timetable slot.\n" + 
+						"1. Assign room to timetable slot.\n" +
+						"2. Create timetable slot for session.\n" + 
 						"q. Quit"
 				);
 				String option = reader.readLine();
 				if (option.equals("1")){
-					
 					AssignRoomToTimetableSlot.allocator(reader);
+				} else if (option.equals("2")){
+					CreateTimetableSlotForSession.startCreate(reader);
 				} else if (option.equals("q")){
 					break;
 				} else {
@@ -83,7 +87,7 @@ public class MainMenu {
 		}
 	}
 
-	private static void displayLecturerMenu(BufferedReader reader){
+	private static void displayLecturerMenu(){
 		while (true) {
 			try {
 				System.out.println(
@@ -114,7 +118,7 @@ public class MainMenu {
 		}
 	}
 	
-	private static void displayTutorMenu(BufferedReader reader){
+	private static void displayTutorMenu(){
 		while (true) {
 			try {
 				System.out.println(
@@ -134,7 +138,7 @@ public class MainMenu {
 		}
 	}
 	
-	private static void displayStudentMenu(BufferedReader reader){
+	private static void displayStudentMenu(){
 		while (true) {
 			try {
 				System.out.println(
