@@ -1,0 +1,7 @@
+Bundle-Name: Database adapter
+Bundle-Description: A bundle that interfaces with the database
+Bundle-Vendor: Apache Felix
+Bundle-Version: 1.0.0
+Bundle-Activator: uk.ac.gla.psdteamk.database.Activator
+Export-Package: uk.ac.gla.psdteamk.database.service
+Import-Package: org.osgi.framework

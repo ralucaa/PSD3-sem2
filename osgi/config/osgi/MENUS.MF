@@ -1,0 +1,6 @@
+Bundle-Name: Menu test bundle
+Bundle-Description: A bundle that pretends to interface with MyCampus
+Bundle-Vendor: Apache Felix
+Bundle-Version: 1.0.0
+Bundle-Activator: uk.ac.gla.psdteamk.menus.Activator
+Import-Package: org.osgi.framework, uk.ac.gla.psdteamk.sessions.service

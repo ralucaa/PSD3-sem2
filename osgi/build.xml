@@ -98,6 +98,22 @@
 			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/mycampus/*.class 
 			    uk/ac/gla/psdteamk/mycampus/service/*.class" />
 		</jar>
+		
+		<jar update="no" destfile="jars/database.jar" manifest="config/osgi/DATABASE.MF">
+			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/database/*.class 
+			    uk/ac/gla/psdteamk/database/service/*.class" />
+		</jar>
+		
+		<jar update="no" destfile="jars/sessions.jar" manifest="config/osgi/SESSIONS.MF">
+			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/sessions/*.class 
+			    uk/ac/gla/psdteamk/sessions/service/*.class" />
+		</jar>
+
+		<jar update="no" destfile="jars/menus.jar" manifest="config/osgi/MENUS.MF">
+			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/menus/*.class 
+			    uk/ac/gla/psdteamk/menus/service/*.class" />
+		</jar>
+		
 	</target>
 	
 	
