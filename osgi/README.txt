@@ -1,5 +1,7 @@
 
 Open a terminal in this folder.
+
+Run "ant init" to begin.
 Run "ant resolve" to download library jars.
 Run "ant compile" to compile the classes.
 Run "ant bundles" to build the bundle jars.

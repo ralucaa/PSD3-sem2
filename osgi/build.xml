@@ -81,11 +81,11 @@
 	>
 
 		<jar update="no" destfile="example1.jar" manifest="config/osgi/EXAMPLE1.MF">
-			<fileset dir="bin/" includes="tutorial/example1" />
+			<fileset dir="bin/" includes="tutorial/example1/*.class" />
 		</jar>
 		
 		<jar update="no" destfile="example2.jar" manifest="config/osgi/EXAMPLE2.MF">
-			<fileset dir="bin/" includes="tutorial/example2" />
+			<fileset dir="bin/" includes="tutorial/example2/*.class tutorial/example2/service/*.class " />
 		</jar>
 	</target>
 	
