@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import functions.AssignRoomToTimetableSlot;
+import functions.CheckCompulsoryCourses;
 import functions.ImportMyCampusCourses;
 import objects.Account;
 import stub_mycampus.MyCampusStub;
@@ -144,7 +145,7 @@ public class MainMenu {
 				if (option.equals("1")){
 					//TODO Martynas
 				} else if (option.equals("2")){
-					//TODO Tomasz
+					CheckCompulsoryCourses.CheckIfFullyRegistered(account);
 				} else if (option.equals("q")){
 					break;
 				} else {
