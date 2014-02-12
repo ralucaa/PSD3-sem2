@@ -18,7 +18,15 @@
         <dependency org="org.apache.felix" name="org.apache.felix.gogo.command" rev="0.12.0"/>
         
         <dependency org="org.apache.felix" name="org.apache.felix.gogo.shell" rev="0.10.0"/>
-            
+
+    <dependency org="org.xerial" 
+      name="sqlite-jdbc" 
+      rev="3.7.2" />
+
+  <dependency org="joda-time" 
+      name="joda-time" 
+      rev="2.3" />
+
     </dependencies>
 
 
