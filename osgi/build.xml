@@ -96,23 +96,30 @@
 		
 		<jar update="no" destfile="jars/mycampus.jar" manifest="config/osgi/MYCAMPUS.MF">
 			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/mycampus/*.class 
-			    uk/ac/gla/psdteamk/mycampus/service/*.class" />
+			    uk/ac/gla/psdteamk/mycampus/service/*.class
+			    uk/ac/gla/psdteamk/helpers/*.class
+			    uk/ac/gla/psdteamk/objects/*.class" />
 		</jar>
 		
 		<jar update="no" destfile="jars/database.jar" manifest="config/osgi/DATABASE.MF">
 			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/database/*.class 
 			    uk/ac/gla/psdteamk/database/service/*.class
-			    uk/ac/gla/psdteamk/helpers/*.class" />
+			    uk/ac/gla/psdteamk/helpers/*.class
+			    uk/ac/gla/psdteamk/objects/*.class" />
 		</jar>
 		
 		<jar update="no" destfile="jars/sessions.jar" manifest="config/osgi/SESSIONS.MF">
 			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/sessions/*.class 
-			    uk/ac/gla/psdteamk/sessions/service/*.class" />
+			    uk/ac/gla/psdteamk/sessions/service/*.class
+			    uk/ac/gla/psdteamk/helpers/*.class
+			    uk/ac/gla/psdteamk/objects/*.class" />
 		</jar>
 
 		<jar update="no" destfile="jars/menus.jar" manifest="config/osgi/MENUS.MF">
 			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/menus/*.class 
-			    uk/ac/gla/psdteamk/menus/service/*.class" />
+			    uk/ac/gla/psdteamk/menus/service/*.class
+			    uk/ac/gla/psdteamk/helpers/*.class
+			    uk/ac/gla/psdteamk/objects/*.class" />
 		</jar>
 		
 	</target>
