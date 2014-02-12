@@ -38,7 +38,7 @@ public class ImportMyCampusCourses {
 				for (Course course : courses){
 					if (course.getId() == courseId){
 						//Course found. Import and break.
-						importCourse(course, reader);
+						importCourse(course);
 						return;
 					}
 				}
@@ -50,7 +50,7 @@ public class ImportMyCampusCourses {
 		}
 	}
 	
-	private static void importCourse(Course course, BufferedReader reader){
+	private static void importCourse(Course course) {
 		String sql = "INSERT INTO Course(id, title) VALUES (?, ?)"; 
 		Connection con = null;
 		PreparedStatement preparedStatement = null;

@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import functions.AssignRoomToTimetableSlot;
 import functions.ImportMyCampusCourses;
 import objects.Account;
 import stub_mycampus.MyCampusStub;
@@ -57,6 +58,7 @@ public class MainMenu {
 	}
 
 	private static void displayAdminMenu(BufferedReader reader){
+		
 		while (true) {
 			try {
 				System.out.println(
@@ -65,7 +67,8 @@ public class MainMenu {
 				);
 				String option = reader.readLine();
 				if (option.equals("1")){
-					//TODO Martynas
+					
+					AssignRoomToTimetableSlot.allocator(reader);
 				} else if (option.equals("q")){
 					break;
 				} else {

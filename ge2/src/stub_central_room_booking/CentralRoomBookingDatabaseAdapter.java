@@ -13,21 +13,21 @@ public abstract class CentralRoomBookingDatabaseAdapter {
 	 * @return the connection or null if something failed
 	 */
 	public static Connection getConnection(){
-		//Attempt to load the driver.
+		// Load the driver.
 		try {
 			Class.forName(DB_DRIVER);
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
 
-		//Attempt to create the connection and return it.
+		// Create the connection and return it.
 		try {
 			return DriverManager.getConnection(DB_CONNECTION);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
  
-		//Will return null if anything failed.
+		// Return null on failure
 		return null;
 	}
 }
