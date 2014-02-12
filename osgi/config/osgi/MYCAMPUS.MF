@@ -1,0 +1,7 @@
+Bundle-Name: MyCampus adapter
+Bundle-Description: A bundle that pretends to interface with MyCampus
+Bundle-Vendor: Apache Felix
+Bundle-Version: 1.0.0
+Bundle-Activator: uk.ac.gla.psdteamk.mycampus.Activator
+Export-Package: uk.ac.gla.psdteamk.mycampus.service
+Import-Package: org.osgi.framework

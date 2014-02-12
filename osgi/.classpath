@@ -5,5 +5,25 @@
 	<classpathentry kind="lib" path="lib/derby-10.10.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/org.apache.felix.framework-4.2.1.jar"/>
 	<classpathentry kind="lib" path="lib/junit-4.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/easymock-2.4.jar"/>
+	<classpathentry kind="lib" path="lib/jdbc-api-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/joda-convert-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/joda-time-2.3-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/joda-time-2.3-sources.jar"/>
+	<classpathentry kind="lib" path="lib/joda-time-2.3.jar"/>
+	<classpathentry kind="lib" path="lib/nestedvm-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/org.apache.felix.bundlerepository-1.6.0.jar"/>
+	<classpathentry kind="lib" path="lib/org.apache.felix.gogo.command-0.12.0-sources.jar"/>
+	<classpathentry kind="lib" path="lib/org.apache.felix.gogo.command-0.12.0.jar"/>
+	<classpathentry kind="lib" path="lib/org.apache.felix.gogo.runtime-0.10.0.jar"/>
+	<classpathentry kind="lib" path="lib/org.apache.felix.gogo.shell-0.10.0-sources.jar"/>
+	<classpathentry kind="lib" path="lib/org.apache.felix.gogo.shell-0.10.0.jar"/>
+	<classpathentry kind="lib" path="lib/org.apache.felix.main-4.2.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/org.apache.felix.main-4.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/org.osgi.compendium-4.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/org.osgi.core-4.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.7.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.7.2-sources.jar"/>
+	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.7.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
