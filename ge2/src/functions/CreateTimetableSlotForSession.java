@@ -66,7 +66,7 @@ public class CreateTimetableSlotForSession {
 				if (input.equals("q")){
 					return;
 				}
-				session.setStart_time(DateTimeOps.parseTimeToSqlTime(input));
+				session.setStart_time(DateTimeOps.parseTimeStringToJodaTime(input));
 			} catch (Exception ex){
 				System.out.println(ex.getMessage());
 				continue;
@@ -80,7 +80,7 @@ public class CreateTimetableSlotForSession {
 				if (input.equals("q")){
 					return;
 				}
-				session.setEnd_time(DateTimeOps.parseTimeToSqlTime(input));
+				session.setEnd_time(DateTimeOps.parseTimeStringToJodaTime(input));
 				break;
 			} catch (Exception ex){
 				System.out.println(ex.getMessage());
@@ -98,8 +98,8 @@ public class CreateTimetableSlotForSession {
 			//Prepare the SQL statement.
 			preparedStatement = con.prepareStatement(sql);
 			//Add the parameters.
-			preparedStatement.setTime(1, session.getStart_time());
-			preparedStatement.setTime(2, session.getEnd_time());
+			preparedStatement.setString(1, session.getStart_timeString());
+			preparedStatement.setString(2, session.getEnd_timeString());
 			preparedStatement.setInt(3, session.getId());
 			//Execute the statement and get the result.
 			preparedStatement.executeUpdate();
@@ -148,9 +148,9 @@ public class CreateTimetableSlotForSession {
 				r.add(new Session(
 						rs.getInt(1), 		// id
 						rs.getInt(2), 		// course
-						rs.getDate(3), 		// date
-						rs.getTime(4), 		// start_time
-						rs.getTime(5), 		// end_time
+						rs.getString(3), 		// date
+						rs.getString(4), 		// start_time
+						rs.getString(5), 		// end_time
 						rs.getInt(6), 		// frequency
 						rs.getString(7),	// room
 						rs.getInt(8), 		// capacity

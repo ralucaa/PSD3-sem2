@@ -20,8 +20,8 @@ public class AssignRoomToTimetableSlot {
 	private static ArrayList<Session> sessions;
 
 	private AssignRoomToTimetableSlot() {
-		this.rooms = CentralRoomBookingStub.getRooms();
-		this.sessions = getAllSessions();
+		rooms = CentralRoomBookingStub.getRooms();
+		sessions = getAllSessions();
 	}
 
 	public static void allocator(BufferedReader reader) {
@@ -97,9 +97,9 @@ public class AssignRoomToTimetableSlot {
 				r.add(new Session(
 						rs.getInt(1), 		// id
 						rs.getInt(2), 		// course
-						rs.getDate(3), 		// date
-						rs.getTime(4), 		// start_time
-						rs.getTime(5), 		// end_time
+						rs.getString(3), 		// date
+						rs.getString(4), 		// start_time
+						rs.getString(5), 		// end_time
 						rs.getInt(6), 		// frequency
 						rs.getString(7),	// room
 						rs.getInt(8), 		// capacity

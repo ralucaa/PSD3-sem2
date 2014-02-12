@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 
 import objects.Account;
 import stub_mycampus.MyCampusStub;
+import functions.AddSessionToCourse;
 import functions.AssignRoomToTimetableSlot;
 import functions.BookTimetableSlot;
 import functions.CheckCompulsoryCourses;
@@ -104,7 +105,7 @@ public class MainMenu {
 				} else if (option.equals("2")){
 					SpecifySessionFrequency.scheduler(reader);
 				} else if (option.equals("3")){
-					//TODO Helen
+					AddSessionToCourse.startAdding(reader);
 				} else if (option.equals("4")){
 					ImportMyCampusCourses.startImport(reader);
 				} else if (option.equals("q")){
