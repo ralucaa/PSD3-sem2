@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class CheckSessionDetails {
 
-	static void checkSessionDetails(DatabaseAdapterService da, BufferedReader reader, String sessionID){
+	static void checkSessionDetails(DatabaseAdapterService da, String sessionID){
 
 		String registeredCoursesQuery = "SELECT * "+
 				"FROM Session LEFT OUTER JOIN Tutoring ON  Session.id = Tutoring.session "+

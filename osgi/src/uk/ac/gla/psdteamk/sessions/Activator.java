@@ -14,8 +14,20 @@ public class Activator implements BundleActivator {
     	ServiceReference dbRef = context.getServiceReference(DatabaseAdapterService.class.getName());
     	ServiceReference mcRef = context.getServiceReference(MyCampusService.class.getName());
      
-    	context.registerService(
-                SessionManagerService.class.getName(), new SessionManager(), null);
+    	if (dbRef == null) {
+    		System.out.println("Can't find Database Adapter service!");
+    	} else if (mcRef == null) {
+    		System.out.println("Can't find MyCampus service!");
+    	} else {
+    		
+    		DatabaseAdapterService da = (DatabaseAdapterService) context.getService(dbRef);
+    		MyCampusService mc = (MyCampusService) context.getService(mcRef);
+    		
+        	context.registerService(
+                    SessionManagerService.class.getName(), new SessionManager(da, mc), null);
+    	}
+    	
+
     }
     
     public void stop(BundleContext context)

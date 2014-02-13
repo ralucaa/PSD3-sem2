@@ -9,6 +9,8 @@ import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.objects.*;
 import uk.ac.gla.psdteamk.helpers.*;
 
+//this one still has menu stuff in it!
+
 public class CreateTimetableSlotForSession {
 	/**
 	 * Reads in the start and end time and adds the timetable slot to the session.
