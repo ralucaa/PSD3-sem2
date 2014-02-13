@@ -1,17 +1,11 @@
+package menus;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 import objects.Account;
 import stub_mycampus.MyCampusStub;
-import functions.AddSessionToCourse;
-import functions.AssignRoomToTimetableSlot;
-import functions.BookTimetableSlot;
 import functions.CheckCompulsoryCourses;
-import functions.CheckSessionDetails;
-import functions.CreateTimetableSlotForSession;
-import functions.ImportMyCampusCourses;
-import functions.SpecifySessionFrequency;
 
 public class MainMenu {
 	private static final String INVALID_OPTION = "Invalid input. Your options are:\n";
@@ -75,9 +69,9 @@ public class MainMenu {
 				);
 				String option = reader.readLine();
 				if (option.equals("1")){
-					AssignRoomToTimetableSlot.allocator(reader);
+					MenuAssignRoomToTimetableSlot.beginRoomAssignment(reader);
 				} else if (option.equals("2")){
-					CreateTimetableSlotForSession.startCreate(reader);
+					MenuCreateTimetableSlotForSession.beginTimetableAllocation(reader);
 				} else if (option.equals("q")){
 					break;
 				} else {
@@ -102,13 +96,13 @@ public class MainMenu {
 				);
 				String option = reader.readLine();
 				if (option.equals("1")){
-					CheckSessionDetails.Check(reader);
+					MenuCheckSessionDetails.beginSessionDetailsCheck(reader);
 				} else if (option.equals("2")){
-					SpecifySessionFrequency.scheduler(reader);
+					MenuSpecifySessionFrequency.beginSpecifyingSessionFrequency(reader);
 				} else if (option.equals("3")){
-					AddSessionToCourse.startAdding(reader);
+					MenuAddSessionToCourse.beginSessionAdding(reader);
 				} else if (option.equals("4")){
-					ImportMyCampusCourses.startImport(reader);
+					MenuImportMyCampusCourses.startImport(reader);
 				} else if (option.equals("q")){
 					break;
 				} else {
@@ -121,15 +115,23 @@ public class MainMenu {
 		}
 	}
 	
+	/**
+	 * A tutor is also a student so show the student menu as well.
+	 */
 	private static void displayTutorMenu(){
 		while (true) {
 			try {
 				System.out.println(
-						"No options available!\n" +
+						"1. Book timetable slots.\n" +
+						"2. Check if fully registered.\n" +
 						"q. Quit"
 				);
 				String option = reader.readLine();
-				if (option.equals("q")){
+				if (option.equals("1")){
+					MenuBookTimetableSlot.beginSessionScheduling(reader, account);
+				} else if (option.equals("2")){
+					CheckCompulsoryCourses.checkIfFullyRegistered(account);
+				} else if (option.equals("q")){
 					break;
 				} else {
 					System.out.println(INVALID_OPTION);
@@ -151,9 +153,9 @@ public class MainMenu {
 				);
 				String option = reader.readLine();
 				if (option.equals("1")){
-					BookTimetableSlot.scheduler(reader, account);
+					MenuBookTimetableSlot.beginSessionScheduling(reader, account);
 				} else if (option.equals("2")){
-					CheckCompulsoryCourses.CheckIfFullyRegistered(account);
+					CheckCompulsoryCourses.checkIfFullyRegistered(account);
 				} else if (option.equals("q")){
 					break;
 				} else {

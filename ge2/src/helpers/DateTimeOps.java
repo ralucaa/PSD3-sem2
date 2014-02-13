@@ -11,8 +11,12 @@ public class DateTimeOps {
 	private static final String DEFAULT_TIME = "00:00", DEFAULT_DATE = "01/01/2001";
 
 	public static DateTime parseTimeStringToJodaTime(String time){
-		DateTimeFormatter df = DateTimeFormat.forPattern(TIME_FORMAT);
-		return df.parseDateTime(time);
+		try {
+			DateTimeFormatter df = DateTimeFormat.forPattern(TIME_FORMAT);
+			return df.parseDateTime(time);
+		} catch (Exception ex) {
+			return null;
+		}
 	}
 
 	public static String parseJodaTimeToTimeString(DateTime time){
@@ -25,8 +29,12 @@ public class DateTimeOps {
 	}
 
 	public static DateTime parseDateStringToJodaTime(String date){
-		DateTimeFormatter df = DateTimeFormat.forPattern(DATE_FORMAT);
-		return df.parseDateTime(date);
+		try {
+			DateTimeFormatter df = DateTimeFormat.forPattern(DATE_FORMAT);
+			return df.parseDateTime(date);
+		} catch (Exception ex) {
+			return null;
+		}
 	}
 
 	public static String parseJodaTimeToDateString(DateTime date){

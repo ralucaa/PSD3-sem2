@@ -3,50 +3,25 @@ package functions;
 import database_adapter.DatabaseAdapter;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import objects.Account;
 import stub_mycampus.MyCampusDatabaseAdapter;
 
 public class CheckSessionDetails {
 
-	public static void Check(BufferedReader reader){
-		String sessionID = "";
-		while(true){
-			System.out.println(
-					"1. Input the session ID.\n" +
-					"q. Quit"
-			);
-			String option;
-			try {
-				option = reader.readLine();
-				if (option.equals("q")){
-				break;
-			} else{
-				sessionID = option;
-				break;
-			}
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			//Quit if q.
-			
-		}
-		
+	public static void checkSessionDetails(BufferedReader reader, String sessionID){
+
 		String registeredCoursesQuery = "SELECT * "+
-										"FROM Session LEFT OUTER JOIN Tutoring ON  Session.id = Tutoring.session "+
-										"WHERE Session.id = ?";
-		
+				"FROM Session LEFT OUTER JOIN Tutoring ON  Session.id = Tutoring.session "+
+				"WHERE Session.id = ?";
+
 		Connection con = null;
 		PreparedStatement statement = null;
-		
+
 		ResultSet resultSet = null;
 
 		try {
@@ -104,7 +79,7 @@ public class CheckSessionDetails {
 						break;
 					}
 				}
-				
+
 				try {
 					if (tutorStatement != null){
 						tutorStatement.close();
@@ -120,8 +95,8 @@ public class CheckSessionDetails {
 			//////////////////////////////////////////////////////////////////
 			//print all the students
 			String studentsQuery = "SELECT student "+
-									"FROM Session,Registration "+
-									"WHERE Session.id = Registration.session AND Session.id =?";
+					"FROM Session,Registration "+
+					"WHERE Session.id = Registration.session AND Session.id =?";
 			statement = con.prepareStatement(studentsQuery);
 			statement.setInt(1, Integer.parseInt(sessionID));
 			resultSet = statement.executeQuery();
@@ -147,8 +122,8 @@ public class CheckSessionDetails {
 				}
 			}
 			myCampusCon.close();
-			
-					
+
+
 			System.out.println("\nQuery successfull!");
 		} catch (SQLException ex) {
 			System.out.println("Probably student number not present in the database");
@@ -159,7 +134,7 @@ public class CheckSessionDetails {
 				if (statement != null){
 					statement.close();
 				}
-				
+
 				if (con != null){
 					con.close();
 				}

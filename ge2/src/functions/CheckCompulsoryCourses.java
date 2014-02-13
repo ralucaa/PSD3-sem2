@@ -10,7 +10,11 @@ import objects.Account;
 
 public class CheckCompulsoryCourses {
 
-	public static void CheckIfFullyRegistered(Account student){
+	/**
+	 * Checks if the logged-in student is fully registered.
+	 * @param student - The current Account object.
+	 */
+	public static void checkIfFullyRegistered(Account student){
 		String registeredCoursesQuery = "SELECT CoursesRegistered.*, Course.title "+
 										"FROM Course, "+
 										"(SELECT DISTINCT Session.course AS cr "+
@@ -58,7 +62,7 @@ public class CheckCompulsoryCourses {
 			}
 			
 					
-			System.out.println("\nQuery successfull!");
+			System.out.println("\nQuery successful!");
 		} catch (SQLException ex) {
 			System.out.println("Probably student number not present in the database");
 			ex.printStackTrace();

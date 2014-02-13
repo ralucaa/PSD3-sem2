@@ -32,11 +32,11 @@ public abstract class DatabaseAdapter {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
- 
+
 		//Will return null if anything failed.
 		return null;
 	}
-	
+
 	/**
 	 * Gets all the courses available in the database.
 	 * @return the courses
@@ -79,7 +79,7 @@ public abstract class DatabaseAdapter {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Retrieve all sessions from the database
 	 * @return an ArrayList of Session objects
@@ -113,7 +113,7 @@ public abstract class DatabaseAdapter {
 						rs.getString(7),	// room
 						rs.getInt(8), 		// capacity
 						rs.getString(9)		// time
-						) 	
+						) 
 						); 
 			}		
 
