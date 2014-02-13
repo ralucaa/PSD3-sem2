@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.objects.*;
 
-public class CheckCompulsoryCourses {
+class CheckCompulsoryCourses {
 
 	/**
 	 * Checks if the logged-in student is fully registered.

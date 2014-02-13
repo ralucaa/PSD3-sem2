@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CheckSessionDetails {
+class CheckSessionDetails {
 
 	static void checkSessionDetails(DatabaseAdapterService da, String sessionID){
 

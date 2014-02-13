@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.objects.*;
 
-public final class AddSessionToCourse {
+class AddSessionToCourse {
 	/**
 	 * Adds the given object to the database.
 	 * @param session - The session object to add.

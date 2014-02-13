@@ -11,7 +11,7 @@ import uk.ac.gla.psdteamk.helpers.*;
 
 //this one still has menu stuff in it!
 
-public class CreateTimetableSlotForSession {
+class CreateTimetableSlotForSession {
 	/**
 	 * Reads in the start and end time and adds the timetable slot to the session.
 	 * @param session - The session you want to update.

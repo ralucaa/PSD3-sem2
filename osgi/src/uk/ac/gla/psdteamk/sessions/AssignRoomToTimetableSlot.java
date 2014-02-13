@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 
-public class AssignRoomToTimetableSlot {
+class AssignRoomToTimetableSlot {
 	/**
 	 * Assign a room to a session
 	 * @param sessionId - a session reference in the database

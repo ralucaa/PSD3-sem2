@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.objects.*;
 
-public class ImportMyCampusCourses {
+class ImportMyCampusCourses {
 	/**
 	 * Imports the specified course to the database.
 	 * @param course - The course to import.

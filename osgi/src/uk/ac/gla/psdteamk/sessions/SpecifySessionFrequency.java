@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 
-public class SpecifySessionFrequency {
+class SpecifySessionFrequency {
 	/**
 	 * Change session frequency
 	 * @param sessionId - a session reference in the database

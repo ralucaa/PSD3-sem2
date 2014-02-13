@@ -17,45 +17,38 @@ public class SessionManager implements SessionManagerService {
 	}
 	
 	@Override
-	public void addSessionToDatabase(Session session) {
-		// TODO Auto-generated method stub
-		
+	public void addSessionToCourse(Session session) {
+		AddSessionToCourse.addSessionToDatabase(da, session);
 	}
 
 	@Override
 	public void assignRoom(int sessionId, int roomId) {
-		// TODO Auto-generated method stub
-		
+		AssignRoomToTimetableSlot.assignRoom(da, sessionId, roomId);
 	}
 
 	@Override
 	public void bookSession(int sessionId, String username) {
-		// TODO Auto-generated method stub
-		
+		BookTimetableSlot.bookSession(da, sessionId, username);
 	}
 
 	@Override
 	public void checkIfFullyRegistered(Account student) {
-		// TODO Auto-generated method stub
-		
+		CheckCompulsoryCourses.checkIfFullyRegistered(da, student);
 	}
 
 	@Override
 	public void checkSessionDetails(String sessionID) {
-		// TODO Auto-generated method stub
-		
+		CheckSessionDetails.checkSessionDetails(da, sessionID);
 	}
 
 	@Override
 	public void importCourse(Course course) {
-		// TODO Auto-generated method stub
-		
+		ImportMyCampusCourses.importCourse(da, course);
 	}
 
 	@Override
 	public void changeFrequency(int sessionId, int frequency) {
-		// TODO Auto-generated method stub
-		
+		SpecifySessionFrequency.changeFrequency(da, sessionId, frequency);
 	}
 
 }
