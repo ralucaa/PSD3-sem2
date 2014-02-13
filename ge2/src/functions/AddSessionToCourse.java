@@ -1,22 +1,21 @@
 package functions;
 
-import helpers.DatabaseAdapter;
 import helpers.DateTimeOps;
 
 import java.io.BufferedReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import database_adapter.DatabaseAdapter;
 import objects.Course;
 import objects.Session;
 
 public class AddSessionToCourse {
 	public static void startAdding(BufferedReader reader){
 		//Get the list of courses available.
-		ArrayList<Course> courses = getAllCourses();
+		ArrayList<Course> courses = DatabaseAdapter.getAllCourses();
 
 		while(true) {
 			//List the starting message.
@@ -147,48 +146,5 @@ public class AddSessionToCourse {
 				System.out.println(ex.getMessage());
 			}
 		}
-	}
-
-	/**
-	 * Gets all the courses available in MyCampus.
-	 * @return the courses
-	 */
-	private static ArrayList<Course> getAllCourses(){
-		//Attempt to get the user's type.
-		String sql = "SELECT id, title FROM Course";
-		Connection con = null;
-		PreparedStatement preparedStatement = null;
-
-		try {
-			//Get the database connection.
-			con = DatabaseAdapter.getConnection();
-			//Prepare the SQL statement.
-			preparedStatement = con.prepareStatement(sql);
-			//Execute the statement and get the result.
-			ResultSet rs = preparedStatement.executeQuery();
-			//Read the courses.
-			ArrayList<Course> courses = new ArrayList<Course>();
-			while (rs.next()){
-				courses.add(new Course(rs.getInt(1), rs.getString(2)));
-			}
-			//Return the courses.
-			return courses;
-		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
-		} finally {
-			//Close the connections.
-			try {
-				if (preparedStatement != null){
-					preparedStatement.close();
-				}
-				if (con != null){
-					con.close();
-				}
-			}
-			catch (SQLException ex){
-				System.out.println(ex.getMessage());
-			}
-		}
-		return null;
 	}
 }

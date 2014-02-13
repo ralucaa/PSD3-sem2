@@ -1,21 +1,20 @@
 package functions;
 
-import helpers.DatabaseAdapter;
 import helpers.DateTimeOps;
 
 import java.io.BufferedReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import database_adapter.DatabaseAdapter;
 import objects.Session;
 
 public class CreateTimetableSlotForSession {
 
 	public static void startCreate(BufferedReader reader){	
-		ArrayList<Session> sessions = getAllSessions();
+		ArrayList<Session> sessions = DatabaseAdapter.getAllSessions();
 
 		while(true) {
 			//List the starting message.
@@ -121,64 +120,4 @@ public class CreateTimetableSlotForSession {
 			}
 		}
 	}
-
-	/**
-	 * Retrieve all sessions from the database
-	 * @return an ArrayList of Session objects
-	 */
-	private static ArrayList<Session> getAllSessions() {		
-
-		ArrayList<Session> r = new ArrayList<Session>();
-
-		// Retrieve room details from the database
-		String query = "SELECT * FROM Session";
-		Connection con = null;
-		PreparedStatement preparedStatement = null;		
-
-		try {
-			// Get the database connection
-			con = DatabaseAdapter.getConnection();
-			// Prepare the SQL statement
-			preparedStatement = con.prepareStatement(query);
-			// Execute the statement and get the result			
-			ResultSet rs = preparedStatement.executeQuery();			
-
-			// Iterate through the result set
-			while (rs.next()) {
-				r.add(new Session(
-						rs.getInt(1), 		// id
-						rs.getInt(2), 		// course
-						rs.getString(3), 		// date
-						rs.getString(4), 		// start_time
-						rs.getString(5), 		// end_time
-						rs.getInt(6), 		// frequency
-						rs.getString(7),	// room
-						rs.getInt(8), 		// capacity
-						rs.getString(9)		// time
-						) 	
-						); 
-			}		
-
-			return r;
-
-		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
-		} finally {
-			// Close the connections.
-			try {
-				if (preparedStatement != null){
-					preparedStatement.close();
-				}
-				if (con != null){
-					con.close();
-				}
-			}
-			catch (SQLException ex){
-				System.out.println(ex.getMessage());
-			}
-		}
-
-		// Will only reach this if coming from the catch block.
-		return null;			
-	}	
 }

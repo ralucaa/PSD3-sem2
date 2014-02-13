@@ -1,13 +1,12 @@
 package functions;
 
-import helpers.DatabaseAdapter;
-
 import java.io.BufferedReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import database_adapter.DatabaseAdapter;
 import objects.Course;
 import stub_mycampus.MyCampusStub;
 

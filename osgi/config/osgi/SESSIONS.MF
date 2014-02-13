@@ -1,0 +1,7 @@
+Bundle-Name: Session Manager
+Bundle-Description: A bundle that manages the sessions
+Bundle-Vendor: Apache Felix
+Bundle-Version: 1.0.0
+Bundle-Activator: uk.ac.gla.psdteamk.sessions.Activator
+Export-Package: uk.ac.gla.psdteamk.sessions.service
+Import-Package: org.osgi.framework, uk.ac.gla.psdteamk.database.service, uk.ac.gla.psdteamk.mycampus.service

@@ -1,6 +1,6 @@
 package functions;
 
-import helpers.DatabaseAdapter;
+import database_adapter.DatabaseAdapter;
 
 import java.io.BufferedReader;
 import java.io.IOException;

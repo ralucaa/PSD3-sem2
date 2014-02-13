@@ -1,31 +1,49 @@
 package uk.ac.gla.psdteamk.objects;
 
-import java.sql.Date;
-import java.sql.Time;
+import uk.ac.gla.psdteamk.helpers.DateTimeOps;
+
+import org.joda.time.DateTime;
 
 public class Session {
-	
+
 	private int id;
 	private int course;
-	private Date date;
-	private Time start_time;
-	private Time end_time;
+	private DateTime date;
+	private DateTime start_time;
+	private DateTime end_time;
 	private int frequency;
 	private String room;
 	private int capacity;
 	private String type;
-		
-	public Session(int id, int course, Date date, Time start_time,
-			Time end_time, int frequency, String room, int capacity, String type) {
+
+	public Session(int id, int course, DateTime date, DateTime start_time,
+			DateTime end_time, int frequency, String room, int capacity, String type) {
 		this.id = id;
 		this.course = course;
 		this.date = date;
-		this.start_time = start_time;
-		this.end_time = end_time;
+		try {
+			this.start_time = start_time;
+			this.end_time = end_time;
+		} catch (Exception ex) { //Not specified, use 0.
+			this.start_time = DateTimeOps.parseTimeStringToJodaTime("00:00");
+			this.end_time = DateTimeOps.parseTimeStringToJodaTime("00:00");
+		}
 		this.frequency = frequency;
-		this.room = room;
+		try {
+			this.room = room;
+		} catch (Exception ex) { //Not specified, use empty.
+			room = "";
+		}
 		this.capacity = capacity;
 		this.type = type;
+	}
+	public Session(int id, int course, String date, String start_time,
+			String end_time, int frequency, String room, int capacity, String type) {
+		this(id, course, DateTimeOps.parseDateStringToJodaTime(date), DateTimeOps.parseTimeStringToJodaTime(start_time), DateTimeOps.parseTimeStringToJodaTime(end_time), frequency, room, capacity, type);
+	}
+
+	public Session(){
+		//Empty constructor.
 	}
 
 	public int getId() {
@@ -44,28 +62,40 @@ public class Session {
 		this.course = course;
 	}
 
-	public Date getDate() {
+	public DateTime getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public String getDateString() {
+		return DateTimeOps.parseJodaTimeToDateString(date);
+	}
+
+	public void setDate(DateTime date) {
 		this.date = date;
 	}
 
-	public Time getStart_time() {
+	public DateTime getStart_time() {
 		return start_time;
 	}
 
-	public void setStart_time(Time start_time) {
+	public String getStart_timeString() {
+		return DateTimeOps.parseJodaTimeToTimeString(start_time);
+	}
+
+	public void setStart_time(DateTime start_time) {
 		this.start_time = start_time;
 	}
 
-	public Time getEnd_time() {
+	public DateTime getEnd_time() {
 		return end_time;
 	}
 
-	public void setEnd_time(Time end_time) throws Exception {
-		if (this.start_time == null || this.start_time.after(end_time)){
+	public String getEnd_timeString() {
+		return DateTimeOps.parseJodaTimeToTimeString(end_time);
+	}
+
+	public void setEnd_time(DateTime end_time) throws Exception {
+		if (this.start_time == null || this.start_time.isAfter(end_time)){
 			throw new Exception("The end time cannot be earlier than the start time (" + start_time.toString() + ")!");
 		}
 		this.end_time = end_time;
@@ -110,5 +140,5 @@ public class Session {
 				+ ", frequency=" + frequency + ", room=" + room + ", capacity="
 				+ capacity + ", type=" + type;
 	}
-	
+
 }
