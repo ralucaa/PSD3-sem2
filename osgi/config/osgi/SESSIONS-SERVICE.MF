@@ -1,9 +1,8 @@
-Bundle-Name: Session Manager implementation
+Bundle-Name: Session Manager specification
 Bundle-Description: A bundle that manages the sessions
 Bundle-Vendor: PSD3 2013 Team K
 Bundle-Version: 1.0.0
-Bundle-Activator: uk.ac.gla.psdteamk.sessions.Activator
+Export-Package: uk.ac.gla.psdteamk.sessions.service
 Import-Package: org.osgi.framework,
-  uk.ac.gla.psdteamk.sessions.service,
   uk.ac.gla.psdteamk.database.service,
   uk.ac.gla.psdteamk.mycampus.service

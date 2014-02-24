@@ -1,6 +1,6 @@
 package uk.ac.gla.psdteamk.sessions.test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.io.File;
 
@@ -22,7 +22,9 @@ import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 public class ExampleJUnitTest {
 	private Framework framework;
 	private BundleContext bundleContext;
-	private Bundle databaseBundle, databaseServiceBundle, mycampusBundle, sessionBundle;
+	private Bundle databaseServiceBundle, databaseBundle;
+	private Bundle mycampusServiceBundle, mycampusBundle;
+	private Bundle sessionServiceBundle, sessionBundle;
 	
 	private SessionManagerService sessionManagerService;
 
@@ -57,8 +59,14 @@ public class ExampleJUnitTest {
 		databaseBundle = bundleContext.installBundle("file:jars/database.jar");
 		databaseBundle.start();
 
+		mycampusServiceBundle = bundleContext.installBundle("file:jars/mycampus-service.jar");
+		mycampusServiceBundle.start();
+
 		mycampusBundle = bundleContext.installBundle("file:jars/mycampus.jar");
 		mycampusBundle.start();
+		
+		sessionServiceBundle = bundleContext.installBundle("file:jars/sessions-service.jar");
+		sessionServiceBundle.start();
 		
 		sessionBundle = bundleContext.installBundle("file:jars/sessions.jar");
 		sessionBundle.start();
@@ -94,9 +102,21 @@ public class ExampleJUnitTest {
 	}
 	
 	@Test
+	public void testSMSNotNull() {
+		assertFalse(sessionManagerService == null);
+	}
+	
+	@Test
+	public void testAssignRoom() {
+		sessionManagerService.assignRoom(3, 5);
+		
+	}
+	
+	@Test
 	public void testAddSession() {
 		//Session(int id, int course, DateTime date, DateTime start_time, DateTime end_time, int frequency, String room, int capacity, String type)
 		//Session session = new Session(...);
+		fail("not implemented");
 	}
 	
 

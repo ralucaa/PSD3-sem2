@@ -101,6 +101,12 @@
 				uk/ac/gla/psdteamk/objects/*.class" />
 		</jar>
 		
+		<jar update="no" destfile="jars/mycampus-service.jar" manifest="config/osgi/MYCAMPUS-SERVICE.MF">
+			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/mycampus/service/*.class
+				uk/ac/gla/psdteamk/helpers/*.class
+				uk/ac/gla/psdteamk/objects/*.class" />
+		</jar>
+		
 		<jar update="no" destfile="jars/database.jar" manifest="config/osgi/DATABASE.MF">
 			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/database/*.class 
 				uk/ac/gla/psdteamk/database/service/*.class
@@ -117,6 +123,12 @@
 		<jar update="no" destfile="jars/sessions.jar" manifest="config/osgi/SESSIONS.MF">
 			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/sessions/*.class 
 				uk/ac/gla/psdteamk/sessions/service/*.class
+				uk/ac/gla/psdteamk/helpers/*.class
+				uk/ac/gla/psdteamk/objects/*.class" />
+		</jar>
+
+		<jar update="no" destfile="jars/sessions-service.jar" manifest="config/osgi/SESSIONS-SERVICE.MF">
+			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/sessions/service/*.class
 				uk/ac/gla/psdteamk/helpers/*.class
 				uk/ac/gla/psdteamk/objects/*.class" />
 		</jar>

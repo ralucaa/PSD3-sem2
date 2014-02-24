@@ -1,0 +1,6 @@
+Bundle-Name: MyCampus adapter specification
+Bundle-Description: A bundle that pretends to interface with MyCampus
+Bundle-Vendor: PSD3 2013 Team K
+Bundle-Version: 1.0.0
+Export-Package: uk.ac.gla.psdteamk.mycampus.service
+Import-Package: org.osgi.framework
