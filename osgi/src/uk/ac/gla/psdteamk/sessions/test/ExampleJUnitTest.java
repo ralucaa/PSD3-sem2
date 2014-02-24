@@ -22,7 +22,7 @@ import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 public class ExampleJUnitTest {
 	private Framework framework;
 	private BundleContext bundleContext;
-	private Bundle databaseBundle, mycampusBundle, sessionBundle;
+	private Bundle databaseBundle, databaseServiceBundle, mycampusBundle, sessionBundle;
 	
 	private SessionManagerService sessionManagerService;
 
@@ -30,6 +30,7 @@ public class ExampleJUnitTest {
 	public void setUp() throws Exception {
 		String extraPackages = "uk.ac.gla.psdteamk.sessions.service";
 		
+		//sometimes this doesn't seem to work in the tearDown, so do it again
 		recursiveDelete(new File("felix-cache"));
 		
 		framework = 
@@ -49,6 +50,9 @@ public class ExampleJUnitTest {
 			message,
 			expectedNumberOfBundles,
 			actualNumberOfBundles);
+
+		databaseServiceBundle = bundleContext.installBundle("file:jars/database-service.jar");
+		databaseServiceBundle.start();
 		
 		databaseBundle = bundleContext.installBundle("file:jars/database.jar");
 		databaseBundle.start();
