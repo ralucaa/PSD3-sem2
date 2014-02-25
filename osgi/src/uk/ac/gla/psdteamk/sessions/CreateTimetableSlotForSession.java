@@ -18,36 +18,6 @@ class CreateTimetableSlotForSession {
 	 * @param reader - Your BufferedReader object.
 	 */
 	static void createTimetableSlot(DatabaseAdapterService da, Session session, BufferedReader reader){
-		while (true) {
-			//Read the start time.
-			try {
-				System.out.println("Use q to abort. Start time in HH:mm format:");
-				String input = reader.readLine();
-				//See if abort requested.
-				if (input.equals("q")){
-					return;
-				}
-				session.setStart_time(DateTimeOps.parseTimeStringToJodaTime(input));
-			} catch (Exception ex){
-				System.out.println(ex.getMessage());
-				continue;
-			}
-
-			//Read the start time.
-			try {
-				System.out.println("Use q to abort. End time in HH:mm format:");
-				String input = reader.readLine();
-				//See if abort requested.
-				if (input.equals("q")){
-					return;
-				}
-				session.setEnd_time(DateTimeOps.parseTimeStringToJodaTime(input));
-				break;
-			} catch (Exception ex){
-				System.out.println(ex.getMessage());
-			}
-		}
-		
 		//Execute the query.
 		String sql = "UPDATE Session SET start_time = ?, end_time = ? WHERE id = ?";
 		Connection con = null;

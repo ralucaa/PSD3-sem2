@@ -1,4 +1,4 @@
-package uk.ac.gla.psdteamk.sessions.steps;
+package uk.ac.gla.psdteamk.sessions.test.steps;
 
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;

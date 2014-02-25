@@ -1,4 +1,4 @@
-package uk.ac.gla.psdteamk.sessions.steps;
+package uk.ac.gla.psdteamk.sessions.test.steps;
 
 import uk.ac.gla.psdteamk.objects.Session;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
