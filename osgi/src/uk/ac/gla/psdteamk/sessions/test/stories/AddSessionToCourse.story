@@ -4,19 +4,19 @@ AS A lecturer,
 I WANT TO add a session to a course.
 
 Scenario: 
-GIVEN a session for a valid course
-WHEN a user tries to add it to the database
-THEN it should be added to the database 
-AND the function should return true.
+Given a session 1 for a valid course
+When a user tries to add it to the database
+Then it should be added to the database 
+and the function should return true
 
 Scenario: 
-GIVEN a session for a missing course
-WHEN a user tries to add it to the database
-THEN THEN the session should not be added to the database 
-AND the function should return false.
+Given a session 2 for a missing course
+When a user tries to add it to the database
+Then it should not be added to the database 
+and the function should return false
 
 Scenario: 
-GIVEN a session for course and a negative capacity
-WHEN a user tries to add it to the database
-THEN the session should not be added to the database 
-AND the function should return false.
+Given a session for a course and a negative capacity
+When a user tries to add it to the database
+Then it should not be added to the database 
+and the function should return false
