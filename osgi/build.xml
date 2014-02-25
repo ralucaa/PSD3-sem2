@@ -57,6 +57,24 @@
 		
 		<ivy:retrieve />
 		
+		<unzip
+			src="lib/jbehave-core-3.9-resources-3.9.zip"
+			dest="jbehave/view"
+		>
+			<patternset>
+				<include name="**/*.*"/>
+			</patternset>
+		</unzip>
+		
+		<unzip
+			src="lib/jbehave-site-resources-3.1.1.zip"
+			dest="jbehave/view"
+		>
+			<patternset>
+				<include name="**/*.*"/>
+			</patternset>
+		</unzip>
+		
 	</target>
 	
 	

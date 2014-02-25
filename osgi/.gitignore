@@ -1,6 +1,7 @@
 /bin
 /bundle
 /felix-cache
+/jbehave
 /lib
 *.class
 *.jar
