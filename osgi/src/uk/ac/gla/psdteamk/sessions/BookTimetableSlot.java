@@ -12,7 +12,7 @@ class BookTimetableSlot {
 	 * @param sessionId - a session reference in the database
 	 * @param roomId - a room reference in the Central Room Booking database
 	 */
-	static void bookSession(DatabaseAdapterService da, int sessionId, String username) {
+	static boolean bookSession(DatabaseAdapterService da, int sessionId, String username) {
 		String sql = "INSERT INTO Registration(session, student) VALUES(?,?)"; 
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
@@ -29,7 +29,7 @@ class BookTimetableSlot {
 			preparedStatement.execute();
 
 			System.out.println("A user (id=" + username + ") has been assigned to session (id=" + sessionId + ")");
-
+			return true;
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 		} finally {
@@ -46,5 +46,6 @@ class BookTimetableSlot {
 				System.out.println(ex.getMessage());
 			}
 		}
+		return false;
 	}
 }

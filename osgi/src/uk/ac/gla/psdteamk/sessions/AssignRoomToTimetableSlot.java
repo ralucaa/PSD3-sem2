@@ -12,7 +12,7 @@ class AssignRoomToTimetableSlot {
 	 * @param sessionId - a session reference in the database
 	 * @param roomId - a room reference in the Central Room Booking database
 	 */
-	static void assignRoom(DatabaseAdapterService da, int sessionId, int roomId) {
+	static boolean assignRoom(DatabaseAdapterService da, int sessionId, int roomId) {
 			String sql = "UPDATE Session SET room=? WHERE id=?"; 
 			Connection con = null;
 			PreparedStatement preparedStatement = null;
@@ -29,7 +29,7 @@ class AssignRoomToTimetableSlot {
 				preparedStatement.execute();
 				
 				System.out.println("A room (id=" + roomId + ") has been assigned to session (id=" + sessionId + ")");
-				
+				return true;
 			} catch (SQLException ex) {
 				System.out.println(ex.getMessage());
 			} finally {
@@ -46,6 +46,7 @@ class AssignRoomToTimetableSlot {
 					System.out.println(ex.getMessage());
 				}
 			}
+			return false;
 	}
 
 }

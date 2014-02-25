@@ -11,7 +11,7 @@ class AddSessionToCourse {
 	 * Adds the given object to the database.
 	 * @param session - The session object to add.
 	 */
-	static void addSessionToDatabase(DatabaseAdapterService da, Session session) {
+	static boolean addSessionToDatabase(DatabaseAdapterService da, Session session) {
 		//Add to database.
 		String sql = "INSERT INTO Session(course, date, capacity, type) VALUES (?, ?, ?, ?)"; 
 		Connection con = null;
@@ -30,6 +30,7 @@ class AddSessionToCourse {
 			//Execute the statement and get the result.
 			preparedStatement.execute();
 			System.out.println("The session has been successfully imported!");
+			return true;
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 		} finally {
@@ -46,5 +47,6 @@ class AddSessionToCourse {
 				System.out.println(ex.getMessage());
 			}
 		}
+		return false;
 	}
 }

@@ -12,7 +12,7 @@ class SpecifySessionFrequency {
 	 * @param sessionId - a session reference in the database
 	 * @param frequency - number of days that indicates how often the session occurs
 	 */
-	static void changeFrequency(DatabaseAdapterService da, int sessionId, int frequency) {
+	static boolean changeFrequency(DatabaseAdapterService da, int sessionId, int frequency) {
 		String sql = "UPDATE Session SET frequency=? WHERE id=?"; 
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
@@ -29,7 +29,7 @@ class SpecifySessionFrequency {
 			preparedStatement.execute();
 
 			System.out.println("Frequency of value=" + frequency + " has been assigned to session (id=" + sessionId + ")");
-
+			return true;
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 		} finally {
@@ -46,5 +46,6 @@ class SpecifySessionFrequency {
 				System.out.println(ex.getMessage());
 			}
 		}
+		return false;
 	}
 }

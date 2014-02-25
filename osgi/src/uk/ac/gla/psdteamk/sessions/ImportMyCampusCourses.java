@@ -12,7 +12,7 @@ class ImportMyCampusCourses {
 	 * Imports the specified course to the database.
 	 * @param course - The course to import.
 	 */
-	static void importCourse(DatabaseAdapterService da, Course course) {
+	static boolean importCourse(DatabaseAdapterService da, Course course) {
 		String sql = "INSERT INTO Course(id, title) VALUES (?, ?)"; 
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
@@ -28,6 +28,7 @@ class ImportMyCampusCourses {
 			//Execute the statement and get the result.
 			preparedStatement.execute();
 			System.out.println("The course has been successfully imported!");
+			return true;
 		} catch (SQLException ex) {
 			System.out.println("This course is already imported!");
 		} finally {
@@ -44,5 +45,6 @@ class ImportMyCampusCourses {
 				System.out.println(ex.getMessage());
 			}
 		}
+		return false;
 	}
 }

@@ -14,7 +14,7 @@ class CheckCompulsoryCourses {
 	 * Checks if the logged-in student is fully registered.
 	 * @param student - The current Account object.
 	 */
-	static void checkIfFullyRegistered(DatabaseAdapterService da, Account student){
+	static boolean checkIfFullyRegistered(DatabaseAdapterService da, Account student){
 		String registeredCoursesQuery = "SELECT CoursesRegistered.*, Course.title "+
 										"FROM Course, "+
 										"(SELECT DISTINCT Session.course AS cr "+
@@ -63,6 +63,7 @@ class CheckCompulsoryCourses {
 			
 					
 			System.out.println("\nQuery successful!");
+			return true;
 		} catch (SQLException ex) {
 			System.out.println("Probably student number not present in the database");
 			ex.printStackTrace();
@@ -83,5 +84,6 @@ class CheckCompulsoryCourses {
 				System.out.println(ex.getMessage());
 			}
 		}
+		return false;
 	}
 }

@@ -17,38 +17,38 @@ public class SessionManager implements SessionManagerService {
 	}
 	
 	@Override
-	public void addSessionToCourse(Session session) {
-		AddSessionToCourse.addSessionToDatabase(da, session);
+	public boolean addSessionToCourse(Session session) {
+		return AddSessionToCourse.addSessionToDatabase(da, session);
 	}
 
 	@Override
-	public void assignRoom(int sessionId, int roomId) {
-		AssignRoomToTimetableSlot.assignRoom(da, sessionId, roomId);
+	public boolean assignRoom(int sessionId, int roomId) {
+		return AssignRoomToTimetableSlot.assignRoom(da, sessionId, roomId);
 	}
 
 	@Override
-	public void bookSession(int sessionId, String username) {
-		BookTimetableSlot.bookSession(da, sessionId, username);
+	public boolean bookSession(int sessionId, String username) {
+		return BookTimetableSlot.bookSession(da, sessionId, username);
 	}
 
 	@Override
-	public void checkIfFullyRegistered(Account student) {
-		CheckCompulsoryCourses.checkIfFullyRegistered(da, student);
+	public boolean checkIfFullyRegistered(Account student) {
+		return CheckCompulsoryCourses.checkIfFullyRegistered(da, student);
 	}
 
 	@Override
-	public void checkSessionDetails(String sessionID) {
-		CheckSessionDetails.checkSessionDetails(da, sessionID);
+	public boolean checkSessionDetails(String sessionID) {
+		return CheckSessionDetails.checkSessionDetails(da, sessionID);
 	}
 
 	@Override
-	public void importCourse(Course course) {
-		ImportMyCampusCourses.importCourse(da, course);
+	public boolean importCourse(Course course) {
+		return ImportMyCampusCourses.importCourse(da, course);
 	}
 
 	@Override
-	public void changeFrequency(int sessionId, int frequency) {
-		SpecifySessionFrequency.changeFrequency(da, sessionId, frequency);
+	public boolean changeFrequency(int sessionId, int frequency) {
+		return SpecifySessionFrequency.changeFrequency(da, sessionId, frequency);
 	}
 
 }
