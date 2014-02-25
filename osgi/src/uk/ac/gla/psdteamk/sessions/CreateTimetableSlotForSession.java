@@ -1,13 +1,11 @@
 package uk.ac.gla.psdteamk.sessions;
 
-import java.io.BufferedReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.objects.*;
-import uk.ac.gla.psdteamk.helpers.*;
 
 //this one still has menu stuff in it!
 
@@ -17,7 +15,7 @@ class CreateTimetableSlotForSession {
 	 * @param session - The session you want to update.
 	 * @param reader - Your BufferedReader object.
 	 */
-	static void createTimetableSlot(DatabaseAdapterService da, Session session, BufferedReader reader){
+	static void createTimetableSlot(DatabaseAdapterService da, Session session){
 		//Execute the query.
 		String sql = "UPDATE Session SET start_time = ?, end_time = ? WHERE id = ?";
 		Connection con = null;
