@@ -1,7 +1,7 @@
 Narrative:
-IN ORDER TO meet the technical requirements
-AS A system
-I WANT TO support at least 20 different timetable slots per session
+In order to meet the technical requirements
+As A system
+I want to support at least 20 different timetable slots per session
 
 Scenario: 
 Given a session $s
