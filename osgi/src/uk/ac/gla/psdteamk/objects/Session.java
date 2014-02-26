@@ -140,5 +140,10 @@ public class Session {
 				+ ", frequency=" + frequency + ", room=" + room + ", capacity="
 				+ capacity + ", type=" + type;
 	}
+	
+	public int getNumberOfSlots() {
+		// TODO Auto-generated method stub
+		return -1;
+	}
 
 }
