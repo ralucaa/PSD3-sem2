@@ -1,7 +1,7 @@
 Narrative:
-IN ORDER TO meet the technical requirements
-AS A system
-I WANT TO support at least 1000 different users
+In order to meet the technical requirements
+As A system
+I want to support at least 1000 different users
 
 Scenario: 
 Given a database $d
