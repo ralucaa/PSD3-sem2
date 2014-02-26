@@ -42,6 +42,11 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
+	public boolean createTimetableSlot(Session session) {
+		return CreateTimetableSlotForSession.createTimetableSlot(da, session);
+	}
+	
+	@Override
 	public boolean importCourse(Course course) {
 		return ImportMyCampusCourses.importCourse(da, course);
 	}

@@ -7,15 +7,13 @@ import java.sql.SQLException;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.objects.*;
 
-//this one still has menu stuff in it!
-
 class CreateTimetableSlotForSession {
 	/**
 	 * Reads in the start and end time and adds the timetable slot to the session.
 	 * @param session - The session you want to update.
 	 * @param reader - Your BufferedReader object.
 	 */
-	static void createTimetableSlot(DatabaseAdapterService da, Session session){
+	static boolean createTimetableSlot(DatabaseAdapterService da, Session session){
 		//Execute the query.
 		String sql = "UPDATE Session SET start_time = ?, end_time = ? WHERE id = ?";
 		Connection con = null;
@@ -33,6 +31,7 @@ class CreateTimetableSlotForSession {
 			//Execute the statement and get the result.
 			preparedStatement.executeUpdate();
 			System.out.println("The timetable has been successfully stored!");
+			return true;
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 		} finally {
@@ -49,5 +48,6 @@ class CreateTimetableSlotForSession {
 				System.out.println(ex.getMessage());
 			}
 		}
+		return false;
 	}
 }
