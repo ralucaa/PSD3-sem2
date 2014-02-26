@@ -12,7 +12,7 @@ import uk.ac.gla.psdteamk.objects.Course;
 import uk.ac.gla.psdteamk.sessions.*;
 import org.jbehave.core.steps.Steps;
 
-public class ImportMyCampusCourse extends Steps{
+public class ImportMyCampusCourseSteps extends Steps{
 	private boolean importCourses;
 	private DatabaseAdapterService da;
 	private Course myCourse;

@@ -90,7 +90,11 @@
 			debuglevel="lines,vars,source"
 			classpathref="project.classpath"
 		/>
-	
+		
+		<copy todir="bin">
+			<fileset dir="src" includes="**/*.story"/>
+		</copy>
+		
 	</target>
 	
 	

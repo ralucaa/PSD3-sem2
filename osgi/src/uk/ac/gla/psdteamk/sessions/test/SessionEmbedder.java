@@ -36,7 +36,20 @@ public class SessionEmbedder extends Embedder {
     public InjectableStepsFactory stepsFactory() {
         return
         	new InstanceStepsFactory(
-        		configuration(), new AddSessionToCourseSteps());
+        		configuration(),
+        		new AddCourseSteps(),
+        		new AddSessionToCourseSteps(),
+        		new AssignRoomToTimetableSlotSteps(),
+        		new BookTimetableSlotSteps(),
+        		new CheckCompulsoryCoursesSteps(),
+        		new CheckSessionDetailsSteps(),
+        		new CreateTimetableSlotForSessionSteps(),
+        		new ImportMyCampusCourseSteps(),
+        		new SpecifySessionFrequencySteps(),
+        		new NFR_Security0Steps(),
+        		new NFR_Security1Steps()
+        		
+        	);
     }
     
 	@Override
