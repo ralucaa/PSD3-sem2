@@ -4,19 +4,16 @@ AS A lecturer
 I WANT TO import a MyCampus course
 
 Scenario: 
-GIVEN a valid MyCampus course ID
-WHEN I try to retrieve the course information 
-THEN a function should accept this course ID
-AND the function should return the sessions for this course
+Given a valid MyCampus course co
+When I try to retrieve the course information 
+Then a function should accept this course and the function should return the sessions for this course
 
 Scenario: 
-GIVEN a false MyCampus course ID
-WHEN I try to retrieve the course information 
-THEN a function should accept this course ID
-AND the function should return an error 
+Given a false MyCampus course co
+When I try to retrieve the course information 
+Then a function should accept this course and the function should return an error 
 
 Scenario: 
-GIVEN a valid MyCampus course ID
-WHEN I try to retrieve the course information 
-THEN a function should accept this course ID
-AND the function should not return any errors
+Given a valid MyCampus course co
+When I try to retrieve the course information 
+Then a function should accept this course and the function should not return any errors
