@@ -1,6 +1,6 @@
 package uk.ac.gla.psdteamk.sessions.test.steps;
 
-mport static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import org.jbehave.core.annotations.Given;  
 import org.jbehave.core.annotations.Named;  
