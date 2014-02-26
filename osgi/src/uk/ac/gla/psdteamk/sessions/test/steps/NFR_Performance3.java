@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import static org.junit.Assert.assertNotNull;
 
-public class NFR_performance3 extends Steps {
+public class NFR_Performance3 extends Steps {
 	private Session mySession;
 	private int numOfSessions;
 
