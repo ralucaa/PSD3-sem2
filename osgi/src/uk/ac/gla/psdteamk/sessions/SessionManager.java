@@ -6,14 +6,33 @@ import uk.ac.gla.psdteamk.objects.Session;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.mycampus.service.MyCampusService;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class SessionManager implements SessionManagerService {
 	private DatabaseAdapterService da;
 	private MyCampusService mc;
+	private ConcurrentHashMap<Integer, Account> logins;
 	
 	public SessionManager(DatabaseAdapterService da, MyCampusService mc) {
 		this.da = da;
 		this.mc = mc;
+		this.logins = new ConcurrentHashMap<Integer, Account>();
+	}
+
+	/** create a login session - return auth token, or -1 if failed */
+	@Override
+	public int authenticate(String username, String password) {
+		Account acc = mc.authenticate(username, password);
+		if (acc != null) {
+			logins.put(acc.getToken(), acc);
+			return acc.getToken();
+		}
+		return -1;
+	}
+	
+	private boolean accountIsType(int token, String type) {
+		Account acc = logins.get(token);
+		return (acc != null && acc.getType().equals(type));
 	}
 	
 	@Override

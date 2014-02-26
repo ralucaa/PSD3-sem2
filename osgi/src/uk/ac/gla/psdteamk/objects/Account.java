@@ -1,14 +1,21 @@
 package uk.ac.gla.psdteamk.objects;
 
+import java.util.Random;
+import java.util.Date;
+
 public class Account {
 	public static final String TYPE_ADMIN = "admin", TYPE_LECTURER = "lecturer", TYPE_TUTOR = "tutor", TYPE_STUDENT = "student";
 	private final String username, password, name, type;
+	private final int token;
+	private final Date loginTime;
 	
 	public Account(String username, String password, String name, String type){
 		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.type = type;
+		this.token = new Random().nextInt();
+		this.loginTime = new Date();
 	}
 	
 	public String getUsername(){
@@ -25,5 +32,13 @@ public class Account {
 	
 	public String getType(){
 		return type;
+	}
+	
+	public int getToken() {
+		return token;
+	}
+	
+	public Date getLoginTime() {
+		return loginTime;
 	}
 }
