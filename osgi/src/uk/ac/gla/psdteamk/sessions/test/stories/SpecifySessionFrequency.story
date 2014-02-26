@@ -4,19 +4,16 @@ AS A lecturer,
 I WANT TO specify that a session is a one off, or recurs weekly or fortnightly.
 
 Scenario: 
-GIVEN a session and a positive integer frequency
-WHEN the user updates the session 
-THEN it should be updated in the database
-AND the function should return true.
+Given a session 1 and a frequency 7
+When the user updates the session
+Then the session frequency should be updated in the database and the function should return true
 
 Scenario: 
-GIVEN a session and a negative integer frequency
-WHEN the user updates the session
-THEN the session frequency should not be updated in the database 
-AND the function should return false.
+Given a session 1 and a frequency -3
+When the user updates the session
+Then the session frequency should not be updated in the database and the function should return false
 
 Scenario: 
-GIVEN a missing session and a frequency
-WHEN the user updates the session
-THEN the session frequency should not be updated in the database 
-AND the function should return false.
+Given a session -1 and a frequency 7
+When the user updates the session
+Then the session frequency should not be updated in the database and the function should return false
