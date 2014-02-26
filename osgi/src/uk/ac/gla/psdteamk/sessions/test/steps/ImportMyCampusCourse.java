@@ -12,12 +12,12 @@ import uk.ac.gla.psdteamk.objects.Course;
 import uk.ac.gla.psdteamk.sessions.*;
 
 
-public class ImportMyCampusCourse {
+public class ImportMyCampusCourse extends Steps{
 	private boolean importCourses;
 	private DatabaseAdapterService da;
 	private Course myCourse;
 		
-	  @Given("a valid MyCampus course ID$")  
+	  @Given("a valid MyCampus course $co")  
 	  public void givenAMyCampusID(Course course) {  
 	    this.myCourse = course;
 	  }  
@@ -27,8 +27,8 @@ public class ImportMyCampusCourse {
 	     importCourses = ImportMyCampusCourses.importCourse(da, myCourse);
 	  }  
 	
-	  @Then("a function should accept this course ID AND the function should return the sessions for this course")  
-	  public void thenTheOutcomeShould(@Named("sessions")String sessions) {  
+	  @Then("a function should accept this course ID and the function should return the sessions for this course")  
+	  public void thenTheOutcomeShould() {  
 		  assertEquals(true, importCourses);
 	  }  
 }
