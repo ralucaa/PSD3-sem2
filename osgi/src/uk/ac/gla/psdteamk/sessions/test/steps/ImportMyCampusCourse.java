@@ -10,7 +10,7 @@ import org.jbehave.core.annotations.When;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.objects.Course;
 import uk.ac.gla.psdteamk.sessions.*;
-
+import org.jbehave.core.steps.Steps;
 
 public class ImportMyCampusCourse extends Steps{
 	private boolean importCourses;
