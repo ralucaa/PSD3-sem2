@@ -24,7 +24,7 @@
 		
 		<delete dir="bin" />
 		<delete dir="jars" />
-	
+		<delete dir="jbehave" />
 	</target>
 	
 	
@@ -211,5 +211,36 @@
 		depends="osgi.run"
 	/>
 
+	<target
+		name="test.init"
+		depends="bundles"
+		description="Prepares the jbehave directory with view resources for the HTML view of the JBehave tests."
+	>
+		<mkdir dir="jbehave/view"/>
+		
+		<unzip
+			src="lib/jbehave-core-3.9-resources-3.9.zip"
+			dest="jbehave/view"
+		/>
+		
+		<unzip
+			src="lib/jbehave-site-resources-3.1.1.zip"
+			dest="jbehave/view"
+		/>
+			
+	</target>
 	
+	<target
+		name="test"
+		depends="test.init"
+		description="Runs jbehave tests"
+	>
+		
+		<junit>
+			
+			<test name="uk.ac.gla.psdteamk.sessions.test.SessionStories"/>
+			<classpath refid="project.classpath"/>
+		</junit>
+				
+	</target>
 </project>
