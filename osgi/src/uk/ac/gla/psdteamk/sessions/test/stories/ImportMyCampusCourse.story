@@ -1,7 +1,7 @@
 Narrative:
-IN ORDER TO identify the teaching sessions
-AS A lecturer
-I WANT TO import a MyCampus course
+In order to identify the teaching sessions
+As A lecturer
+I want to import a MyCampus course
 
 Scenario: 
 Given a valid MyCampus course co
