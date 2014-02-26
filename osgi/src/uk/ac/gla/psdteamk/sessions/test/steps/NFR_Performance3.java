@@ -20,17 +20,17 @@ public class NFR_performance3 extends Steps {
 
 	
 	@Given("a session $s")
-	public void givenASessionAndAFrequency(Session session) {
+	public void assignSession(Session session) {
 		this.mySession = session;
 	}
 	
 	@When("I try to retrieve the session timetable slot number")
-	public void userTriesToAuthenticate() {
+	public void getSessionsNumber() {
 		numOfSessions = mySession.getNumberOfSlots();
 	}
 	
 	@Then("a session slot number should be greater or equal to 20 ")
-	public void shouldBeAuthenticatedAndAccountNotNull() {
+	public void shouldBeGreaterThanTwenty() {
 		if(numOfSessions < 0){
 			fail("feature not implemented yet");
 		}else{
