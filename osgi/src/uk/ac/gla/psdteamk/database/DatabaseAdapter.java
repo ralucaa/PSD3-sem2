@@ -239,7 +239,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 	}
 
-	public boolean addCoursesToDatabase(DatabaseAdapterService da, Course course) {
+	public boolean addCourseToDatabase(Course course) {
 		// Add to database.
 		String sql = "INSERT INTO Course(id, title) VALUES (?, ?)";
 		Connection con = null;
@@ -247,7 +247,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 		try {
 			// Get the database connection.
-			con = da.getConnection();
+			con = getConnection();
 			// Prepare the SQL statement.
 			preparedStatement = con.prepareStatement(sql);
 			// Add the parameters.
@@ -275,8 +275,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		return false;
 	}
 
-	public boolean addSessionsToDatabase(DatabaseAdapterService da,
-			Session session) {
+	public boolean addSessionToDatabase(Session session) {
 		// Add to database.
 		String sql = "INSERT INTO Session(course, date, capacity, type) VALUES (?, ?, ?, ?)";
 		Connection con = null;
@@ -284,7 +283,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 		try {
 			// Get the database connection.
-			con = da.getConnection();
+			con = getConnection();
 			// Prepare the SQL statement.
 			preparedStatement = con.prepareStatement(sql);
 			// Add the parameters.
@@ -314,7 +313,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		return false;
 	}
 
-	public boolean addUsersToDatabase(DatabaseAdapterService da, Account account) {
+	public boolean addUserToDatabase(Account account) {
 		// Add to database.
 		String sql = "INSERT INTO User(guid, type, name, year) VALUES (?, ?, ?, ?)";
 		Connection con = null;
@@ -322,7 +321,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 		try {
 			// Get the database connection.
-			con = da.getConnection();
+			con = getConnection();
 			// Prepare the SQL statement.
 			preparedStatement = con.prepareStatement(sql);
 			// Add the parameters.

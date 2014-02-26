@@ -8,6 +8,7 @@ import org.jbehave.core.steps.Steps;
 
 import uk.ac.gla.psdteamk.objects.Session;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
+import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -24,9 +25,10 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 	private int roomId;
 	
 	@Given("a $sessionId and $roomId")
-	public void validSessionRoomId(int sessionId, int roomId){
+	public void validSessionRoomId(int sessionId, int roomId) throws Exception {
 		this.sessionId=sessionId;
 		this.roomId=roomId;	
+		this.service = SetupFramework.setup();
 	}
 	
 	@When("the $assignRoom method is executed")
