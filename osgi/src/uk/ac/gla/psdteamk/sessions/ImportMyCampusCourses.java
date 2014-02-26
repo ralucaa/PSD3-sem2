@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.objects.*;
 
-class ImportMyCampusCourses {
+public class ImportMyCampusCourses {
 	/**
 	 * Imports the specified course to the database.
 	 * @param course - The course to import.
 	 */
-	static boolean importCourse(DatabaseAdapterService da, Course course) {
+	public static boolean importCourse(DatabaseAdapterService da, Course course) {
 		String sql = "INSERT INTO Course(id, title) VALUES (?, ?)"; 
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
