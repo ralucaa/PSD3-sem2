@@ -2,7 +2,10 @@ package uk.ac.gla.psdteamk.sessions.test.steps;
 
 import uk.ac.gla.psdteamk.objects.Session;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
+import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 
+import org.jbehave.core.annotations.AfterScenario;
+import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -16,6 +19,17 @@ public class AddSessionToCourseSteps extends Steps {
 	private static final String D_ROOM = "Boyd Orr 720", D_TYPE = "lecture";
 	private static final int D_FREQ = 7, D_CAPACITY = 100;
 	private static final DateTime D_DATE = DateTime.now(), D_START_TIME = DateTime.now(), D_END_TIME = DateTime.now().plusHours(2);
+	
+	@BeforeScenario
+	public void beforeScenario() throws Exception {
+		SetupFramework.setUp();
+		service = SetupFramework.getSessionManagerService();
+	}
+	
+	@AfterScenario
+	public void afterScenario() throws Exception {
+		SetupFramework.tearDown();
+	}
 	
 	private SessionManagerService service;
 	private Session session;

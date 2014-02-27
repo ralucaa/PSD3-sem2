@@ -12,7 +12,7 @@ import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 import static org.junit.Assert.assertEquals;
 
 
-public class AddCourseSteps {
+public class NFR_Performance0 {
 	private DatabaseAdapterService service;
 	String courseName;
 	boolean output = true;

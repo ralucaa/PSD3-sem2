@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 import uk.ac.gla.psdteamk.helpers.DateTimeOps;
 
 
-public class AddSessionsToCoursesSteps {
+public class NFR_Performance1 {
 	private DatabaseAdapterService service;
 	int courseId;
 	boolean output = true;

@@ -1,7 +1,10 @@
 package uk.ac.gla.psdteamk.sessions.test.steps;
 
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
+import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 
+import org.jbehave.core.annotations.AfterScenario;
+import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -13,6 +16,17 @@ public class SpecifySessionFrequencySteps extends Steps {
 	private SessionManagerService service;
 	private int session, frequency;
 	private boolean result;
+	
+	@BeforeScenario
+	public void beforeScenario() throws Exception {
+		SetupFramework.setUp();
+		service = SetupFramework.getSessionManagerService();
+	}
+	
+	@AfterScenario
+	public void afterScenario() throws Exception {
+		SetupFramework.tearDown();
+	}
 	
 	@Given("a session $session and a frequency $frequency")
 	public void givenASessionAndAFrequency(int session, int frequency) {

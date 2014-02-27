@@ -2,33 +2,49 @@ package uk.ac.gla.psdteamk.sessions.test.steps;
 
 import static org.junit.Assert.assertEquals;
 
-import org.jbehave.core.annotations.Given;  
-import org.jbehave.core.annotations.Named;  
-import org.jbehave.core.annotations.Then;  
-import org.jbehave.core.annotations.When;  
+import org.jbehave.core.annotations.AfterScenario;
+import org.jbehave.core.annotations.BeforeScenario;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.objects.Course;
 import uk.ac.gla.psdteamk.sessions.*;
+import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
+import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
+
 import org.jbehave.core.steps.Steps;
 
-public class ImportMyCampusCourseSteps extends Steps{
+public class ImportMyCampusCourseSteps extends Steps {
 	private boolean importCourses;
-	private DatabaseAdapterService da;
+	private SessionManagerService service;
 	private Course myCourse;
-		
-	  @Given("a valid MyCampus course $co")  
-	  public void givenAMyCampusID(String co) {  
-	    this.myCourse =new Course(0, co);
-	  }  
-	
-	  @When("I try to retrieve the course information ")  
-	  public void whenIRetrieveCourseInfo() {  
-	     importCourses = ImportMyCampusCourses.importCourse(da, myCourse);
-	  }  
-	
-	  @Then("a function should accept this course ID and the function should return the sessions for this course")  
-	  public void thenTheOutcomeShould() {  
-		  assertEquals(true, importCourses);
-	  }  
+
+	@BeforeScenario
+	public void beforeScenario() throws Exception {
+		SetupFramework.setUp();
+		service = SetupFramework.getSessionManagerService();
+	}
+
+	@AfterScenario
+	public void afterScenario() throws Exception {
+		SetupFramework.tearDown();
+	}
+
+	@Given("a valid MyCampus course $co")
+	public void givenAMyCampusID(String co) {
+		this.myCourse = new Course(0, co);
+	}
+
+	@When("I try to retrieve the course information ")
+	public void whenIRetrieveCourseInfo() {
+		importCourses = service.importCourse(myCourse);
+	}
+
+	@Then("a function should accept this course ID and the function should return the sessions for this course")
+	public void thenTheOutcomeShould() {
+		assertEquals(true, importCourses);
+	}
 }
