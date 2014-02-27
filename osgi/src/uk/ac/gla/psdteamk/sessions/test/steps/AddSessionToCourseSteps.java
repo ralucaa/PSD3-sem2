@@ -20,6 +20,10 @@ public class AddSessionToCourseSteps extends Steps {
 	private static final int D_FREQ = 7, D_CAPACITY = 100;
 	private static final DateTime D_DATE = DateTime.now(), D_START_TIME = DateTime.now(), D_END_TIME = DateTime.now().plusHours(2);
 	
+	private SessionManagerService service;
+	private Session session;
+	private boolean result;
+	
 	@BeforeScenario
 	public void beforeScenario() throws Exception {
 		SetupFramework.setUp();
@@ -30,10 +34,6 @@ public class AddSessionToCourseSteps extends Steps {
 	public void afterScenario() throws Exception {
 		SetupFramework.tearDown();
 	}
-	
-	private SessionManagerService service;
-	private Session session;
-	private boolean result;
 	
 	@Given("a session $session for course $course")
 	public void givenASessionForAValidCourse(int session, int course) {

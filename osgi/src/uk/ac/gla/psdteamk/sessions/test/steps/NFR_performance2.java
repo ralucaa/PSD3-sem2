@@ -5,7 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
+import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 import static org.junit.Assert.assertEquals;
+
+import org.jbehave.core.annotations.AfterScenario;
+import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -14,9 +18,20 @@ import org.jbehave.core.steps.Steps;
 
 
 public class NFR_performance2 extends Steps {
-	private DatabaseAdapterService service;
+	private DatabaseAdapterService dbs;
 	private int users;
 	private boolean imported;
+	
+	@BeforeScenario
+	public void beforeScenario() throws Exception {
+		SetupFramework.setUp();
+		dbs = SetupFramework.getDatabaseAdapterService();
+	}
+	
+	@AfterScenario
+	public void afterScenario() throws Exception {
+		SetupFramework.tearDown();
+	}
 	
 	@Given("Given a number of users $u")
 	public void givenADatabase(int u) {
@@ -31,7 +46,7 @@ public class NFR_performance2 extends Steps {
 
 		try {
 			//Get the database connection.
-			con = service.getConnection();
+			con = dbs.getConnection();
 			//Prepare the SQL statement.
 			preparedStatement = con.prepareStatement(sql);
 			//Execute the statement and get the result.

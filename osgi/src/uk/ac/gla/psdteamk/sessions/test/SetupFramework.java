@@ -27,14 +27,19 @@ public class SetupFramework {
 	private static Bundle mycampusServiceBundle, mycampusBundle;
 	private static Bundle sessionServiceBundle, sessionBundle;
 	
+	private static DatabaseAdapterService databaseAdapterService = null;
 	private static SessionManagerService sessionManagerService = null;
 	
 	public static SessionManagerService getSessionManagerService() {
 		return sessionManagerService;
 	}
 	
+	public static DatabaseAdapterService getDatabaseAdapterService() {
+		return databaseAdapterService;
+	}
+	
 	public static void setUp() throws Exception {
-		String extraPackages = "uk.ac.gla.psdteamk.sessions.service";
+		String extraPackages = "uk.ac.gla.psdteamk.sessions.service,uk.ac.gla.psdteamk.database.service";
 		
 		//sometimes this doesn't seem to work in the tearDown, so do it again
 		recursiveDelete(new File("felix-cache"));
@@ -79,8 +84,12 @@ public class SetupFramework {
 				bundleContext.getServiceReference(SessionManagerService.class);
 		sessionManagerService = bundleContext.getService(sessionManagerServiceReference);
 		
-		/* todo: put some stuff into the database? */
+		ServiceReference<DatabaseAdapterService> databaseAdapterServiceReference = 
+				bundleContext.getServiceReference(DatabaseAdapterService.class);
+		databaseAdapterService = bundleContext.getService(databaseAdapterServiceReference);
 	}
+	
+	/* todo: put some stuff into the database? */
 	
 	public static void tearDown() throws Exception{
 		sessionBundle.stop();
