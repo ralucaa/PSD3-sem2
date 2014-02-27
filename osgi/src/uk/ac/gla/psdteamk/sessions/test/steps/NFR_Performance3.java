@@ -19,9 +19,9 @@ public class NFR_Performance3 extends Steps {
 	private int numOfSessions;
 
 	
-	@Given("a session $s")
-	public void assignSession(Session session) {
-		this.mySession = session;
+	@Given("a session $session")
+	public void assignSession(String session) {
+		this.mySession = new Session();
 	}
 	
 	@When("I try to retrieve the session timetable slot number")
