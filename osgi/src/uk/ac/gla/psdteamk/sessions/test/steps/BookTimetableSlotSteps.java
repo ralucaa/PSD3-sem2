@@ -41,9 +41,14 @@ public class BookTimetableSlotSteps {
 			output = service.bookSession(sessionID, username);
 		}
 		
-		@Then("the output is $output")
-		public void theOutputIs(boolean output) {
-			assertEquals(this.output, output);
+		@Then("the output is true")
+		public void theOutputIsTrue() {
+			assertEquals(true, output);
+		}	
+		
+		@Then("the output is false")
+		public void theOutputIsFalse() {
+			assertEquals(false, output);
 		}	
 
 }

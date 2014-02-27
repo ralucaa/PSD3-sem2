@@ -4,7 +4,7 @@ As a student
 I want to book a timetable slot for each session of my course
 
 Scenario: student username and sessionID contain special characters
-Given a student username ab and sessionID ab
+Given a student username a$b and sessionID a$b
 When the database request is made
 Then the output is false 
 
