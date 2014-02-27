@@ -1,6 +1,8 @@
 package uk.ac.gla.psdteamk.sessions.test.steps;
 
 
+import org.jbehave.core.annotations.AfterScenario;
+import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -24,11 +26,21 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 	private int sessionId;
 	private int roomId;
 	
+	@BeforeScenario
+	public void beforeScenario() throws Exception {
+		SetupFramework.setUp();
+		service = SetupFramework.getSessionManagerService();
+	}
+	
+	@AfterScenario
+	public void afterScenario() throws Exception {
+		SetupFramework.tearDown();
+	}
+	
 	@Given("a $sessionId and $roomId")
-	public void validSessionRoomId(int sessionId, int roomId) throws Exception {
+	public void validSessionRoomId(int sessionId, int roomId) {
 		this.sessionId=sessionId;
-		this.roomId=roomId;	
-		this.service = SetupFramework.setup();
+		this.roomId=roomId;
 	}
 	
 	@When("the $assignRoom method is executed")

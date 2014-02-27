@@ -21,14 +21,19 @@ import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 
 
 public class SetupFramework {
-	public static SessionManagerService setup() throws Exception {
-		Framework framework;
-		BundleContext bundleContext;
-		Bundle databaseServiceBundle, databaseBundle;
-		Bundle mycampusServiceBundle, mycampusBundle;
-		Bundle sessionServiceBundle, sessionBundle;
-		SessionManagerService sessionManagerService;
-		
+	private static Framework framework;
+	private static BundleContext bundleContext;
+	private static Bundle databaseServiceBundle, databaseBundle;
+	private static Bundle mycampusServiceBundle, mycampusBundle;
+	private static Bundle sessionServiceBundle, sessionBundle;
+	
+	private static SessionManagerService sessionManagerService = null;
+	
+	public static SessionManagerService getSessionManagerService() {
+		return sessionManagerService;
+	}
+	
+	public static void setUp() throws Exception {
 		String extraPackages = "uk.ac.gla.psdteamk.sessions.service";
 		
 		//sometimes this doesn't seem to work in the tearDown, so do it again
@@ -74,10 +79,25 @@ public class SetupFramework {
 				bundleContext.getServiceReference(SessionManagerService.class);
 		sessionManagerService = bundleContext.getService(sessionManagerServiceReference);
 		
-		/* todo: put some stuff into the database */
-		
-		return sessionManagerService;
+		/* todo: put some stuff into the database? */
 	}
+	
+	public static void tearDown() throws Exception{
+		sessionBundle.stop();
+		sessionBundle.uninstall();
+		
+		databaseBundle.stop();
+		databaseBundle.uninstall();
+		
+		mycampusBundle.stop();
+		mycampusBundle.uninstall();
+		
+		framework.stop();		
+		framework.waitForStop(0);
+		
+		recursiveDelete(new File("felix-cache"));
+	}
+	
 	private static void recursiveDelete(File file){
 		if (file.isDirectory()){
 			for (File subFile : file.listFiles())
