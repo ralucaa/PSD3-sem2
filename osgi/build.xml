@@ -241,7 +241,7 @@
 	>
 		
 		<junit>
-			
+						<formatter type="xml"/>
 			<test name="uk.ac.gla.psdteamk.sessions.test.SessionStories"/>
 			<classpath refid="project.classpath"/>
 		</junit>
