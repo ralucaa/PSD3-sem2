@@ -17,7 +17,7 @@ import org.jbehave.core.steps.Steps;
 
 
 
-public class NFR_performance2 extends Steps {
+public class NFR_Performance2Steps extends Steps {
 	private DatabaseAdapterService dbs;
 	private int users;
 	private boolean imported;

@@ -6,6 +6,8 @@ import uk.ac.gla.psdteamk.objects.Session;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.mycampus.service.MyCampusService;
+
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SessionManager implements SessionManagerService {
@@ -73,6 +75,11 @@ public class SessionManager implements SessionManagerService {
 	@Override
 	public boolean changeFrequency(int sessionId, int frequency) {
 		return SpecifySessionFrequency.changeFrequency(da, sessionId, frequency);
+	}
+
+	@Override
+	public List<Session> checkForClashes() {
+		return CheckForClashes.checkForClashes(da);
 	}
 
 }
