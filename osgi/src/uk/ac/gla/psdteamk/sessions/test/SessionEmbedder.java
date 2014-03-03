@@ -37,18 +37,22 @@ public class SessionEmbedder extends Embedder {
         return
         	new InstanceStepsFactory(
         		configuration(),
-        		new NFR_Performance0Steps(),
         		new AddSessionToCourseSteps(),
         		new AssignRoomToTimetableSlotSteps(),
         		new BookTimetableSlotSteps(),
         		new CheckCompulsoryCoursesSteps(),
+        		new CheckForClashesSteps(),
         		new CheckSessionDetailsSteps(),
         		new CreateTimetableSlotForSessionSteps(),
         		new ImportMyCampusCourseSteps(),
         		new SpecifySessionFrequencySteps(),
+        		new NFR_Performance0Steps(),
+        		new NFR_Performance1Steps(),
+        		new NFR_Performance2Steps(),
+        		new NFR_Performance3Steps(),
+        		new NFR_Performance4Steps(),
         		new NFR_Security0Steps(),
         		new NFR_Security1Steps()
-        		
         	);
     }
     
