@@ -3,6 +3,7 @@ package uk.ac.gla.psdteamk.sessions.test;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.sql.Connection;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -22,11 +23,13 @@ import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 public class ExampleJUnitTest {
 	
 	private SessionManagerService sessionManagerService;
+	private DatabaseAdapterService databaseAdapterService;
 
 	@Before
 	public void setUp() throws Exception {
 		SetupFramework.setUp();
 		sessionManagerService = SetupFramework.getSessionManagerService();
+		databaseAdapterService = SetupFramework.getDatabaseAdapterService();
 	}
 	
 	@After
@@ -36,7 +39,18 @@ public class ExampleJUnitTest {
 	
 	@Test
 	public void testSMSNotNull() {
-		assertFalse(sessionManagerService == null);
+		assertTrue(sessionManagerService != null);
+	}
+	
+	@Test
+	public void testDBSNotNull() {
+		assertTrue(databaseAdapterService != null);
+	}
+	
+	@Test
+	public void canGetConnection() {
+		Connection conn = databaseAdapterService.getConnection();
+		assertTrue(conn != null);
 	}
 	
 	@Test

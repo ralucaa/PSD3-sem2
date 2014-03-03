@@ -93,13 +93,22 @@ public class SetupFramework {
 	
 	public static void tearDown() throws Exception{
 		sessionBundle.stop();
-		sessionBundle.uninstall();
+		//sessionBundle.uninstall();
+		
+		sessionServiceBundle.stop();
+		//sessionServiceBundle.uninstall();
 		
 		databaseBundle.stop();
-		databaseBundle.uninstall();
+		//databaseBundle.uninstall();
+		
+		databaseServiceBundle.stop();
+		//databaseServiceBundle.uninstall();
 		
 		mycampusBundle.stop();
-		mycampusBundle.uninstall();
+		//mycampusBundle.uninstall();
+		
+		mycampusServiceBundle.stop();
+		//mycampusServiceBundle.uninstall();
 		
 		framework.stop();		
 		framework.waitForStop(0);
