@@ -43,8 +43,13 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean assignRoom(int sessionId, int roomId) {
-		return AssignRoomToTimetableSlot.assignRoom(da, sessionId, roomId);
+	public boolean assignRoom(int token, int sessionId, int roomId) {
+		if (accountIsType(token, Account.TYPE_ADMIN)) {
+			return AssignRoomToTimetableSlot.assignRoom(da, sessionId, roomId);
+		} else {
+			System.out.println("Access denied");
+			return false;
+		}
 	}
 
 	@Override

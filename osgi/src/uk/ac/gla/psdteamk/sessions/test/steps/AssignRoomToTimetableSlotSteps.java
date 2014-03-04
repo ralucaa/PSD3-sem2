@@ -25,11 +25,14 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 	private boolean result;
 	private int sessionId;
 	private int roomId;
+	private int adminToken;
 	
 	@BeforeScenario
 	public void beforeScenario() throws Exception {
 		SetupFramework.setUp();
+		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
+		adminToken = service.authenticate("admin", "admin");
 	}
 	
 	@AfterScenario
@@ -45,7 +48,7 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 	
 	@When("the assignRoom method is executed")
 	public void assignRoom(){
-		result=service.assignRoom(sessionId, roomId);
+		result=service.assignRoom(adminToken, sessionId, roomId);
 	}
 	
 	@Then("the method returns true")

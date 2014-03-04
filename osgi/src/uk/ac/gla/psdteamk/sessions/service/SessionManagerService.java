@@ -7,7 +7,7 @@ import uk.ac.gla.psdteamk.objects.*;
 public interface SessionManagerService {
 	public int authenticate(String username, String password);
 	public boolean addSessionToCourse(Session session);
-	public boolean assignRoom(int sessionId, int roomId);
+	public boolean assignRoom(int token, int sessionId, int roomId);
 	public boolean bookSession(int sessionId, String username);
 	public boolean checkIfFullyRegistered(Account student);
 	public boolean checkSessionDetails(String sessionID);
