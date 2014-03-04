@@ -13,7 +13,7 @@ class SpecifySessionFrequency {
 	 * @param frequency - number of days that indicates how often the session occurs
 	 */
 	static boolean changeFrequency(DatabaseAdapterService da, int sessionId, int frequency) {
-		String sql = "UPDATE Session SET frequency=? WHERE id=?"; 
+		String sql = "UPDATE \"Session\" SET \"frequency\"=? WHERE \"id\"=?"; 
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 

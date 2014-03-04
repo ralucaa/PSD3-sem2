@@ -13,7 +13,7 @@ class AddSessionToCourse {
 	 */
 	static boolean addSessionToDatabase(DatabaseAdapterService da, Session session) {
 		//Add to database.
-		String sql = "INSERT INTO Session(course, date, capacity, type) VALUES (?, ?, ?, ?)"; 
+		String sql = "INSERT INTO \"Session\"(\"course\", \"date\", \"capacity\", \"type\") VALUES (?, ?, ?, ?)"; 
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 

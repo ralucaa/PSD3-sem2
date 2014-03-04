@@ -13,7 +13,7 @@ class BookTimetableSlot {
 	 * @param roomId - a room reference in the Central Room Booking database
 	 */
 	static boolean bookSession(DatabaseAdapterService da, int sessionId, String username) {
-		String sql = "INSERT INTO Registration(session, student) VALUES(?,?)"; 
+		String sql = "INSERT INTO \"Registration\"(\"session\", \"student\") VALUES(?,?)"; 
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 

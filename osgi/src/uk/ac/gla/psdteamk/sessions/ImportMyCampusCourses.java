@@ -13,7 +13,7 @@ public class ImportMyCampusCourses {
 	 * @param course - The course to import.
 	 */
 	public static boolean importCourse(DatabaseAdapterService da, Course course) {
-		String sql = "INSERT INTO Course(id, title) VALUES (?, ?)"; 
+		String sql = "INSERT INTO \"Course\"(\"id\", \"title\") VALUES (?, ?)"; 
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 

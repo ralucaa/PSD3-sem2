@@ -57,5 +57,10 @@ public class ExampleJUnitTest {
 	public void testGetAllSessionsNotNull() {
 		assertTrue(databaseAdapterService.getAllSessions() != null);
 	}
+	
+	@Test
+	public void testBookSession() {
+		assertTrue(sessionManagerService.bookSession(1, "3333333B"));
+	}
 
 }

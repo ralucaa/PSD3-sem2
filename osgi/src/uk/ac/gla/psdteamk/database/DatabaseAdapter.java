@@ -135,7 +135,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	 */
 	public ArrayList<Course> getAllCourses() {
 		// Attempt to get the user's type.
-		String sql = "SELECT id, title FROM Course";
+		String sql = "SELECT \"id\", \"title\" FROM \"Course\"";
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 
@@ -240,7 +240,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	public Course getCourse(int id) {
 
 		// Retrieve room details from the database
-		String query = "SELECT title  FROM Course WHERE id = ?";
+		String query = "SELECT \"title\"  FROM \"Course\" WHERE \"id\" = ?";
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 
@@ -287,7 +287,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		ArrayList<String> students = new ArrayList<String>();
 
 		// Retrieve student details from the database
-		String query = "SELECT student FROM Registration";
+		String query = "SELECT \"student\" FROM \"Registration\"";
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 
@@ -330,7 +330,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 	public boolean addCourseToDatabase(Course course) {
 		// Add to database.
-		String sql = "INSERT INTO Course(id, title) VALUES (?, ?)";
+		String sql = "INSERT INTO \"Course\"(\"id\", \"title\") VALUES (?, ?)";
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 
@@ -366,7 +366,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 	public boolean addSessionToDatabase(Session session) {
 		// Add to database.
-		String sql = "INSERT INTO Session(course, date, capacity, type) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO \"Session\"(\"course\", \"date\", \"capacity\", \"type\") VALUES (?, ?, ?, ?)";
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 
@@ -404,7 +404,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 	public boolean addUserToDatabase(Account account) {
 		// Add to database.
-		String sql = "INSERT INTO User(guid, type, name, year) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO \"User\"(\"guid\", \"type\", \"name\", \"year\") VALUES (?, ?, ?, ?)";
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 

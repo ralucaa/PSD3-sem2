@@ -14,8 +14,8 @@ class CheckSessionDetails {
 	static boolean checkSessionDetails(DatabaseAdapterService da, String sessionID){
 
 		String registeredCoursesQuery = "SELECT * "+
-				"FROM Session LEFT OUTER JOIN Tutoring ON  Session.id = Tutoring.session "+
-				"WHERE Session.id = ?";
+				"FROM \"Session\" LEFT OUTER JOIN \"Tutoring\" ON  \"Session\".\"id\" = \"Tutoring\".\"session\" "+
+				"WHERE \"Session\".\"id\" = ?";
 
 		Connection con = null;
 		PreparedStatement statement = null;

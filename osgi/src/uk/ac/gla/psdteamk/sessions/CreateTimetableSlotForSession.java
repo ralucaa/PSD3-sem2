@@ -15,7 +15,7 @@ class CreateTimetableSlotForSession {
 	 */
 	static boolean createTimetableSlot(DatabaseAdapterService da, Session session){
 		//Execute the query.
-		String sql = "UPDATE Session SET start_time = ?, end_time = ? WHERE id = ?";
+		String sql = "UPDATE \"Session\" SET \"start_time\" = ?, \"end_time\" = ? WHERE \"id\" = ?";
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 
