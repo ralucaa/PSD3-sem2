@@ -160,7 +160,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		ArrayList<Session> r = new ArrayList<Session>();
 
 		// Retrieve room details from the database
-		String query = "SELECT * FROM Session";
+		String query = "SELECT * FROM \"Session\"";
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 

@@ -36,7 +36,7 @@ public class ExampleJUnitTest {
 	public void tearDown() throws Exception{
 		SetupFramework.tearDown();
 	}
-	/*
+	
 	@Test
 	public void testSMSNotNull() {
 		assertTrue(sessionManagerService != null);
@@ -52,7 +52,7 @@ public class ExampleJUnitTest {
 		Connection conn = databaseAdapterService.getConnection();
 		assertTrue(conn != null);
 	}
-	*/
+	
 	@Test
 	public void testGetAllSessionsNotNull() {
 		assertTrue(databaseAdapterService.getAllSessions() != null);

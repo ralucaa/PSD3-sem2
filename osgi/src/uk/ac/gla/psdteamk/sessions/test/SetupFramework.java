@@ -45,7 +45,7 @@ public class SetupFramework {
 		
 		//sometimes this doesn't seem to work in the tearDown, so do it again
 		recursiveDelete(new File("felix-cache"));
-		recursiveDelete(new File("derby"));
+		//recursiveDelete(new File("derby"));
 
 		framework = 
 				ConfiguredFrameworkFactory.createFelixFramework(
@@ -95,6 +95,8 @@ public class SetupFramework {
 	/* todo: put some stuff into the database? */
 	
 	public static void tearDown() throws Exception{
+		System.out.println("teardown");
+		
 		sessionBundle.stop();
 		//sessionBundle.uninstall();
 		
@@ -117,14 +119,20 @@ public class SetupFramework {
 		framework.waitForStop(0);
 		
 		recursiveDelete(new File("felix-cache"));
-		recursiveDelete(new File("derby"));
+		//recursiveDelete(new File("derby"));
 	}
 	
 	private static void recursiveDelete(File file){
-		if (file.isDirectory()){
-			for (File subFile : file.listFiles())
-				recursiveDelete(subFile);
+		if (file.exists()) {
+			if (file.isDirectory()){
+				for (File subFile : file.listFiles())
+					recursiveDelete(subFile);
+			}
+			if (file.delete()) {
+				//System.out.println("deleted " + file);
+			} else {
+				System.out.println("can't delete " + file);
+			}
 		}
-		file.delete();
 	}
 }
