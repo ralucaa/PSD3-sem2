@@ -240,8 +240,11 @@
 		description="Runs jbehave tests"
 	>
 		
-		<junit>
-						<formatter type="xml"/>
+		<junit
+		    printsummary="on"
+		    showoutput="true"
+		>
+			<formatter type="xml"/>
 			<test name="uk.ac.gla.psdteamk.sessions.test.SessionStories"/>
 			<classpath refid="project.classpath"/>
 		</junit>

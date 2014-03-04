@@ -36,7 +36,7 @@ public class ExampleJUnitTest {
 	public void tearDown() throws Exception{
 		SetupFramework.tearDown();
 	}
-	
+	/*
 	@Test
 	public void testSMSNotNull() {
 		assertTrue(sessionManagerService != null);
@@ -52,19 +52,10 @@ public class ExampleJUnitTest {
 		Connection conn = databaseAdapterService.getConnection();
 		assertTrue(conn != null);
 	}
-	
+	*/
 	@Test
-	public void testAssignRoom() {
-		sessionManagerService.assignRoom(3, 5);
-		
+	public void testGetAllSessionsNotNull() {
+		assertTrue(databaseAdapterService.getAllSessions() != null);
 	}
-	
-	@Test
-	public void testAddSession() {
-		//Session(int id, int course, DateTime date, DateTime start_time, DateTime end_time, int frequency, String room, int capacity, String type)
-		//Session session = new Session(...);
-		fail("not implemented");
-	}
-	
 
 }

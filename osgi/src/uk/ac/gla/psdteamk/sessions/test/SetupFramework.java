@@ -41,9 +41,12 @@ public class SetupFramework {
 	public static void setUp() throws Exception {
 		String extraPackages = "uk.ac.gla.psdteamk.sessions.service,uk.ac.gla.psdteamk.database.service";
 		
+		System.out.println("setup");
+		
 		//sometimes this doesn't seem to work in the tearDown, so do it again
 		recursiveDelete(new File("felix-cache"));
-		
+		recursiveDelete(new File("derby"));
+
 		framework = 
 				ConfiguredFrameworkFactory.createFelixFramework(
 					extraPackages);
@@ -114,6 +117,7 @@ public class SetupFramework {
 		framework.waitForStop(0);
 		
 		recursiveDelete(new File("felix-cache"));
+		recursiveDelete(new File("derby"));
 	}
 	
 	private static void recursiveDelete(File file){

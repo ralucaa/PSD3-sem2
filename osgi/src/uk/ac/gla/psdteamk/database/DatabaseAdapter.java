@@ -1,19 +1,25 @@
 package uk.ac.gla.psdteamk.database;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import uk.ac.gla.psdteamk.objects.*;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 
 public class DatabaseAdapter implements DatabaseAdapterService {
-	private static final String DB_DRIVER = "org.sqlite.JDBC";
-	private static final String DB_CONNECTION = "jdbc:sqlite:res/PSD3.s3db";
 
+	private static final String DB_CONNECTION = "jdbc:derby:derby/sessions;create=true";
+	
+	private boolean doneInit = false;
+	
 	/**
 	 * Attempts to create a connection and returns it. Remember to close the
 	 * connection after using it!!!
@@ -21,22 +27,84 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	 * @return the connection or null if something failed
 	 */
 	public Connection getConnection() {
-		// Attempt to load the driver.
-		try {
-			Class.forName(DB_DRIVER);
-		} catch (ClassNotFoundException e) {
-			System.out.println(e.getMessage());
-		}
-
 		// Attempt to create the connection and return it.
 		try {
-			return DriverManager.getConnection(DB_CONNECTION);
+			Connection conn = DriverManager.getConnection(DB_CONNECTION);
+			System.out.println("getConnection");
+			if (!doneInit) {
+				System.out.println("initTables");
+				initTables(conn);
+				doneInit = true;
+			}
+			return conn;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
 
 		// Will return null if anything failed.
 		return null;
+	}
+	
+	//derby doesn't support CREATE TABLE IF NOT EXISTS:
+	//doing some bad things to get around it
+	private void initTables(Connection conn) throws SQLException {
+		Statement stmt = conn.createStatement();
+		try {
+			stmt.executeUpdate(
+				"CREATE TABLE \"Registration\" ("
+				+ "\"session\" INTEGER NOT NULL, "
+				+ "\"student\" VARCHAR(8) NOT NULL, "
+				+ "PRIMARY KEY (\"session\", \"student\"))"
+			);
+		} catch (SQLException e) {
+			System.out.println("Table not created: " + e.getMessage());
+		}
+		try {
+			stmt.executeUpdate(
+				"CREATE TABLE \"MandatoryCourses\" ("
+				+ "\"year\" INTEGER,"
+				+ "\"course\" INTEGER,"
+				+ "PRIMARY KEY (\"year\", \"course\"))"
+			);
+		} catch (SQLException e) {
+			System.out.println("Table not created: " + e.getMessage());
+		}
+		try {
+			stmt.executeUpdate(
+				"CREATE TABLE \"Course\" ("
+				+ "  \"id\" INTEGER PRIMARY KEY, "
+				+ "  \"title\" VARCHAR(128) NOT NULL)"
+			);
+		} catch (SQLException e) {
+			System.out.println("Table not created: " + e.getMessage());
+		}
+		try {
+			stmt.executeUpdate(
+				"CREATE TABLE \"Tutoring\" ("
+				+ "\"tutor\" VARCHAR(8)  NOT NULL,"
+				+ "\"session\" INTEGER  NOT NULL,"
+				+ "PRIMARY KEY (\"tutor\",\"session\"))"
+			);
+		} catch (SQLException e) {
+			System.out.println("Table not created: " + e.getMessage());
+		}
+		try {
+			stmt.executeUpdate(
+				"CREATE TABLE \"Session\" ("
+				+ "\"id\" INTEGER PRIMARY KEY,"
+				+ "\"course\" INTEGER  NOT NULL,"
+				+ "\"date\" VARCHAR(10),"
+				+ "\"start_time\" VARCHAR(8),"
+				+ "\"end_time\" VARCHAR(8),"
+				+ "\"frequency\" INTEGER DEFAULT 0 NOT NULL,"
+				+ "\"room\" INTEGER,"
+				+ "\"capacity\" INTEGER DEFAULT 0 NOT NULL,"
+				+ "\"type\" VARCHAR(16)  NOT NULL)"
+			);
+		} catch (SQLException e) {
+			System.out.println("Table not created: " + e.getMessage());
+		}
+		stmt.close();
 	}
 
 	/**

@@ -3,5 +3,9 @@
 /felix-cache
 /jbehave
 /lib
+/derby
+derby.log
 *.class
 *.jar
+TEST*.xml
+
