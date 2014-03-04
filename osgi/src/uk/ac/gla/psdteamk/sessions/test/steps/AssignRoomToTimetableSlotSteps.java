@@ -37,13 +37,13 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 		SetupFramework.tearDown();
 	}
 	
-	@Given("a $sessionId and $roomId")
+	@Given("a sessionId $sessionId and roomId $roomId")
 	public void validSessionRoomId(int sessionId, int roomId) {
 		this.sessionId=sessionId;
 		this.roomId=roomId;
 	}
 	
-	@When("the $assignRoom method is executed")
+	@When("the assignRoom method is executed")
 	public void assignRoom(){
 		result=service.assignRoom(sessionId, roomId);
 	}

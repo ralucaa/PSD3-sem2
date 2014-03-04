@@ -35,12 +35,12 @@ public class AddSessionToCourseSteps extends Steps {
 		SetupFramework.tearDown();
 	}
 	
-	@Given("a session $session for course $course")
+	@Given("a sessionID $session for course $course")
 	public void givenASessionForAValidCourse(int session, int course) {
 		this.session = new Session(session, course, D_DATE, D_START_TIME, D_END_TIME, D_FREQ, D_ROOM, D_CAPACITY, D_TYPE);
 	}
 	
-	@Given("a session $session for course $course with a capacity $capacity")
+	@Given("a sessionID $session for course $course with a capacity $capacity")
 	public void givenASessionForAValidCourse(int session, int course, int capacity) {
 		this.session = new Session(session, course, D_DATE, D_START_TIME, D_END_TIME, D_FREQ, D_ROOM, capacity, D_TYPE);
 	}
