@@ -62,5 +62,16 @@ public class ExampleJUnitTest {
 	public void testBookSession() {
 		assertTrue(sessionManagerService.bookSession(1, "3333333B"));
 	}
+	
+	@Test
+	public void authenticateAdmin() {
+		assertTrue(sessionManagerService.authenticate("1111111A", "1111111A") != -1);
+	}
+	
+	@Test
+	public void testAssignRoom() {
+		int adminToken = sessionManagerService.authenticate("1111111A", "1111111A");
+		assertTrue(sessionManagerService.assignRoom(adminToken, 3, 1));
+	}
 
 }

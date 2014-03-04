@@ -29,7 +29,7 @@ public class CheckCompulsoryCoursesSteps {
 	
 	@Given("a student username $username")
 	public void aStudentUsername(String username) {
-		student = new Account(username, "", "", "");
+		student = new Account(username, "", "", "", 1);
 	}
 	
 	@When("the database request is made")

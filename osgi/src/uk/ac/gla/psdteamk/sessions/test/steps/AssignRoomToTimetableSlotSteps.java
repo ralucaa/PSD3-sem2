@@ -32,7 +32,7 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 		SetupFramework.setUp();
 		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
-		adminToken = service.authenticate("admin", "admin");
+		adminToken = service.authenticate("1111111A", "1111111A");
 	}
 	
 	@AfterScenario
