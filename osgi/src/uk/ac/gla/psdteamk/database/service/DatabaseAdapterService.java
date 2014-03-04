@@ -7,7 +7,7 @@ import uk.ac.gla.psdteamk.objects.*;
 
 public interface DatabaseAdapterService {
 	
-	public Connection getConnection(); //??????
+	public Connection getConnection();
 	public ArrayList<Course> getAllCourses();
 	public ArrayList<Session> getAllSessions();
 	public Course getCourse(int id);
@@ -15,4 +15,5 @@ public interface DatabaseAdapterService {
 	public boolean addCourseToDatabase(Course course);
 	public boolean addSessionToDatabase(Session session);
 	public boolean addUserToDatabase(Account account);
+	public boolean deleteEverything();
 }

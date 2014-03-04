@@ -106,6 +106,27 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		}
 		stmt.close();
 	}
+	
+	public boolean deleteEverything() {
+		Connection conn = getConnection();
+		if (conn == null) {
+			return false;
+		}
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate("DELETE FROM \"Registration\"");
+			stmt.executeUpdate("DELETE FROM \"MandatoryCourses\"");
+			stmt.executeUpdate("DELETE FROM \"Course\"");
+			stmt.executeUpdate("DELETE FROM \"Tutoring\"");
+			stmt.executeUpdate("DELETE FROM \"Session\"");
+			stmt.close();
+			conn.close();
+			return true;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
 
 	/**
 	 * Gets all the courses available in the database.

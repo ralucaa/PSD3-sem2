@@ -4,6 +4,8 @@ package uk.ac.gla.psdteamk.sessions.test;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.sql.Connection;
+import java.sql.Statement;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -90,9 +92,13 @@ public class SetupFramework {
 		ServiceReference<DatabaseAdapterService> databaseAdapterServiceReference = 
 				bundleContext.getServiceReference(DatabaseAdapterService.class);
 		databaseAdapterService = bundleContext.getService(databaseAdapterServiceReference);
+		databaseAdapterService.deleteEverything();
 	}
 	
-	/* todo: put some stuff into the database? */
+	public static void defaultPopulate() throws Exception {
+		
+		
+	}
 	
 	public static void tearDown() throws Exception{
 		System.out.println("teardown");
