@@ -30,7 +30,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		// Attempt to create the connection and return it.
 		try {
 			Connection conn = DriverManager.getConnection(DB_CONNECTION);
-			System.out.println("getConnection");
+			//System.out.println("getConnection");
 			if (!doneInit) {
 				System.out.println("initTables");
 				initTables(conn);

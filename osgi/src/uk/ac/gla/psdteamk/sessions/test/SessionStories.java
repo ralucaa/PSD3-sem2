@@ -1,6 +1,7 @@
 package uk.ac.gla.psdteamk.sessions.test;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.List;
 
 import org.jbehave.core.embedder.Embedder;
@@ -15,7 +16,13 @@ public class SessionStories {
 		
 		List<String> storyPaths = 
 			getStoryPathsFromProjectBinDir();
-				
+		
+		Collections.reverse(storyPaths);
+		
+		for (String path: storyPaths) {
+			System.out.println("Story file: " + path);
+		}
+		
 	    embedder.runStoriesAsPaths(storyPaths);
 	}
 
