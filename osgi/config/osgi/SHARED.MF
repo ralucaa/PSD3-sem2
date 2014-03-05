@@ -1,0 +1,6 @@
+Bundle-Name: Session Manager Shared
+Bundle-Description: Helper packages for session manager system
+Bundle-Vendor: PSD3 2013 Team K
+Bundle-Version: 1.0.0
+Export-Package: uk.ac.gla.psdteamk.helpers,uk.ac.gla.psdteamk.objects
+Import-Package: org.osgi.framework

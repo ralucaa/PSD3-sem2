@@ -3,4 +3,4 @@ Bundle-Description: A bundle that interfaces with the database
 Bundle-Vendor: PSD3 2013 Team K
 Bundle-Version: 1.0.0
 Bundle-Activator: uk.ac.gla.psdteamk.database.Activator
-Import-Package: org.osgi.framework, uk.ac.gla.psdteamk.database.service
+Import-Package: org.osgi.framework, uk.ac.gla.psdteamk.database.service, uk.ac.gla.psdteamk.objects

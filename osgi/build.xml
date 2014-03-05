@@ -28,10 +28,11 @@
 		description="Deletes all intermediate files."
 		depends="cleandb"
 	>
-		
 		<delete dir="bin" />
+		<delete dir="bundle" />
 		<delete dir="jars" />
 		<delete dir="jbehave" />
+		<delete dir="felix-cache" />
 	</target>
 	
 	
@@ -123,50 +124,38 @@
 			<fileset dir="bin/" includes="tutorial/example3/*.class" />
 		</jar>
 		
-		<jar update="no" destfile="jars/mycampus.jar" manifest="config/osgi/MYCAMPUS.MF">
-			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/mycampus/*.class 
-				uk/ac/gla/psdteamk/mycampus/service/*.class
+		<jar update="no" destfile="jars/shared.jar" manifest="config/osgi/SHARED.MF">
+			<fileset dir="bin/" includes="
 				uk/ac/gla/psdteamk/helpers/*.class
 				uk/ac/gla/psdteamk/objects/*.class" />
+		</jar>
+		
+		<jar update="no" destfile="jars/mycampus.jar" manifest="config/osgi/MYCAMPUS.MF">
+			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/mycampus/*.class" />
 		</jar>
 		
 		<jar update="no" destfile="jars/mycampus-service.jar" manifest="config/osgi/MYCAMPUS-SERVICE.MF">
-			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/mycampus/service/*.class
-				uk/ac/gla/psdteamk/helpers/*.class
-				uk/ac/gla/psdteamk/objects/*.class" />
+			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/mycampus/service/*.class" />
 		</jar>
 		
 		<jar update="no" destfile="jars/database.jar" manifest="config/osgi/DATABASE.MF">
-			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/database/*.class 
-				uk/ac/gla/psdteamk/database/service/*.class
-				uk/ac/gla/psdteamk/helpers/*.class
-				uk/ac/gla/psdteamk/objects/*.class" />
+			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/database/*.class" />
 		</jar>
 		
 		<jar update="no" destfile="jars/database-service.jar" manifest="config/osgi/DATABASE-SERVICE.MF">
-			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/database/service/*.class
-				uk/ac/gla/psdteamk/helpers/*.class
-				uk/ac/gla/psdteamk/objects/*.class" />
+			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/database/service/*.class" />
 		</jar>
 		
 		<jar update="no" destfile="jars/sessions.jar" manifest="config/osgi/SESSIONS.MF">
-			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/sessions/*.class 
-				uk/ac/gla/psdteamk/sessions/service/*.class
-				uk/ac/gla/psdteamk/helpers/*.class
-				uk/ac/gla/psdteamk/objects/*.class" />
+			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/sessions/*.class" />
 		</jar>
 
 		<jar update="no" destfile="jars/sessions-service.jar" manifest="config/osgi/SESSIONS-SERVICE.MF">
-			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/sessions/service/*.class
-				uk/ac/gla/psdteamk/helpers/*.class
-				uk/ac/gla/psdteamk/objects/*.class" />
+			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/sessions/service/*.class" />
 		</jar>
 
 		<jar update="no" destfile="jars/menus.jar" manifest="config/osgi/MENUS.MF">
-			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/menus/*.class 
-				uk/ac/gla/psdteamk/menus/service/*.class
-				uk/ac/gla/psdteamk/helpers/*.class
-				uk/ac/gla/psdteamk/objects/*.class" />
+			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/menus/*.class" />
 		</jar>
 		
 	</target>

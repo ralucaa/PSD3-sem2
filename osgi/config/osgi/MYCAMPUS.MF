@@ -3,4 +3,4 @@ Bundle-Description: A bundle that pretends to interface with MyCampus
 Bundle-Vendor: PSD3 2013 Team K
 Bundle-Version: 1.0.0
 Bundle-Activator: uk.ac.gla.psdteamk.mycampus.Activator
-Import-Package: org.osgi.framework, uk.ac.gla.psdteamk.mycampus.service
+Import-Package: org.osgi.framework, uk.ac.gla.psdteamk.mycampus.service, uk.ac.gla.psdteamk.objects

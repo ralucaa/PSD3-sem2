@@ -25,7 +25,7 @@ import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 public class SetupFramework {
 	private static Framework framework;
 	private static BundleContext bundleContext;
-	private static Bundle databaseServiceBundle, databaseBundle;
+	private static Bundle databaseServiceBundle, databaseBundle, sharedBundle;
 	private static Bundle mycampusServiceBundle, mycampusBundle;
 	private static Bundle sessionServiceBundle, sessionBundle;
 	
@@ -41,7 +41,7 @@ public class SetupFramework {
 	}
 	
 	public static void setUp() throws Exception {
-		String extraPackages = "uk.ac.gla.psdteamk.sessions.service,uk.ac.gla.psdteamk.database.service";
+		String extraPackages = "uk.ac.gla.psdteamk.sessions.service,uk.ac.gla.psdteamk.database.service,uk.ac.gla.psdteamk.objects";
 		
 		System.out.println("setup");
 		
@@ -67,6 +67,9 @@ public class SetupFramework {
 			expectedNumberOfBundles,
 			actualNumberOfBundles);
 
+		sharedBundle = bundleContext.installBundle("file:jars/shared.jar");
+		sharedBundle.start();
+		
 		databaseServiceBundle = bundleContext.installBundle("file:jars/database-service.jar");
 		databaseServiceBundle.start();
 		
@@ -150,6 +153,8 @@ public class SetupFramework {
 	
 	public static void tearDown() throws Exception{
 		System.out.println("teardown");
+		
+		sharedBundle.stop();
 		
 		sessionBundle.stop();
 		//sessionBundle.uninstall();
