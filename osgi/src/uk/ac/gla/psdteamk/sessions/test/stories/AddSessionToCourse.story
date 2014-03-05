@@ -1,7 +1,7 @@
 Narrative: 
-IN ORDER TO identify the timetable slots,
-AS A lecturer,
-I WANT TO add a session to a course.
+In order to identify the timetable slots,
+As a lecturer,
+I want to add a session to a course.
 
 Scenario: valid course
 Given a sessionID 1 for course 1

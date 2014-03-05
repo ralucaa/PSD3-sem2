@@ -1,6 +1,6 @@
 Narrative:
 In order to know when sessions happen
-As A lecturer
+As a lecturer
 I want to see the details (time,location, students, tutor) or every timetable slot in a session
 
 Scenario: get the session details

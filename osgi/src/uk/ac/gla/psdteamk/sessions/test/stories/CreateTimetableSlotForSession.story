@@ -1,5 +1,4 @@
 Narrative:
-
 In order to rooms be assigned to slots
 As an administrator
 I want to create a timetable slot for a session

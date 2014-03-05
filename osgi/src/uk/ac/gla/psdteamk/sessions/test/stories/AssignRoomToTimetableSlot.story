@@ -1,5 +1,4 @@
 Narrative: 
-
 In order to have room bookings recorded 
 As an administrator 
 I want to assign a room to a timetable slot 
