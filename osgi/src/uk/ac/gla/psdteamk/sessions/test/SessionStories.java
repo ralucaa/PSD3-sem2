@@ -1,6 +1,7 @@
 package uk.ac.gla.psdteamk.sessions.test;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class SessionStories {
 		List<String> storyPaths = 
 			getStoryPathsFromProjectBinDir();
 		
+		//why does this help...??? (need both of them to run all the stories)
+		storyPaths = new ArrayList<String>(storyPaths);
 		Collections.reverse(storyPaths);
 		
 		for (String path: storyPaths) {
