@@ -1,5 +1,10 @@
 package uk.ac.gla.psdteamk.mycampus;
 
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import uk.ac.gla.psdteamk.objects.Account;
@@ -8,7 +13,6 @@ import uk.ac.gla.psdteamk.mycampus.service.MyCampusService;
 
 public class MyCampusStub implements MyCampusService {
 	ArrayList<Account> accounts;
-	ArrayList<Course> courses;
 	
 	public MyCampusStub() {
 		accounts = new ArrayList<Account>();
@@ -29,15 +33,6 @@ public class MyCampusStub implements MyCampusService {
 		accounts.add(new Account("2222222I","2222222I","Wim Vanderbauwhede","lecturer",0));
 		accounts.add(new Account("2222222J","2222222J","Iadh Ounis","lecturer",0));
 		
-		courses.add(new Course(1,"Professional Software Development"));
-		courses.add(new Course(2,"Algorithmics"));
-		courses.add(new Course(3,"Advanced Programming"));
-		courses.add(new Course(4,"Programming Languages"));
-		courses.add(new Course(5,"Interactive Systems"));
-		courses.add(new Course(6,"Distributed Information Management"));
-		courses.add(new Course(7,"Network Systems"));
-		courses.add(new Course(8,"Operating Systems"));
-		courses.add(new Course(9,"Database Systems"));
 	}
 	
 	/**
@@ -61,6 +56,43 @@ public class MyCampusStub implements MyCampusService {
 	 * @return the courses
 	 */
 	public ArrayList<Course> getAllCourses(){
-		return new ArrayList<Course>(courses);
+		//Attempt to get the user's type.
+		String sql = "SELECT id, title FROM Course";
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			//Get the database connection.
+			con = MyCampusDatabaseAdapter.getConnection();
+			//Prepare the SQL statement.
+			preparedStatement = con.prepareStatement(sql);
+			//Execute the statement and get the result.
+			ResultSet rs = preparedStatement.executeQuery();
+			//Read the courses.
+			ArrayList<Course> courses = new ArrayList<Course>();
+			while (rs.next()){
+				courses.add(new Course(rs.getInt(1), rs.getString(2)));
+			}
+			//Return the courses.
+			return courses;
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+			//Close the connections.
+			try {
+				if (preparedStatement != null){
+					preparedStatement.close();
+				}
+				if (con != null){
+					con.close();
+				}
+			}
+			catch (SQLException ex){
+				System.out.println(ex.getMessage());
+			}
+		}
+		
+		//Will only reach this if coming from the catch block.
+		return null;
 	}
 }
