@@ -58,6 +58,8 @@ public class SetupFramework {
 		Integer actualNumberOfBundles = bundleContext.getBundles().length;
 		Integer expectedNumberOfBundles = 1;
 		
+		System.out.println("actualNumberOfBundles: " + actualNumberOfBundles);
+		
 		String message = 
 			"If cleanly initialised, the framework should "
 			+ "only contain 1 bundle (the framework).";

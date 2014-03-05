@@ -9,7 +9,7 @@ When the database request is made
 Then the output is false
 
 Scenario: student username contains special characters
-Given a student username '%;--
+Given a student username a$b
 When the database request is made
 Then the output is false
 
