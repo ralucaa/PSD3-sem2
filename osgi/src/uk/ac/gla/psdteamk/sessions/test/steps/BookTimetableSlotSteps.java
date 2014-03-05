@@ -21,6 +21,7 @@ public class BookTimetableSlotSteps {
 		
 		@BeforeScenario
 		public void beforeScenario() throws Exception {
+			SetupFramework.defaultPopulate();
 			service = SetupFramework.getSessionManagerService();
 		}
 		

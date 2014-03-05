@@ -29,7 +29,7 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 	
 	@BeforeScenario
 	public void beforeScenario() throws Exception {
-		//SetupFramework.defaultPopulate();
+		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		adminToken = service.authenticate("1111111A", "1111111A");
 	}

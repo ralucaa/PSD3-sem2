@@ -24,6 +24,7 @@ public class ImportMyCampusCourseSteps extends Steps {
 
 	@BeforeScenario
 	public void beforeScenario() throws Exception {
+		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 	}
 
