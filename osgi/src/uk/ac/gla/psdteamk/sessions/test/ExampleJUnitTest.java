@@ -11,7 +11,9 @@ import org.osgi.framework.launch.Framework;
 import org.osgi.framework.ServiceReference;
 import org.joda.time.DateTime;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import uk.ac.gla.psdteamk.objects.Session;
@@ -25,16 +27,21 @@ public class ExampleJUnitTest {
 	private SessionManagerService sessionManagerService;
 	private DatabaseAdapterService databaseAdapterService;
 
-	@Before
-	public void setUp() throws Exception {
-		SetupFramework.setUp();
-		sessionManagerService = SetupFramework.getSessionManagerService();
-		databaseAdapterService = SetupFramework.getDatabaseAdapterService();
+	@BeforeClass
+	public static void beforeClass() throws Exception {
+		SetupFramework.recursiveDelete(new File("felix-cache"));
+		SetupFramework.start();
 	}
 	
-	@After
-	public void tearDown() throws Exception{
-		SetupFramework.tearDown();
+	@AfterClass
+	public static void afterClass() throws Exception {
+		SetupFramework.stop();
+	}
+	
+	@Before
+	public void setUp() throws Exception {
+		sessionManagerService = SetupFramework.getSessionManagerService();
+		databaseAdapterService = SetupFramework.getDatabaseAdapterService();
 	}
 	
 	@Test

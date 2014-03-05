@@ -40,13 +40,13 @@ public class SetupFramework {
 		return databaseAdapterService;
 	}
 	
-	public static void setUp() throws Exception {
+	public static void start() throws Exception {
 		String extraPackages = "uk.ac.gla.psdteamk.sessions.service,uk.ac.gla.psdteamk.database.service,uk.ac.gla.psdteamk.objects";
 		
-		System.out.println("setup");
+		System.out.println("framework start");
 		
 		//sometimes this doesn't seem to work in the tearDown, so do it again
-		recursiveDelete(new File("felix-cache"));
+		//recursiveDelete(new File("felix-cache"));
 		//recursiveDelete(new File("derby"));
 
 		framework = 
@@ -97,10 +97,15 @@ public class SetupFramework {
 		ServiceReference<DatabaseAdapterService> databaseAdapterServiceReference = 
 				bundleContext.getServiceReference(DatabaseAdapterService.class);
 		databaseAdapterService = bundleContext.getService(databaseAdapterServiceReference);
+	}
+	
+	public static void deleteDatabaseData() {
 		databaseAdapterService.deleteEverything();
 	}
 	
 	public static void defaultPopulate() throws Exception {
+		deleteDatabaseData();
+		
 		Connection conn = databaseAdapterService.getConnection();
 		Statement stmt = conn.createStatement();
 		
@@ -153,8 +158,8 @@ public class SetupFramework {
 		conn.close();
 	}
 	
-	public static void tearDown() throws Exception{
-		System.out.println("teardown");
+	public static void stop() throws Exception{
+		System.out.println("framework stop");
 		
 		sharedBundle.stop();
 		
@@ -179,11 +184,11 @@ public class SetupFramework {
 		framework.stop();		
 		framework.waitForStop(0);
 		
-		recursiveDelete(new File("felix-cache"));
+		//recursiveDelete(new File("felix-cache"));
 		//recursiveDelete(new File("derby"));
 	}
 	
-	private static void recursiveDelete(File file){
+	public static void recursiveDelete(File file){
 		if (file.exists()) {
 			if (file.isDirectory()){
 				for (File subFile : file.listFiles())

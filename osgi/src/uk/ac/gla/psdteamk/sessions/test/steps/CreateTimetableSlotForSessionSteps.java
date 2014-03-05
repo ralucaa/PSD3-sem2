@@ -27,13 +27,11 @@ public class CreateTimetableSlotForSessionSteps extends Steps{
 	
 	@BeforeScenario
 	public void beforeScenario() throws Exception {
-		SetupFramework.setUp();
 		service = SetupFramework.getSessionManagerService();
 	}
 	
 	@AfterScenario
 	public void afterScenario() throws Exception {
-		SetupFramework.tearDown();
 	}
 	
 	@Given("a $session")

@@ -24,13 +24,11 @@ public class NFR_Performance2Steps extends Steps {
 	
 	@BeforeScenario
 	public void beforeScenario() throws Exception {
-		SetupFramework.setUp();
 		dbs = SetupFramework.getDatabaseAdapterService();
 	}
 	
 	@AfterScenario
 	public void afterScenario() throws Exception {
-		SetupFramework.tearDown();
 	}
 	
 	@Given("Given a number of users $u")

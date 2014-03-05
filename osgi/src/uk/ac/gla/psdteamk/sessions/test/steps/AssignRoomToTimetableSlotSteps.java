@@ -29,7 +29,6 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 	
 	@BeforeScenario
 	public void beforeScenario() throws Exception {
-		SetupFramework.setUp();
 		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		adminToken = service.authenticate("1111111A", "1111111A");
@@ -37,7 +36,6 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 	
 	@AfterScenario
 	public void afterScenario() throws Exception {
-		SetupFramework.tearDown();
 	}
 	
 	@Given("a sessionId $sessionId and roomId $roomId")

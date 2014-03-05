@@ -22,13 +22,11 @@ public class NFR_Performance0Steps {
 	
 	@BeforeScenario
 	public void beforeScenario() throws Exception {
-		SetupFramework.setUp();
 		dbs = SetupFramework.getDatabaseAdapterService();
 	}
 	
 	@AfterScenario
 	public void afterScenario() throws Exception {
-		SetupFramework.tearDown();
 	}
 	
 	@Given("a course name $courseName")
