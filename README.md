@@ -34,7 +34,7 @@ When pulling, use "git pull --rebase" to keep the commit history granular, so th
 Before pushing, run "ant test" as above, and check the reports to make sure you haven't made things worse.
 
 After pushing, go to Jenkins and hit "build now". When it's done, check the reports again at
-http://hoved.dcs.gla.ac.uk:8080/job/TeamKMainBuild/ws/osgi/jbehave/view/reports.html (there are slight differences in the build environment there). If it broke, revert your change.
+http://hoved.dcs.gla.ac.uk:8080/job/TeamKMainBuild/ws/osgi/jbehave/view/reports.html (there are slight differences in the build environment there). If it broke, try using "Workspace -> Wipe Out Current Workspace" and build again. If this doesn't help, revert your change.
 
 ----
 
@@ -44,9 +44,9 @@ At the Felix prompt:
 
 * "install file:jars/example1.jar" installs example1.jar for the first time (does not update it!). Similarly for the other jar files.
 * "lb" lists bundles with their ID numbers.
-* "start <bundleID>" starts the bundle.
-* "stop <bundleID>" stops the bundle.
-* "update <bundleID>" updates the bundle - use this after rebuilding the jars.
+* "start BUNDLEID" starts the bundle.
+* "stop BUNDLEID" stops the bundle.
+* "update BUNDLEID" updates the bundle - use this after rebuilding the jars.
 * (todo: refresh? after updating more than one bundle?)
 * "stop 0" exits.
 
