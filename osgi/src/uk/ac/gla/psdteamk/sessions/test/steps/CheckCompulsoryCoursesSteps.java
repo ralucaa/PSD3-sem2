@@ -12,10 +12,10 @@ import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 import static org.junit.Assert.*;
 
 public class CheckCompulsoryCoursesSteps {	
-	private SessionManagerService service;	
-	private Account student;
+	private SessionManagerService service;
 	boolean output;
 	private int studentToken;
+	private Account student;
 	
 	@BeforeScenario
 	public void beforeScenario() throws Exception {

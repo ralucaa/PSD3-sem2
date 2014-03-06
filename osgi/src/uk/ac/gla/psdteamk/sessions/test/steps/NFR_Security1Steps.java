@@ -2,7 +2,6 @@ package uk.ac.gla.psdteamk.sessions.test.steps;
 
 import uk.ac.gla.psdteamk.mycampus.service.MyCampusService;
 import uk.ac.gla.psdteamk.objects.Account;
-import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -15,7 +14,7 @@ public class NFR_Security1Steps extends Steps {
 	private MyCampusService service;
 	private String username;
 	private Account account;
-	private boolean result;
+	
 	
 	@Given("a username $username")
 	public void givenASessionAndAFrequency(String username, String password) {

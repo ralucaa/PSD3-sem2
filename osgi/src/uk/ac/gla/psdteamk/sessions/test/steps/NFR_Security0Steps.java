@@ -2,7 +2,6 @@ package uk.ac.gla.psdteamk.sessions.test.steps;
 
 import uk.ac.gla.psdteamk.mycampus.service.MyCampusService;
 import uk.ac.gla.psdteamk.objects.Account;
-import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;

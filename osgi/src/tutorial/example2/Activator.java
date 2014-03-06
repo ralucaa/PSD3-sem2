@@ -8,8 +8,6 @@ import java.util.Hashtable;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceListener;
-import org.osgi.framework.ServiceEvent;
 
 import tutorial.example2.service.DictionaryService;
 

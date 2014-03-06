@@ -11,14 +11,8 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.launch.Framework;
 import org.osgi.framework.ServiceReference;
-import org.joda.time.DateTime;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
-import uk.ac.gla.psdteamk.objects.Session;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
-import uk.ac.gla.psdteamk.mycampus.service.MyCampusService;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 
 

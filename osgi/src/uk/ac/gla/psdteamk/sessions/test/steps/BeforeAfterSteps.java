@@ -1,7 +1,5 @@
 package uk.ac.gla.psdteamk.sessions.test.steps;
 
-import java.io.File;
-
 import org.jbehave.core.annotations.AfterStories;
 import org.jbehave.core.annotations.BeforeStories;
 import org.jbehave.core.steps.Steps;
