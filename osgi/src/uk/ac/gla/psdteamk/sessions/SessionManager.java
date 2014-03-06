@@ -58,9 +58,10 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean bookSession(int token, int sessionId, String username) {
+	public boolean bookSession(int token, int sessionId) {
 		if (accountIsType(token, Account.TYPE_STUDENT)) {
-			return BookTimetableSlot.bookSession(da, sessionId, username);
+			Account acc = logins.get(token);
+			return BookTimetableSlot.bookSession(da, sessionId, acc.getUsername());
 		} else {
 			System.out.println("Access denied");
 			return false;
@@ -68,9 +69,10 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean checkIfFullyRegistered(int token, Account student) {
+	public boolean checkIfFullyRegistered(int token) {
 		if (accountIsType(token, Account.TYPE_STUDENT)) {
-			return CheckCompulsoryCourses.checkIfFullyRegistered(da, student);
+			Account acc = logins.get(token);
+			return CheckCompulsoryCourses.checkIfFullyRegistered(da, acc);
 		} else {
 			System.out.println("Access denied");
 			return false;

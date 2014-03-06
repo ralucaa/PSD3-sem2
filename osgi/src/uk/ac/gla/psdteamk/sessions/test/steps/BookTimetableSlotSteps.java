@@ -39,7 +39,7 @@ public class BookTimetableSlotSteps {
 		
 		@When("the database request is made")
 		public void queryDatabase() {
-			output = service.bookSession(studentToken, sessionID, username);
+			output = service.bookSession(studentToken, sessionID);
 		}
 		
 		@Then("the output is true")

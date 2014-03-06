@@ -8,8 +8,8 @@ public interface SessionManagerService {
 	public int authenticate(String username, String password);
 	public boolean addSessionToCourse(int token, Session session);
 	public boolean assignRoom(int token, int sessionId, int roomId);
-	public boolean bookSession(int token, int sessionId, String username);
-	public boolean checkIfFullyRegistered(int token, Account student);
+	public boolean bookSession(int token, int sessionId);
+	public boolean checkIfFullyRegistered(int token);
 	public boolean checkSessionDetails(int token, String sessionID);
 	public boolean createTimetableSlot(int token, Session session);
 	public boolean importCourse(int token, Course course);
