@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 class CheckSessionDetails {
 
-	static boolean checkSessionDetails(DatabaseAdapterService da, String sessionID){
+	static boolean checkSessionDetails(DatabaseAdapterService da, int sessionID){
 
 		String registeredCoursesQuery = "SELECT * "+
 				"FROM \"Session\" LEFT OUTER JOIN \"Tutoring\" ON  \"Session\".\"id\" = \"Tutoring\".\"session\" "+
@@ -28,7 +28,7 @@ class CheckSessionDetails {
 			//Prepare the SQL statement.
 			statement = con.prepareStatement(registeredCoursesQuery);
 			//Add the parameters.
-			statement.setInt(1, Integer.parseInt(sessionID));
+			statement.setInt(1, sessionID);
 			//Execute the statement and get the result.
 			resultSet = statement.executeQuery();
 			//crunch
@@ -96,7 +96,7 @@ class CheckSessionDetails {
 					"FROM Session,Registration "+
 					"WHERE Session.id = Registration.session AND Session.id =?";
 			statement = con.prepareStatement(studentsQuery);
-			statement.setInt(1, Integer.parseInt(sessionID));
+			statement.setInt(1, sessionID);
 			resultSet = statement.executeQuery();
 			ArrayList<String> students = new ArrayList<String>();
 			while(resultSet.next()){

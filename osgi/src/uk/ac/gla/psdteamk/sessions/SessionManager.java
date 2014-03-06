@@ -80,7 +80,7 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean checkSessionDetails(int token, String sessionID) {
+	public boolean checkSessionDetails(int token, int sessionID) {
 		if (accountIsType(token, Account.TYPE_LECTURER)) {
 			return CheckSessionDetails.checkSessionDetails(da, sessionID);
 		} else {
