@@ -41,7 +41,7 @@ public class ImportMyCampusCourseSteps extends Steps {
 
 	@When("I try to retrieve the course information ")
 	public void whenIRetrieveCourseInfo() {
-		importCourses = service.importCourse(myCourse);
+		importCourses = service.importCourse(lecturerToken, myCourse);
 	}
 
 	@Then("a function should accept this course ID and the function should return the sessions for this course")

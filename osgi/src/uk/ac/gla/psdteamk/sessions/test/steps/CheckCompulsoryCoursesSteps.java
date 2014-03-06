@@ -35,7 +35,7 @@ public class CheckCompulsoryCoursesSteps {
 	
 	@When("the database request is made")
 	public void queryDatabase() {
-		output = service.checkIfFullyRegistered(student);
+		output = service.checkIfFullyRegistered(studentToken, student);
 	}
 	
 	@Then("the output is $output")

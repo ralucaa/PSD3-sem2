@@ -38,8 +38,13 @@ public class SessionManager implements SessionManagerService {
 	}
 	
 	@Override
-	public boolean addSessionToCourse(Session session) {
-		return AddSessionToCourse.addSessionToDatabase(da, session);
+	public boolean addSessionToCourse(int token, Session session) {
+		if (accountIsType(token, Account.TYPE_LECTURER)) {
+			return AddSessionToCourse.addSessionToDatabase(da, session);
+		} else {
+			System.out.println("Access denied");
+			return false;
+		}
 	}
 
 	@Override
@@ -53,38 +58,73 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean bookSession(int sessionId, String username) {
-		return BookTimetableSlot.bookSession(da, sessionId, username);
+	public boolean bookSession(int token, int sessionId, String username) {
+		if (accountIsType(token, Account.TYPE_STUDENT)) {
+			return BookTimetableSlot.bookSession(da, sessionId, username);
+		} else {
+			System.out.println("Access denied");
+			return false;
+		}
 	}
 
 	@Override
-	public boolean checkIfFullyRegistered(Account student) {
-		return CheckCompulsoryCourses.checkIfFullyRegistered(da, student);
+	public boolean checkIfFullyRegistered(int token, Account student) {
+		if (accountIsType(token, Account.TYPE_STUDENT)) {
+			return CheckCompulsoryCourses.checkIfFullyRegistered(da, student);
+		} else {
+			System.out.println("Access denied");
+			return false;
+		}
 	}
 
 	@Override
-	public boolean checkSessionDetails(String sessionID) {
-		return CheckSessionDetails.checkSessionDetails(da, sessionID);
+	public boolean checkSessionDetails(int token, String sessionID) {
+		if (accountIsType(token, Account.TYPE_LECTURER)) {
+			return CheckSessionDetails.checkSessionDetails(da, sessionID);
+		} else {
+			System.out.println("Access denied");
+			return false;
+		}
 	}
 
 	@Override
-	public boolean createTimetableSlot(Session session) {
-		return CreateTimetableSlotForSession.createTimetableSlot(da, session);
+	public boolean createTimetableSlot(int token, Session session) {
+		if (accountIsType(token, Account.TYPE_ADMIN)) {
+			return CreateTimetableSlotForSession.createTimetableSlot(da, session);
+		} else {
+			System.out.println("Access denied");
+			return false;
+		}
 	}
 	
 	@Override
-	public boolean importCourse(Course course) {
-		return ImportMyCampusCourses.importCourse(da, course);
+	public boolean importCourse(int token, Course course) {
+		if (accountIsType(token, Account.TYPE_LECTURER)) {
+			return ImportMyCampusCourses.importCourse(da, course);
+		} else {
+			System.out.println("Access denied");
+			return false;
+		}
 	}
 
 	@Override
-	public boolean changeFrequency(int sessionId, int frequency) {
-		return SpecifySessionFrequency.changeFrequency(da, sessionId, frequency);
+	public boolean changeFrequency(int token, int sessionId, int frequency) {
+		if (accountIsType(token, Account.TYPE_LECTURER)) {
+			return SpecifySessionFrequency.changeFrequency(da, sessionId, frequency);
+		} else {
+			System.out.println("Access denied");
+			return false;
+		}
 	}
 
 	@Override
-	public List<Session> checkForClashes() {
-		return CheckForClashes.checkForClashes(da);
+	public List<Session> checkForClashes(int token) {
+		if (accountIsType(token, Account.TYPE_ADMIN)) {
+			return CheckForClashes.checkForClashes(da);
+		} else {
+			System.out.println("Access denied");
+			return null;
+		}
 	}
 
 }

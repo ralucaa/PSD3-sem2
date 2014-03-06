@@ -49,7 +49,7 @@ public class AddSessionToCourseSteps extends Steps {
 	
 	@When("a user tries to add it to the database")
 	public void userTriesToAddToTheDatabase() {
-		result = service.addSessionToCourse(session);
+		result = service.addSessionToCourse(lecturerToken, session);
 	}
 	
 	@Then("it should be added to the database and the function should return true")

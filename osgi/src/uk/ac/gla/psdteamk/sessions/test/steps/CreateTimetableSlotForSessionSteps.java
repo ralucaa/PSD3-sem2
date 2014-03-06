@@ -44,7 +44,7 @@ public class CreateTimetableSlotForSessionSteps extends Steps{
 	
 	@When("the administrator tries to create a timetable slot for a session")
 	public void createSlot(Session session){
-		result=service.createTimetableSlot(session);
+		result=service.createTimetableSlot(adminToken, session);
 	}
 	
 	@Then("true is returned")

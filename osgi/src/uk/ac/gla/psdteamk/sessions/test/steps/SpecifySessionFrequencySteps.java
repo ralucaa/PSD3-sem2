@@ -37,7 +37,7 @@ public class SpecifySessionFrequencySteps extends Steps {
 	
 	@When("the user updates the session")
 	public void userUpdatesTheSession() {
-		result = service.changeFrequency(session, frequency);
+		result = service.changeFrequency(lecturerToken, session, frequency);
 	}
 	
 	@Then("the session frequency should be updated in the database and the function should return true")

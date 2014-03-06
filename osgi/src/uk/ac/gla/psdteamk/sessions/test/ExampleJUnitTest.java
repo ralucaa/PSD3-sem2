@@ -67,7 +67,7 @@ public class ExampleJUnitTest {
 	
 	@Test
 	public void testBookSession() {
-		assertTrue(sessionManagerService.bookSession(1, "3333333B"));
+		assertTrue(sessionManagerService.bookSession(-1, 1, "3333333B"));
 	}
 	
 	@Test
