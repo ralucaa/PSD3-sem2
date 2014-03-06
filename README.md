@@ -13,8 +13,7 @@ Run "ant bundles" to build the bundle jars only.
 
 For the JBehave tests:
 
-* To make them work on a lab machine, download ant-junit-1.7.1.jar somewhere outside the project. The jar is available at http://mvnrepository.com/artifact/org.apache.ant/ant-junit/1.7.1
-* Put it in your classpath, e.g. in your .bashrc,
+* To make them work on a lab machine, download ant-junit-1.7.1.jar somewhere outside the project. The jar is available at http://mvnrepository.com/artifact/org.apache.ant/ant-junit/1.7.1 . Put it in your classpath, e.g. in your .bashrc,
 
         export CLASSPATH=$CLASSPATH:/path/to/ant-junit-1.7.1.jar
 
