@@ -16,10 +16,13 @@ public class SpecifySessionFrequencySteps extends Steps {
 	private SessionManagerService service;
 	private int session, frequency;
 	private boolean result;
+	private int lecturerToken;
 	
 	@BeforeScenario
 	public void beforeScenario() throws Exception {
+		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
+		lecturerToken = service.authenticate("2222222A", "2222222A");
 	}
 	
 	@AfterScenario

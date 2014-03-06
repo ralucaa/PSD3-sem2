@@ -24,11 +24,13 @@ public class CreateTimetableSlotForSessionSteps extends Steps{
 	private SessionManagerService service;
 	private boolean result;
 	private Session session;
+	private int adminToken;
 	
 	@BeforeScenario
 	public void beforeScenario() throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
+		adminToken = service.authenticate("1111111A", "1111111A");
 	}
 	
 	@AfterScenario

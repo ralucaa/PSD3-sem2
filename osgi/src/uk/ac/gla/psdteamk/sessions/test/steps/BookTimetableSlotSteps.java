@@ -18,11 +18,13 @@ public class BookTimetableSlotSteps {
 		int sessionID;
 		String username;		
 		boolean output;
+		private int studentToken;
 		
 		@BeforeScenario
 		public void beforeScenario() throws Exception {
 			SetupFramework.defaultPopulate();
 			service = SetupFramework.getSessionManagerService();
+			studentToken = service.authenticate("3333333B", "3333333B");
 		}
 		
 		@AfterScenario

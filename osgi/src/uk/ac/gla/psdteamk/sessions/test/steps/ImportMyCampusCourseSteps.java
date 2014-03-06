@@ -21,11 +21,13 @@ public class ImportMyCampusCourseSteps extends Steps {
 	private boolean importCourses;
 	private SessionManagerService service;
 	private Course myCourse;
+	private int lecturerToken;
 
 	@BeforeScenario
 	public void beforeScenario() throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
+		lecturerToken = service.authenticate("2222222A", "2222222A");
 	}
 
 	@AfterScenario

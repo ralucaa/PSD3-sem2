@@ -2,6 +2,7 @@ package uk.ac.gla.psdteamk.sessions.test.steps;
 
 import static org.junit.Assert.assertEquals;
 
+import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.Given;  
 import org.jbehave.core.annotations.Named;  
 import org.jbehave.core.annotations.Then;  
@@ -11,14 +12,24 @@ import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.objects.Course;
 import uk.ac.gla.psdteamk.objects.Session;
 import uk.ac.gla.psdteamk.sessions.*;
+import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
+import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 
 import org.jbehave.core.steps.Steps;
 
 public class CheckSessionDetailsSteps extends Steps{
 	private boolean detailsChecked;
-	private DatabaseAdapterService da;
+	private SessionManagerService service;
 	private Session session;
-		
+	private int lecturerToken;
+
+	@BeforeScenario
+	public void beforeScenario() throws Exception {
+		SetupFramework.defaultPopulate();
+		service = SetupFramework.getSessionManagerService();
+		lecturerToken = service.authenticate("2222222A", "2222222A");
+	}
+
 	  @Given("Given a session $s")  
 	  public void givenASession(String s) {  
 	    this.session = new Session();
