@@ -14,9 +14,9 @@ import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 public class DatabaseAdapter implements DatabaseAdapterService {
 
 	private static final String DB_CONNECTION = "jdbc:derby:derby/sessions;create=true";
-	
+
 	private boolean doneInit = false;
-	
+
 	/**
 	 * Attempts to create a connection and returns it. Remember to close the
 	 * connection after using it!!!
@@ -41,79 +41,79 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		// Will return null if anything failed.
 		return null;
 	}
-	
+
 	//derby doesn't support CREATE TABLE IF NOT EXISTS:
 	//doing some bad things to get around it
 	private void initTables(Connection conn) throws SQLException {
 		Statement stmt = conn.createStatement();
 		try {
 			stmt.executeUpdate(
-				"CREATE TABLE \"Registration\" ("
-				+ "\"session\" INTEGER NOT NULL, "
-				+ "\"student\" VARCHAR(8) NOT NULL, "
-				+ "PRIMARY KEY (\"session\", \"student\"))"
-			);
+					"CREATE TABLE \"Registration\" ("
+							+ "\"session\" INTEGER NOT NULL, "
+							+ "\"student\" VARCHAR(8) NOT NULL, "
+							+ "PRIMARY KEY (\"session\", \"student\"))"
+					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
 		}
 		try {
 			stmt.executeUpdate(
-				"CREATE TABLE \"MandatoryCourses\" ("
-				+ "\"year\" INTEGER,"
-				+ "\"course\" INTEGER,"
-				+ "PRIMARY KEY (\"year\", \"course\"))"
-			);
+					"CREATE TABLE \"MandatoryCourses\" ("
+							+ "\"year\" INTEGER,"
+							+ "\"course\" INTEGER,"
+							+ "PRIMARY KEY (\"year\", \"course\"))"
+					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
 		}
 		try {
 			stmt.executeUpdate(
-				"CREATE TABLE \"Course\" ("
-				+ "  \"id\" INTEGER PRIMARY KEY, "
-				+ "  \"title\" VARCHAR(128) NOT NULL)"
-			);
+					"CREATE TABLE \"Course\" ("
+							+ "  \"id\" INTEGER PRIMARY KEY, "
+							+ "  \"title\" VARCHAR(128) NOT NULL)"
+					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
 		}
 		try {
 			stmt.executeUpdate(
-				"CREATE TABLE \"Tutoring\" ("
-				+ "\"tutor\" VARCHAR(8) NOT NULL,"
-				+ "\"session\" INTEGER NOT NULL,"
-				+ "PRIMARY KEY (\"tutor\",\"session\"))"
-			);
+					"CREATE TABLE \"Tutoring\" ("
+							+ "\"tutor\" VARCHAR(8) NOT NULL,"
+							+ "\"session\" INTEGER NOT NULL,"
+							+ "PRIMARY KEY (\"tutor\",\"session\"))"
+					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
 		}
 		try {
 			stmt.executeUpdate(
-				"CREATE TABLE \"Session\" ("
-				+ "\"id\" INTEGER PRIMARY KEY,"
-				+ "\"course\" INTEGER NOT NULL,"
-				+ "\"compulsory\" INTEGER DEFAULT 0 NOT NULL,"
-				+ "\"frequency\" INTEGER DEFAULT 0 NOT NULL,"
-				+ "\"type\" VARCHAR(16)  NOT NULL)"
-			);
+					"CREATE TABLE \"Session\" ("
+							+ "\"id\" INTEGER PRIMARY KEY,"
+							+ "\"course\" INTEGER NOT NULL,"
+							+ "\"compulsory\" INTEGER DEFAULT 0 NOT NULL,"
+							+ "\"frequency\" INTEGER DEFAULT 0 NOT NULL,"
+							+ "\"type\" VARCHAR(16)  NOT NULL)"
+					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
 		}
 		try {
 			stmt.executeUpdate(
-				"CREATE TABLE \"TimetableSlots\" ("
-				+ "\"id\" INTEGER PRIMARY KEY,"
-				+ "\"session\" INTEGER NOT NULL,"
-				+ "\"date\" VARCHAR(10),"
-				+ "\"start_time\" VARCHAR(8),"
-				+ "\"end_time\" VARCHAR(8),"
-				+ "\"room\" INTEGER,"
-				+ "\"capacity\" INTEGER DEFAULT 0 NOT NULL)"
-			);
+					"CREATE TABLE \"TimetableSlot\" ("
+							+ "\"id\" INTEGER PRIMARY KEY,"
+							+ "\"session\" INTEGER NOT NULL,"
+							+ "\"date\" VARCHAR(10),"
+							+ "\"start_time\" VARCHAR(8),"
+							+ "\"end_time\" VARCHAR(8),"
+							+ "\"room\" INTEGER,"
+							+ "\"capacity\" INTEGER DEFAULT 0 NOT NULL)"
+					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
 		}
 		stmt.close();
 	}
-	
+
 	public boolean deleteEverything() {
 		Connection conn = getConnection();
 		if (conn == null) {
@@ -126,7 +126,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			stmt.executeUpdate("DELETE FROM \"Course\"");
 			stmt.executeUpdate("DELETE FROM \"Tutoring\"");
 			stmt.executeUpdate("DELETE FROM \"Session\"");
-			stmt.executeUpdate("DELETE FROM \"TimetableSlots\"");
+			stmt.executeUpdate("DELETE FROM \"TimetableSlot\"");
 			stmt.close();
 			conn.close();
 			return true;
@@ -208,7 +208,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 						rs.getInt(3), // compulsory
 						rs.getInt(4), // frequency
 						rs.getString(5) // type
-				));
+						));
 			}
 
 			return r;
@@ -231,7 +231,6 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 		// Will only reach this if coming from the catch block.
 		return null;
-
 	}
 
 	/**
@@ -306,7 +305,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			// Iterate through the result set
 			while (rs.next()) {
 				students.add(rs.getString(1) // get the student field
-				);
+						);
 			}
 
 			return students;
@@ -406,47 +405,10 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		return false;
 	}
 
-	public boolean addTimetableSlotToDatabase(TimetableSlot timetableSlot) {
-		// Add to database.
-		String sql = "INSERT INTO \"TimetableSlots\"(\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES (?, ?, ?, ?, ?, ?)";
-		Connection con = null;
-		PreparedStatement preparedStatement = null;
-
-		try {
-			// Get the database connection.
-			con = getConnection();
-			// Prepare the SQL statement.
-			preparedStatement = con.prepareStatement(sql);
-			// Add the parameters.
-			preparedStatement.setInt(1, timetableSlot.getSession_id());
-			preparedStatement.setString(2, timetableSlot.getDateString());
-			preparedStatement.setString(3, timetableSlot.getStart_timeString());
-			preparedStatement.setString(4, timetableSlot.getEnd_timeString());
-			preparedStatement.setInt(5, timetableSlot.getRoom());
-			preparedStatement.setInt(6, timetableSlot.getCapacity());
-			// Execute the statement and get the result.
-			preparedStatement.execute();
-			System.out.println("The session has been successfully imported!");
-			return true;
-		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
-		} finally {
-			// Close the connections.
-			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-			} catch (SQLException ex) {
-				System.out.println(ex.getMessage());
-			}
-		}
-		return false;
-	}
-
 	public boolean addUserToDatabase(Account account) {
+		if (account == null) {
+			return false;
+		}
 		// Add to database.
 		String sql = "INSERT INTO \"User\"(\"guid\", \"type\", \"name\", \"year\") VALUES (?, ?, ?, ?)";
 		Connection con = null;
@@ -484,4 +446,111 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		return false;
 	}
 
+	/**
+	 * Retrieve a session from the database based on the session id.
+	 * @param session_id - The session id.
+	 * @return a Session object matching the requested session or null if could not retrieve
+	 */
+	public Session getSession(int session_id) {
+		// Retrieve room details from the database
+		String query = "SELECT * FROM \"Session\" WHERE id = ?";
+		Connection con = null;
+		Session session = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			// Get the database connection
+			con = getConnection();
+			// Prepare the SQL statement
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setInt(1, session_id);
+			// Execute the statement and get the result
+			ResultSet rs = preparedStatement.executeQuery();
+
+			// Iterate through the result set
+			if (rs.next()) {
+				session = new Session(rs.getInt(1), // id
+						rs.getInt(2), // course
+						rs.getInt(3), // compulsory
+						rs.getInt(4), // frequency
+						rs.getString(5) // type
+						);
+			}
+
+			// Return the session. Will be null if could not read.
+			return session;
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+			// Close the connections.
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+
+		// Will only reach this if coming from the catch block.
+		return null;
+	}
+
+	/**
+	 * Adds the specified TimetableSlot to the database.
+	 * @param timetableSlot - The TimetableSlot object you wish to add.
+	 * @return true if the operation succeeded, false otherwise
+	 */
+	 public boolean addTimetableSlotToDatabase(TimetableSlot timetableSlot) {
+		// Check that the parameter is not null.
+		if (timetableSlot == null) {
+			return false;
+		}
+
+		// Check that a session with the specified id exists.
+		if (getSession(timetableSlot.getSession_id()) == null) {
+			return false;
+		}
+
+		// Add to database.
+		String sql = "INSERT INTO \"TimetableSlot\"(\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES (?, ?, ?, ?, ?, ?)";
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			// Get the database connection.
+			con = getConnection();
+			// Prepare the SQL statement.
+			preparedStatement = con.prepareStatement(sql);
+			// Add the parameters.
+			preparedStatement.setInt(1, timetableSlot.getSession_id());
+			preparedStatement.setString(2, timetableSlot.getDateString());
+			preparedStatement.setString(3, timetableSlot.getStart_timeString());
+			preparedStatement.setString(4, timetableSlot.getEnd_timeString());
+			preparedStatement.setInt(5, timetableSlot.getRoom());
+			preparedStatement.setInt(6, timetableSlot.getCapacity());
+			// Execute the statement and get the result.
+			preparedStatement.execute();
+			System.out.println("The course has been successfully imported!");
+			return true;
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+			// Close the connections.
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+		return false;
+	}
 }
