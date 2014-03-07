@@ -49,9 +49,9 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		try {
 			stmt.executeUpdate(
 					"CREATE TABLE \"Registration\" ("
-							+ "\"session\" INTEGER NOT NULL, "
+							+ "\"slot\" INTEGER NOT NULL, "
 							+ "\"student\" VARCHAR(8) NOT NULL, "
-							+ "PRIMARY KEY (\"session\", \"student\"))"
+							+ "PRIMARY KEY (\"slot\", \"student\"))"
 					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
