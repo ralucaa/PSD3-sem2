@@ -11,7 +11,6 @@ import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.objects.Session;
 import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 import static org.junit.Assert.assertEquals;
-import uk.ac.gla.psdteamk.helpers.DateTimeOps;
 
 
 public class NFR_Performance1Steps {
@@ -36,7 +35,7 @@ public class NFR_Performance1Steps {
 	@When("the database request is made")
 	public void queryDatabase() {
 		for (int i = 0; i < 10; i++) {
-			output = (output && dbs.addSessionToDatabase(new Session((i*i + 1337), courseId, DateTimeOps.parseDateStringToJodaTime("2014-02-27"), DateTimeOps.parseTimeStringToJodaTime("00:00"), DateTimeOps.parseTimeStringToJodaTime("00:00"), 7, "BO505", 50, "testType")));
+			output = (output && dbs.addSessionToDatabase(new Session((i*i + 1337), courseId, 1, 7, "testType")));
 		}		 
 	}
 	

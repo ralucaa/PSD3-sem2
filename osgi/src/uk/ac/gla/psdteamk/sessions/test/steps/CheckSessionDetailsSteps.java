@@ -14,6 +14,9 @@ import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 import org.jbehave.core.steps.Steps;
 
 public class CheckSessionDetailsSteps extends Steps{
+	private static final String D_TYPE = "lecture";
+	private static final int D_FREQ = 7, D_COMPULSORY = 1;
+	
 	private boolean detailsChecked;
 	private SessionManagerService service;
 	private Session session;
@@ -28,7 +31,7 @@ public class CheckSessionDetailsSteps extends Steps{
 
 	  @Given("Given a session $s")  
 	  public void givenASession(String s) {  
-	    this.session = new Session();
+	    //this.session = new Session();
 	  }  
 	
 	  @When("When I want to check the session details")  

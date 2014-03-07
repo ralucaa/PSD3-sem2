@@ -17,12 +17,12 @@ public class NFR_Performance3Steps extends Steps {
 	
 	@Given("a session $session")
 	public void assignSession(String session) {
-		this.mySession = new Session();
+		//this.mySession = new Session();
 	}
 	
 	@When("I try to retrieve the session timetable slot number")
 	public void getSessionsNumber() {
-		numOfSessions = mySession.getNumberOfSlots();
+		//numOfSessions = mySession.getNumberOfSlots();
 	}
 	
 	@Then("a session slot number should be greater or equal to 20 ")
