@@ -9,11 +9,11 @@ import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 class AssignRoomToTimetableSlot {
 	/**
 	 * Assign a room to a session
-	 * @param sessionId - a session reference in the database
+	 * @param slotId - a slot reference in the database
 	 * @param roomId - a room reference in the Central Room Booking database
 	 */
-	static boolean assignRoom(DatabaseAdapterService da, int sessionId, int roomId) {
-			String sql = "UPDATE \"Session\" SET \"room\"=? WHERE \"id\"=?"; 
+	static boolean assignRoom(DatabaseAdapterService da, int slotId, int roomId) {
+			String sql = "UPDATE \"TimetableSlots\" SET \"room\"=? WHERE \"id\"=?"; 
 			Connection con = null;
 			PreparedStatement preparedStatement = null;
 
@@ -24,11 +24,11 @@ class AssignRoomToTimetableSlot {
 				preparedStatement = con.prepareStatement(sql);
 				//Add the parameters.
 				preparedStatement.setInt(1, roomId);
-				preparedStatement.setInt(2, sessionId);
+				preparedStatement.setInt(2, slotId);
 				//Execute the statement and get the result.
 				preparedStatement.execute();
 				
-				System.out.println("A room (id=" + roomId + ") has been assigned to session (id=" + sessionId + ")");
+				System.out.println("A room (id=" + roomId + ") has been assigned to slot (id=" + slotId + ")");
 				return true;
 			} catch (SQLException ex) {
 				System.out.println(ex.getMessage());
