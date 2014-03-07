@@ -498,7 +498,65 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		// Will only reach this if coming from the catch block.
 		return null;
 	}
+	
+	/**
+	 * Retrieve a slot from the database based on the slot id.
+	 * @param slotId - The slot id
+	 * @return a TimetableSlot object matching the requested slot or null if could not retrieve
+	 */
+	
+	public TimetableSlot getTimetableSlot(int slotId) {
+		// Retrieve room details from the database
+		String query = "SELECT * FROM \"TimetableSlot\" WHERE id = ?";
+		Connection con = null;
+		TimetableSlot slot = null;
+		PreparedStatement preparedStatement = null;
 
+		try {
+			// Get the database connection
+			con = getConnection();
+			// Prepare the SQL statement
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setInt(1, slotId);
+			// Execute the statement and get the result
+			ResultSet rs = preparedStatement.executeQuery();
+
+			// Iterate through the result set
+			if (rs.next()) {
+				
+				slot = new TimetableSlot(
+						rs.getInt(1), // id
+						rs.getInt(2), // slotId
+						rs.getString(3), // date
+						rs.getString(4), // start_time
+						rs.getString(5), // end_time
+						rs.getInt(6), // room
+						rs.getInt(7) // capacity
+						);
+			}
+			// Return the slot. Will be null if could not read.
+			return slot;
+			
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+			// Close the connections.
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+
+		// Will only reach this if coming from the catch block.
+		return null;
+	}	
+	
 	/**
 	 * Adds the specified TimetableSlot to the database.
 	 * @param timetableSlot - The TimetableSlot object you wish to add.

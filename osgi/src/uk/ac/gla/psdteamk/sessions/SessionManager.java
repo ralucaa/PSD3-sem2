@@ -59,10 +59,10 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean bookSession(int token, int sessionId) {
+	public boolean bookSlot(int token, int slotId) {
 		if (accountIsType(token, Account.TYPE_STUDENT)) {
 			Account acc = logins.get(token);
-			return BookTimetableSlot.bookSession(da, sessionId, acc.getUsername());
+			return BookTimetableSlot.bookSession(da, slotId, acc.getUsername());
 		} else {
 			System.out.println("Access denied");
 			return false;

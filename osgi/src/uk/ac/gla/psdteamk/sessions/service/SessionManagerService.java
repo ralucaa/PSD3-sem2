@@ -38,7 +38,7 @@ public interface SessionManagerService {
 	 * @param sessionId
 	 * @return true on success, false on failure
 	 */
-	public boolean bookSession(int token, int sessionId);
+	public boolean bookSlot(int token, int slotId);
 	
 	/**
 	 * AS A student I WANT TO check that I have signed up for all compulsory courses, 

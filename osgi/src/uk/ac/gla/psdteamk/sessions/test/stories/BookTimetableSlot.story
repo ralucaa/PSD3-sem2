@@ -3,12 +3,12 @@ In order to attend a course
 As a student
 I want to book a timetable slot for each session of my course
 
-Scenario: student username contains special characters
-Given a student username a$b and sessionID 666
-When the database request is made
-Then the output is false 
-
-Scenario: student books a timetable slot
-Given a student username 1007100b and sessionID 666
+Scenario: timetable slot exists
+Given a slotId 5
 When the database request is made
 Then the output is true
+
+Scenario: timetable slot does not exist
+Given a slotId 666
+When the database request is made
+Then the output is false

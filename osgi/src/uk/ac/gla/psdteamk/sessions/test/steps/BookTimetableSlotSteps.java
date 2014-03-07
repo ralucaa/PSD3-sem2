@@ -13,9 +13,8 @@ import static org.junit.Assert.assertEquals;
 
 
 public class BookTimetableSlotSteps {
-		private SessionManagerService service;
-		int sessionID;
-		String username;		
+		private SessionManagerService service;		
+		int slotId;
 		boolean output;
 		private int studentToken;
 		
@@ -30,15 +29,14 @@ public class BookTimetableSlotSteps {
 		public void afterScenario() throws Exception {
 		}
 		
-		@Given("a student username $username and sessionID $sessionID")
-		public void aStudentUsername(String username, int sessionID) {			
-			this.sessionID = sessionID;
-			this.username = username;
+		@Given("a slotId $slotId")
+		public void aStudentUsername(int slotId) {			
+			this.slotId = slotId;
 		}
 		
 		@When("the database request is made")
 		public void queryDatabase() {
-			output = service.bookSession(studentToken, sessionID);
+			output = service.bookSlot(studentToken, slotId);
 		}
 		
 		@Then("the output is true")

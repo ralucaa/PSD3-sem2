@@ -13,7 +13,7 @@ class AssignRoomToTimetableSlot {
 	 * @param roomId - a room reference in the Central Room Booking database
 	 */
 	static boolean assignRoom(DatabaseAdapterService da, int slotId, int roomId) {
-			String sql = "UPDATE \"TimetableSlots\" SET \"room\"=? WHERE \"id\"=?"; 
+			String sql = "UPDATE \"TimetableSlot\" SET \"room\"=? WHERE \"id\"=?"; 
 			Connection con = null;
 			PreparedStatement preparedStatement = null;
 
