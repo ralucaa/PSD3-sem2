@@ -74,7 +74,7 @@ public class NFR_Performance2Steps extends Steps {
 		imported =  false;
 	}
 	
-	@Then("I should be able to add 1000 and more of them")
+	@Then("it should return true")
 	public void check() {
 		assertEquals(true,imported);
 	}
