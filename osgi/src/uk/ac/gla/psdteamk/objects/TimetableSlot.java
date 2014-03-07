@@ -2,17 +2,19 @@ package uk.ac.gla.psdteamk.objects;
 
 import org.joda.time.DateTime;
 
+import uk.ac.gla.psdteamk.helpers.DateTimeOps;
+
 public class TimetableSlot {
 	private int id;
 	private int session_id;
 	private DateTime date;
 	private DateTime start_time;
 	private DateTime end_time;
-	private String room;
+	private int room;
 	private int capacity;
 	
 	public TimetableSlot(int id, int session_id, DateTime date,
-			DateTime start_time, DateTime end_time, String room, int capacity) {
+			DateTime start_time, DateTime end_time, int room, int capacity) {
 		super();
 		this.id = id;
 		this.session_id = session_id;
@@ -39,12 +41,20 @@ public class TimetableSlot {
 		this.session_id = session_id;
 	}
 
+	public String getDateString() {
+		return DateTimeOps.parseJodaTimeToDateString(date);
+	}
+
 	public DateTime getDate() {
 		return date;
 	}
 
 	public void setDate(DateTime date) {
 		this.date = date;
+	}
+
+	public String getStart_timeString() {
+		return DateTimeOps.parseJodaTimeToTimeString(start_time);
 	}
 
 	public DateTime getStart_time() {
@@ -55,6 +65,10 @@ public class TimetableSlot {
 		this.start_time = start_time;
 	}
 
+	public String getEnd_timeString() {
+		return DateTimeOps.parseJodaTimeToTimeString(end_time);
+	}
+
 	public DateTime getEnd_time() {
 		return end_time;
 	}
@@ -63,11 +77,11 @@ public class TimetableSlot {
 		this.end_time = end_time;
 	}
 
-	public String getRoom() {
+	public int getRoom() {
 		return room;
 	}
 
-	public void setRoom(String room) {
+	public void setRoom(int room) {
 		this.room = room;
 	}
 

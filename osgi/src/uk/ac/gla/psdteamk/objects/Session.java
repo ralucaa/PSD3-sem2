@@ -121,20 +121,12 @@ public class Session {
 		return start_time;
 	}
 
-	public String getStart_timeString() {
-		return DateTimeOps.parseJodaTimeToTimeString(start_time);
-	}
-
 	public void setStart_time(DateTime start_time) {
 		this.start_time = start_time;
 	}
 
 	public DateTime getEnd_time() {
 		return end_time;
-	}
-
-	public String getEnd_timeString() {
-		return DateTimeOps.parseJodaTimeToTimeString(end_time);
 	}
 
 	public void setEnd_time(DateTime end_time) throws Exception {

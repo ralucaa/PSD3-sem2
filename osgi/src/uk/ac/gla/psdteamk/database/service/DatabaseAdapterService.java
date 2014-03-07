@@ -14,6 +14,7 @@ public interface DatabaseAdapterService {
 	public ArrayList<String> getAllStudents();
 	public boolean addCourseToDatabase(Course course);
 	public boolean addSessionToDatabase(Session session);
+	public boolean addTimetableSlotToDatabase(TimetableSlot session);
 	public boolean addUserToDatabase(Account account);
 	public boolean deleteEverything();
 }

@@ -406,6 +406,46 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		return false;
 	}
 
+	public boolean addTimetableSlotToDatabase(TimetableSlot timetableSlot) {
+		// Add to database.
+		String sql = "INSERT INTO \"TimetableSlots\"(\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES (?, ?, ?, ?, ?, ?)";
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			// Get the database connection.
+			con = getConnection();
+			// Prepare the SQL statement.
+			preparedStatement = con.prepareStatement(sql);
+			// Add the parameters.
+			preparedStatement.setInt(1, timetableSlot.getSession_id());
+			preparedStatement.setString(2, timetableSlot.getDateString());
+			preparedStatement.setString(3, timetableSlot.getStart_timeString());
+			preparedStatement.setString(4, timetableSlot.getEnd_timeString());
+			preparedStatement.setInt(5, timetableSlot.getRoom());
+			preparedStatement.setInt(6, timetableSlot.getCapacity());
+			// Execute the statement and get the result.
+			preparedStatement.execute();
+			System.out.println("The session has been successfully imported!");
+			return true;
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+			// Close the connections.
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+		return false;
+	}
+
 	public boolean addUserToDatabase(Account account) {
 		// Add to database.
 		String sql = "INSERT INTO \"User\"(\"guid\", \"type\", \"name\", \"year\") VALUES (?, ?, ?, ?)";
