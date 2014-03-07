@@ -15,7 +15,7 @@ public class Account {
 		this.name = name;
 		this.type = type;
 		this.year = year;
-		this.token = new Random().nextInt();
+		this.token = new Random().nextInt(Integer.MAX_VALUE);
 		this.loginTime = new Date();
 	}
 	
