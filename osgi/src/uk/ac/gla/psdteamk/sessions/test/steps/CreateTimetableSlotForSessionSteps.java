@@ -42,7 +42,7 @@ public class CreateTimetableSlotForSessionSteps extends Steps{
 	public void afterScenario() throws Exception {
 	}
 	
-	@Given("a $session")
+	@Given("a session $session")
 	public void aSession(int session){
 		timetableSlot = new TimetableSlot(D_ID, session, D_DATE, D_START_TIME, D_END_TIME, D_ROOM, D_CAPACITY);
 	}
