@@ -62,10 +62,10 @@ public interface SessionManagerService {
 	 * AS A administrator I WANT to create a timetable slot for a session 
 	 * SO THAT rooms can be assigned to slots (story 23).
 	 * @param token
-	 * @param session
+	 * @param timetableSlot
 	 * @return true on success, false on failure
 	 */
-	public boolean createTimetableSlot(int token, Session session);
+	public boolean createTimetableSlot(int token, TimetableSlot timetableSlot);
 	
 	/**
 	 * AS A lecturer I WANT TO import a MyCampus course, 

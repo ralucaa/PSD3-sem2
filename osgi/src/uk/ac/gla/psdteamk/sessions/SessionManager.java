@@ -3,6 +3,7 @@ package uk.ac.gla.psdteamk.sessions;
 import uk.ac.gla.psdteamk.objects.Account;
 import uk.ac.gla.psdteamk.objects.Course;
 import uk.ac.gla.psdteamk.objects.Session;
+import uk.ac.gla.psdteamk.objects.TimetableSlot;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.mycampus.service.MyCampusService;
@@ -90,9 +91,9 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean createTimetableSlot(int token, Session session) {
+	public boolean createTimetableSlot(int token, TimetableSlot timetableSlot) {
 		if (accountIsType(token, Account.TYPE_ADMIN)) {
-			return CreateTimetableSlotForSession.createTimetableSlot(da, session);
+			return CreateTimetableSlotForSession.createTimetableSlot(da, timetableSlot);
 		} else {
 			System.out.println("Access denied");
 			return false;

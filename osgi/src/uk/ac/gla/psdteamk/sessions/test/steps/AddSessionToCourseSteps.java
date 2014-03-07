@@ -10,15 +10,13 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.steps.Steps;
-import org.joda.time.DateTime;
 
 import static org.junit.Assert.assertEquals;
 
 public class AddSessionToCourseSteps extends Steps {
 	// Default valid values. To be used when creating sessions for which only specific parameters need to be tested.
-	private static final String D_ROOM = "Boyd Orr 720", D_TYPE = "lecture";
-	private static final int D_FREQ = 7, D_CAPACITY = 100;
-	private static final DateTime D_DATE = DateTime.now(), D_START_TIME = DateTime.now(), D_END_TIME = DateTime.now().plusHours(2);
+	private static final String D_TYPE = "lecture";
+	private static final int D_FREQ = 7, D_COMPULSORY = 1;
 	
 	private SessionManagerService service;
 	private Session session;
@@ -39,12 +37,7 @@ public class AddSessionToCourseSteps extends Steps {
 	
 	@Given("a sessionID $session for course $course")
 	public void givenASessionForAValidCourse(int session, int course) {
-		this.session = new Session(session, course, D_DATE, D_START_TIME, D_END_TIME, D_FREQ, D_ROOM, D_CAPACITY, D_TYPE);
-	}
-	
-	@Given("a sessionID $session for course $course with a capacity $capacity")
-	public void givenASessionForAValidCourse(int session, int course, int capacity) {
-		this.session = new Session(session, course, D_DATE, D_START_TIME, D_END_TIME, D_FREQ, D_ROOM, capacity, D_TYPE);
+		this.session = new Session(session, course, D_COMPULSORY, D_FREQ, D_TYPE);
 	}
 	
 	@When("a user tries to add it to the database")

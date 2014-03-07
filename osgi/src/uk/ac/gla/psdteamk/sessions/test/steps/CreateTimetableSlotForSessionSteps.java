@@ -7,8 +7,10 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.steps.Steps;
+import org.joda.time.DateTime;
 
 import uk.ac.gla.psdteamk.objects.Session;
+import uk.ac.gla.psdteamk.objects.TimetableSlot;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 import static org.junit.Assert.assertEquals;
@@ -21,9 +23,12 @@ I want to create a timetable slot for a session
 */
 
 public class CreateTimetableSlotForSessionSteps extends Steps{
+	private static final int D_ID = 2500, D_CAPACITY = 100, D_ROOM = 1;
+	private static final DateTime D_DATE = DateTime.now(), D_START_TIME = DateTime.now(), D_END_TIME = DateTime.now().plusHours(2);
+	
 	private SessionManagerService service;
 	private boolean result;
-	private Session session;
+	private TimetableSlot timetableSlot;
 	private int adminToken;
 	
 	@BeforeScenario
@@ -38,13 +43,13 @@ public class CreateTimetableSlotForSessionSteps extends Steps{
 	}
 	
 	@Given("a $session")
-	public void aSession(Session session){
-		this.session=session;
+	public void aSession(int session){
+		timetableSlot = new TimetableSlot(D_ID, session, D_DATE, D_START_TIME, D_END_TIME, D_ROOM, D_CAPACITY);
 	}
 	
 	@When("the administrator tries to create a timetable slot for a session")
 	public void createSlot(Session session){
-		result=service.createTimetableSlot(adminToken, session);
+		result=service.createTimetableSlot(adminToken, timetableSlot);
 	}
 	
 	@Then("true is returned")
