@@ -93,4 +93,11 @@ public interface SessionManagerService {
 	 * @return list of clashing sessions, or null on failure
 	 */
 	public List<Session> checkForClashes(int token);
+	
+	/**
+	 * Gets the user type for the user who owns the specified token.
+	 * @param token - The token to check.
+	 * @return the user type
+	 */
+	public String accountGetType(int token);
 }

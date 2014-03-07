@@ -1,21 +1,31 @@
 package uk.ac.gla.psdteamk.sessions.test.steps;
 
-import uk.ac.gla.psdteamk.mycampus.service.MyCampusService;
-import uk.ac.gla.psdteamk.objects.Account;
+import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
+import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 
+import org.jbehave.core.annotations.AfterScenario;
+import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.steps.Steps;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
 public class NFR_Security0Steps extends Steps {
-	private MyCampusService service;
+	private SessionManagerService service;
 	private String username, password;
-	private Account account;
-	private boolean result;
+	private int token;
+	
+	@BeforeScenario
+	public void beforeScenario() throws Exception {
+		SetupFramework.defaultPopulate();
+		service = SetupFramework.getSessionManagerService();
+	}
+	
+	@AfterScenario
+	public void afterScenario() throws Exception {
+	}
 	
 	@Given("a username $username and a password $password")
 	public void givenASessionAndAFrequency(String username, String password) {
@@ -25,16 +35,16 @@ public class NFR_Security0Steps extends Steps {
 	
 	@When("the user tries to authenticate")
 	public void userTriesToAuthenticate() {
-		account = service.authenticate(username, password);
+		token = service.authenticate(username, password);
 	}
 	
-	@Then("he should be authenticated and an Account object should be returned")
+	@Then("the user should be authenticated and a positive integer should be returned")
 	public void shouldBeAuthenticatedAndAccountNotNull() {
-		assertNotNull(account);
+		assertEquals((token >= 0), true);
 	}
 	
-	@Then("he should not be authenticated and null should be returned")
+	@Then("the user should not be authenticated and -1 should be returned")
 	public void shouldNotBeAuthenticatedAndAccountNull() {
-		assertNull(account);
+		assertEquals(token, -1);
 	}
 }

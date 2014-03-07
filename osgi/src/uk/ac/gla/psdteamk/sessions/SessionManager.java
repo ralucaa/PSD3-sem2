@@ -38,6 +38,11 @@ public class SessionManager implements SessionManagerService {
 		return (acc != null && acc.getType().equals(type));
 	}
 	
+	public String accountGetType(int token) {
+		Account acc = logins.get(token);
+		return acc.getType();
+	}
+	
 	@Override
 	public boolean addSessionToCourse(int token, Session session) {
 		if (accountIsType(token, Account.TYPE_LECTURER)) {
