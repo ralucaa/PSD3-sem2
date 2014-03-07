@@ -148,18 +148,18 @@ public class SetupFramework {
 		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(12,9,1,7,'laboratory')");
 		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(13,9,1,0,'lecture')");
 
-		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(01,1,'13/01/2014','09:00','10:00',1,120)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(02,2,'13/01/2014','14:00','15:00',2,120)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(03,1,'14/01/2014','15:00','16:00',3,120)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(04,3,'14/01/2014','10:00','12:00',1,080)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(05,4,'14/01/2014','14:00','15:00',3,120)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(06,5,'15/01/2014','10:00','11:00',1,080)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(07,6,'15/01/2014','14:00','15:00',3,080)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(08,7,'15/01/2014','15:00','16:00',3,120)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(09,8,'16/01/2014','10:00','12:00',1,080)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(10,8,'16/01/2014','14:00','15:00',3,120)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(11,9,'17/01/2014','10:00','12:00',2,080)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(12,9,'17/01/2014','14:00','15:00',5,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" VALUES(01,1,'13/01/2014','09:00','10:00',1,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" VALUES(02,2,'13/01/2014','14:00','15:00',2,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" VALUES(03,1,'14/01/2014','15:00','16:00',3,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" VALUES(04,3,'14/01/2014','10:00','12:00',1,080)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" VALUES(05,4,'14/01/2014','14:00','15:00',3,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" VALUES(06,5,'15/01/2014','10:00','11:00',1,080)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" VALUES(07,6,'15/01/2014','14:00','15:00',3,080)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" VALUES(08,7,'15/01/2014','15:00','16:00',3,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" VALUES(09,8,'16/01/2014','10:00','12:00',1,080)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" VALUES(10,8,'16/01/2014','14:00','15:00',3,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" VALUES(11,9,'17/01/2014','10:00','12:00',2,080)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" VALUES(12,9,'17/01/2014','14:00','15:00',5,120)");
 		
 		stmt.close();
 		conn.close();

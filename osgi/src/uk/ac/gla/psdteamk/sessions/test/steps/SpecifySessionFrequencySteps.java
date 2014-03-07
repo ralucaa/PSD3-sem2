@@ -30,9 +30,9 @@ public class SpecifySessionFrequencySteps extends Steps {
 	}
 	
 	@Given("a session $session and a frequency $frequency")
-	public void givenASessionAndAFrequency(int session, int frequency) {
-		this.session = session;
-		this.frequency = frequency;
+	public void givenASessionAndAFrequency(String session, String frequency) {
+		this.session = Integer.parseInt(session);
+		this.frequency = Integer.parseInt(frequency);
 	}
 	
 	@When("the user updates the session")
