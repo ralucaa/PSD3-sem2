@@ -78,8 +78,8 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		try {
 			stmt.executeUpdate(
 				"CREATE TABLE \"Tutoring\" ("
-				+ "\"tutor\" VARCHAR(8)  NOT NULL,"
-				+ "\"session\" INTEGER  NOT NULL,"
+				+ "\"tutor\" VARCHAR(8) NOT NULL,"
+				+ "\"session\" INTEGER NOT NULL,"
 				+ "PRIMARY KEY (\"tutor\",\"session\"))"
 			);
 		} catch (SQLException e) {
@@ -89,14 +89,24 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			stmt.executeUpdate(
 				"CREATE TABLE \"Session\" ("
 				+ "\"id\" INTEGER PRIMARY KEY,"
-				+ "\"course\" INTEGER  NOT NULL,"
+				+ "\"course\" INTEGER NOT NULL,"
+				+ "\"compulsory\" INTEGER DEFAULT 0 NOT NULL,"
+				+ "\"frequency\" INTEGER DEFAULT 0 NOT NULL,"
+				+ "\"type\" VARCHAR(16)  NOT NULL)"
+			);
+		} catch (SQLException e) {
+			System.out.println("Table not created: " + e.getMessage());
+		}
+		try {
+			stmt.executeUpdate(
+				"CREATE TABLE \"TimetableSlots\" ("
+				+ "\"id\" INTEGER PRIMARY KEY,"
+				+ "\"session\" INTEGER NOT NULL,"
 				+ "\"date\" VARCHAR(10),"
 				+ "\"start_time\" VARCHAR(8),"
 				+ "\"end_time\" VARCHAR(8),"
-				+ "\"frequency\" INTEGER DEFAULT 0 NOT NULL,"
 				+ "\"room\" INTEGER,"
-				+ "\"capacity\" INTEGER DEFAULT 0 NOT NULL,"
-				+ "\"type\" VARCHAR(16)  NOT NULL)"
+				+ "\"capacity\" INTEGER DEFAULT 0 NOT NULL)"
 			);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
@@ -116,6 +126,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			stmt.executeUpdate("DELETE FROM \"Course\"");
 			stmt.executeUpdate("DELETE FROM \"Tutoring\"");
 			stmt.executeUpdate("DELETE FROM \"Session\"");
+			stmt.executeUpdate("DELETE FROM \"TimetableSlots\"");
 			stmt.close();
 			conn.close();
 			return true;

@@ -134,19 +134,32 @@ public class SetupFramework {
 		stmt.executeUpdate("INSERT INTO \"Tutoring\" VALUES('4444444B',10)");
 		stmt.executeUpdate("INSERT INTO \"Tutoring\" VALUES('4444444A',12)");
 
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(1,1,'13/01/2014','09:00','10:00',7,1,120,'lecture')");
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(2,1,'13/01/2014','14:00','15:00',7,2,120,'lecture')");
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(3,1,'14/01/2014','15:00','16:00',7,3,120,'laboratory')");
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(4,6,'14/01/2014','10:00','12:00',7,1,80,'lecture')");
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(5,6,'14/01/2014','14:00','15:00',666,3,120,'laboratory')");
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(6,7,'15/01/2014','10:00','11:00',7,1,80,'lecture')");
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(7,7,'15/01/2014','14:00','15:00',7,3,80,'lecture')");
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(8,7,'15/01/2014','15:00','16:00',7,3,120,'laboratory')");
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(9,8,'16/01/2014','10:00','12:00',7,1,80,'lecture')");
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(10,8,'16/01/2014','14:00','15:00',7,3,120,'laboratory')");
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(11,9,'17/01/2014','10:00','12:00',7,2,80,'lecture')");
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(12,9,'17/01/2014','14:00','15:00',7,5,120,'laboratory')");
-		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(17,9,'12/12/2012',NULL,NULL,0,NULL,120,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(01,1,1,7,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(02,1,1,7,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(03,1,1,7,'laboratory')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(04,6,1,7,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(05,6,1,7,'laboratory')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(06,7,0,7,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(07,7,1,7,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(08,7,0,7,'laboratory')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(09,8,1,7,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(10,8,0,7,'laboratory')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(11,9,0,7,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(12,9,1,7,'laboratory')");
+		stmt.executeUpdate("INSERT INTO \"Session\" VALUES(13,9,1,0,'lecture')");
+
+		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(01,1,'13/01/2014','09:00','10:00',1,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(02,2,'13/01/2014','14:00','15:00',2,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(03,1,'14/01/2014','15:00','16:00',3,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(04,3,'14/01/2014','10:00','12:00',1,080)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(05,4,'14/01/2014','14:00','15:00',3,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(06,5,'15/01/2014','10:00','11:00',1,080)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(07,6,'15/01/2014','14:00','15:00',3,080)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(08,7,'15/01/2014','15:00','16:00',3,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(09,8,'16/01/2014','10:00','12:00',1,080)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(10,8,'16/01/2014','14:00','15:00',3,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(11,9,'17/01/2014','10:00','12:00',2,080)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlots\" VALUES(12,9,'17/01/2014','14:00','15:00',5,120)");
 		
 		stmt.close();
 		conn.close();
