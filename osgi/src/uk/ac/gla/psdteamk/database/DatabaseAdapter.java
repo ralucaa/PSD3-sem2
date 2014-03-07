@@ -205,13 +205,9 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			while (rs.next()) {
 				r.add(new Session(rs.getInt(1), // id
 						rs.getInt(2), // course
-						rs.getString(3), // date
-						rs.getString(4), // start_time
-						rs.getString(5), // end_time
-						rs.getInt(6), // frequency
-						rs.getString(7), // room
-						rs.getInt(8), // capacity
-						rs.getString(9) // time
+						rs.getInt(3), // compulsory
+						rs.getInt(4), // frequency
+						rs.getString(5) // type
 				));
 			}
 
@@ -374,7 +370,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 	public boolean addSessionToDatabase(Session session) {
 		// Add to database.
-		String sql = "INSERT INTO \"Session\"(\"course\", \"date\", \"capacity\", \"type\") VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO \"Session\"(\"course\", \"compulsory\", \"frequency\", \"type\") VALUES (?, ?, ?, ?)";
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 
@@ -385,8 +381,8 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			preparedStatement = con.prepareStatement(sql);
 			// Add the parameters.
 			preparedStatement.setInt(1, session.getCourse());
-			preparedStatement.setString(2, session.getDateString());
-			preparedStatement.setInt(3, session.getCapacity());
+			preparedStatement.setInt(2, session.getCompulsory());
+			preparedStatement.setInt(3, session.getFrequency());
 			preparedStatement.setString(4, session.getType());
 			// Execute the statement and get the result.
 			preparedStatement.execute();
