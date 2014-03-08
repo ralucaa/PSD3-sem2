@@ -1,7 +1,7 @@
 Narrative: 
-IN ORDER TO not have to create a large number of sessions,
-AS A lecturer,
-I WANT TO specify that a session is a one off, or recurs weekly or fortnightly.
+In order to not have to create a large number of sessions,
+As a lecturer,
+I want to specify that a session is a one off, or recurs weekly or fortnightly.
 
 Scenario: valid session, positive frequency
 Given a session 1 and a frequency 7
