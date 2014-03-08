@@ -1,7 +1,7 @@
 Narrative:
 In order to have access to features specific for my type
-As a user
-I want the system to recognize my type and allow me correct permissions
+As a user 
+I want to the system to recognize my type and allow me correct permissions
 
 Scenario: admin
 Given a username 1111111A and a password 1111111A
