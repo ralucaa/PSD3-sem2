@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-class CheckSessionDetails {
+public class CheckSessionDetails {
 
 	static boolean checkSessionDetails(DatabaseAdapterService da, int sessionID){
 
