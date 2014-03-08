@@ -1,6 +1,6 @@
 package uk.ac.gla.psdteamk.sessions.test.steps;
 
-import uk.ac.gla.psdteamk.objects.Session;
+import uk.ac.gla.psdteamk.objects.TimetableSlot;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 
@@ -10,16 +10,17 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.steps.Steps;
+import org.joda.time.DateTime;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 public class NFR_Performance3Steps extends Steps {
-	private Session mySession;
-	private int numOfSessions = 0;
+	private int addedSessions = 0;
 	private SessionManagerService service;
 	private int adminToken;
 	private int id;
+	private static final int D_ID = 2500, D_CAPACITY = 100, D_ROOM = 1;
+	private static final DateTime D_DATE = DateTime.now(), D_START_TIME = DateTime.now(), D_END_TIME = DateTime.now().plusHours(2);
 	
 	@BeforeScenario
 	public void beforeScenario() throws Exception {
@@ -32,23 +33,24 @@ public class NFR_Performance3Steps extends Steps {
 	public void afterScenario() throws Exception {
 	}
 	
-	@Given("to an admin tries to get a session $id")
+	@Given("an admin tries to add more than 20 timetable slots to the session $id")
 	public void assignSession(int id) {
 		this.id = id;
 	}
 	
-	@When("I try to retrieve the session timetable slot number")
-	public void getSessionsNumber() {
-		//no such functionality
+	@When("a database operation is performed")
+	public void addsSessions() {
+		for(int i=0;i<30;i++){
+			TimetableSlot timetableSlot = new TimetableSlot(D_ID, id, D_DATE, D_START_TIME, D_END_TIME, D_ROOM, D_CAPACITY);
+			service.createTimetableSlot(this.adminToken, timetableSlot);
+			this.addedSessions++;
+		}
+		
 	}
 	
-	@Then("a session slot number should be greater or equal to 20 ")
+	@Then("it should do more than 20 insertions correctly")
 	public void shouldBeGreaterThanTwenty() {
-		if(numOfSessions < 0){
-			fail("feature not implemented yet");
-		}else{
-			assertEquals(true, (numOfSessions>=20));
-		}
+		assertEquals(true, (this.addedSessions>=20));
 	}
 
 }
