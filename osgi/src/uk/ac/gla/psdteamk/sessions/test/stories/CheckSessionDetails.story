@@ -12,3 +12,8 @@ Scenario: invalid session 666
 Given some nice session 666
 When I want to check the session details
 Then the function should get no records from the database and the function should return an error
+
+Scenario: get timetable slots
+Given some nice session 01
+When I want to check the timetable slots for this session
+Then the program return all the timetable slots for this session

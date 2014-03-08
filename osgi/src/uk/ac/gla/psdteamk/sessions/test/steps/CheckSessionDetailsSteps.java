@@ -38,6 +38,12 @@ public class CheckSessionDetailsSteps extends Steps{
 	  public void whenIcheck() {  
 	      //check details
 		  detailsChecked = service.checkSessionDetails(this.lecturerToken, id);
+	  }
+	  
+	  @When("I want to check the timetable slots for this session")  
+	  public void whenIcheckTimetableSlots() {  
+	      //check details
+		  detailsChecked = service.checkSessionDetails(this.lecturerToken, id);
 	  }  
 	
 	  @Then("the function should fetch the session information from the database and the function should return time, location, students, tutors for that session")  
@@ -47,5 +53,9 @@ public class CheckSessionDetailsSteps extends Steps{
 	  @Then("the function should get no records from the database and the function should return an error")  
 	  public void thenFail() {  
 		  assertEquals(false, detailsChecked);
+	  }
+	  @Then("the program return all the timetable slots for this session")  
+	  public void thenReturnTimetableSlots() {  
+		  assertEquals(true, detailsChecked);
 	  } 
 }
