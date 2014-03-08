@@ -41,7 +41,7 @@ public class ImportMyCampusCourseSteps extends Steps {
 		importCourses = service.importCourse(lecturerToken, myCourse);
 	}
 
-	@Then("a function should accept this course ID and the function should return the sessions for this course")
+	@Then("a function should accept this course and the function should return the sessions for this course")
 	public void thenTheOutcomeShould() {
 		assertEquals(true, importCourses);
 	}

@@ -1,6 +1,6 @@
 Narrative:
 In order to identify the teaching sessions
-As A lecturer
+As a lecturer
 I want to import a MyCampus course
 
 Scenario: return sessions
