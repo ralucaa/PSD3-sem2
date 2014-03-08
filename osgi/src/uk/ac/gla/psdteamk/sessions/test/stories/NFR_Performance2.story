@@ -1,6 +1,6 @@
 Narrative:
 In order to meet the technical requirements
-As A system
+As a system
 I want to support at least 1000 different users
 
 Scenario: Add 1000 users

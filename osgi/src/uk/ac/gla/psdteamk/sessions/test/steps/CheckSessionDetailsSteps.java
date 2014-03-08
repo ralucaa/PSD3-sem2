@@ -29,12 +29,12 @@ public class CheckSessionDetailsSteps extends Steps{
 		
 	}
 	
-	  @Given("Given some nice session $id")  
+	  @Given("some nice session $id")  
 	  public void givenASession(int id) {  
 		  this.id = id;
 	  }  
 	
-	  @When("When I want to check the session details")  
+	  @When("I want to check the session details")  
 	  public void whenIcheck() {  
 	      //check details
 		  detailsChecked = service.checkSessionDetails(this.lecturerToken, id);
@@ -43,5 +43,9 @@ public class CheckSessionDetailsSteps extends Steps{
 	  @Then("the function should fetch the session information from the database and the function should return time, location, students, tutors for that session")  
 	  public void thenTheOutcomeShould() {  
 		  assertEquals(true, detailsChecked);
-	  }  
+	  }
+	  @Then("the function should get no records from the database and the function should return an error")  
+	  public void thenFail() {  
+		  assertEquals(false, detailsChecked);
+	  } 
 }
