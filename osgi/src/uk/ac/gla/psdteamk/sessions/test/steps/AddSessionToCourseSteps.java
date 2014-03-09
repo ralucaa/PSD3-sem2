@@ -32,7 +32,7 @@ public class AddSessionToCourseSteps extends Steps {
 	
 	@AfterScenario
 	public void afterScenario() throws Exception {
-		
+		SetupFramework.deleteDatabaseData();;
 	}
 	
 	@Given("a sessionID $session for course $course")

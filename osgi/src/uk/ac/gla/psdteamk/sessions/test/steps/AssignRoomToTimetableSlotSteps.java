@@ -35,6 +35,7 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 	
 	@AfterScenario
 	public void afterScenario() throws Exception {
+		SetupFramework.deleteDatabaseData();
 	}
 	
 	@Given("a sessionId $sessionId and roomId $roomId")
