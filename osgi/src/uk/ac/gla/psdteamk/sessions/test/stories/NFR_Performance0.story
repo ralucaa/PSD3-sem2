@@ -5,5 +5,5 @@ I want to support at least 100 courses
 
 Scenario: add 100 courses to the database
 Given a course name testCourse
-When the database request is made
+When I try to add it a 100 times to the database
 Then the output is true 

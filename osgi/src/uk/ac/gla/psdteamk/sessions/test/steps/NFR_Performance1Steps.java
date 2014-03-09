@@ -32,14 +32,14 @@ public class NFR_Performance1Steps {
 		this.courseId = courseId;
 	}
 	
-	@When("the database request is made")
+	@When("I try to add 10 sessions to this course")
 	public void queryDatabase() {
 		for (int i = 0; i < 10; i++) {
 			output = (output && dbs.addSessionToDatabase(new Session((i*i + 1337), courseId, 1, 7, "testType")));
 		}		 
 	}
 	
-	@Then("the output is $output")
+	@Then("the database adding indicator has to be $output")
 	public void theOutputIs(boolean output) {
 		assertEquals(this.output, output);
 	}	

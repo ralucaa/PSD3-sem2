@@ -35,6 +35,10 @@ public class ImportMyCampusCourseSteps extends Steps {
 	public void givenAMyCampusID(String co) {
 		this.myCourse = new Course(0, co);
 	}
+	@Given("a false MyCampus course $co")
+	public void givenAFalseMyCampusID(String co) {
+		this.myCourse = new Course(0, co);
+	}
 
 	@When("I try to retrieve the course information ")
 	public void whenIRetrieveCourseInfo() {
@@ -45,4 +49,9 @@ public class ImportMyCampusCourseSteps extends Steps {
 	public void thenTheOutcomeShould() {
 		assertEquals(true, importCourses);
 	}
+	@Then("a function should accept this course and the function should return false")
+	public void thenTheOutcomeShouldBeFalse() {
+		assertEquals(false, importCourses);
+	}
+	
 }

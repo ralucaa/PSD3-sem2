@@ -31,7 +31,7 @@ public class NFR_Performance2Steps extends Steps {
 	public void afterScenario() throws Exception {
 	}
 	
-	@Given("Given a number of users $u")
+	@Given("a number of users $u")
 	public void givenADatabase(int u) {
 		this.users = u;
 	}

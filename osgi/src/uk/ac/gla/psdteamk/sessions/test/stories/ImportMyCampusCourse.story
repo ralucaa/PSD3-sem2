@@ -11,9 +11,4 @@ Then a function should accept this course and the function should return the ses
 Scenario: invalid Mycampus course
 Given a false MyCampus course whatever
 When I try to retrieve the course information 
-Then a function should accept this course and the function should return an error 
-
-Scenario: valid MyCampus course
-Given a valid MyCampus course cour
-When I try to retrieve the course information 
-Then a function should accept this course and the function should not return any errors
+Then a function should accept this course and the function should return false

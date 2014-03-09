@@ -32,11 +32,11 @@ public class NFR_Performance0Steps {
 		this.courseName = courseName;
 	}
 	
-	@When("the database request is made")
-	public void queryDatabase() {
-		for (int i = 0; i < 100; i++) {
+	@When("I try to add it a $numOfAdded times to the database")
+	public void queryDatabase(int numOfAdded) {
+		for (int i = 0; i < numOfAdded; i++) {
 			output = (output && dbs.addCourseToDatabase(new Course((i*i + 1337), courseName + i)));
-		}		 
+		}
 	}
 	
 	@Then("the output is $output")

@@ -39,12 +39,12 @@ public class BookTimetableSlotSteps {
 			output = service.bookSlot(studentToken, slotId);
 		}
 		
-		@Then("the output is true")
+		@Then("the booking function's output is true")
 		public void theOutputIsTrue() {
 			assertEquals(true, output);
 		}	
 		
-		@Then("the output is false")
+		@Then("the booking function's output is false")
 		public void theOutputIsFalse() {
 			assertEquals(false, output);
 		}	
