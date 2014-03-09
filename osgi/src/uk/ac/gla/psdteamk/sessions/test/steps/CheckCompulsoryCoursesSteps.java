@@ -21,7 +21,7 @@ public class CheckCompulsoryCoursesSteps {
 	public void beforeScenario() throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
-		studentToken = service.authenticate("3333333B", "3333333B");
+		//studentToken = service.authenticate("3333333B", "3333333B");
 	}
 	
 	@AfterScenario
@@ -30,17 +30,22 @@ public class CheckCompulsoryCoursesSteps {
 	
 	@Given("a student username $username")
 	public void aStudentUsername(String username) {
+		studentToken = service.authenticate("33bogus33B", "bogus333B");
 		student = new Account(username, "", "", "", 1);
 	}
 	
-	@When("the database request is made")
-	public void queryDatabase() {
+	@When("I check the student in database")
+	public void isFalseStudentRegistered() {
 		output = service.checkIfFullyRegistered(studentToken);
 	}
 	
-	@Then("the output is $output")
-	public void theOutputIs(boolean output) {
-		//assertEquals(this.output, output);
-		fail("test not implemented");
+	@Then("the output of the check is $output")
+	public void thenCheck(boolean output) {
+		if(output == false){
+			assertEquals(this.output, false);
+		}else{
+			assertEquals(this.output, true);
+		}
+		
 	}	
 }
