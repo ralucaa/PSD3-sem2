@@ -35,7 +35,7 @@ public class NFR_Performance1Steps {
 	@When("I try to add 10 sessions to this course")
 	public void queryDatabase() {
 		for (int i = 0; i < 10; i++) {
-			output = (output && dbs.addSessionToDatabase(new Session((i*i + 1337), courseId, 1, 7, "testType")));
+			output = (output && dbs.addSessionToDatabase(new Session(courseId, 1, 7, "testType")));
 		}		 
 	}
 	

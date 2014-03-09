@@ -12,7 +12,7 @@ public class TimetableSlot {
 	private DateTime end_time;
 	private int room;
 	private int capacity;
-	
+
 	public TimetableSlot(int id, int session_id, DateTime date,
 			DateTime start_time, DateTime end_time, int room, int capacity) {
 		super();
@@ -24,20 +24,18 @@ public class TimetableSlot {
 		this.room = room;
 		this.capacity = capacity;
 	}
-	
+
 	public TimetableSlot(int id, int session_id, String date,
 			String start_time, String end_time, int room, int capacity) {
-		super();
-		this.id = id;
-		this.session_id = session_id;
-		this.date = DateTimeOps.parseDateStringToJodaTime(date);
-		this.start_time = DateTimeOps.parseTimeStringToJodaTime(start_time);
-		this.end_time = DateTimeOps.parseTimeStringToJodaTime(end_time);
-		this.room = room;
-		this.capacity = capacity;
+		this(id, session_id, DateTimeOps.parseDateStringToJodaTime(date), DateTimeOps.parseTimeStringToJodaTime(start_time), DateTimeOps.parseTimeStringToJodaTime(end_time), room, capacity);
 	}	
-	
-	
+
+	public TimetableSlot(int session_id, String date,
+			String start_time, String end_time, int room, int capacity) {
+		this(-1, session_id, date, start_time, end_time, room, capacity);
+	}
+
+
 
 	public int getId() {
 		return id;

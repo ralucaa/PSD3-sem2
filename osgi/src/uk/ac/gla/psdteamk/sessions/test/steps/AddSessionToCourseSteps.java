@@ -32,12 +32,12 @@ public class AddSessionToCourseSteps extends Steps {
 	
 	@AfterScenario
 	public void afterScenario() throws Exception {
-		SetupFramework.deleteDatabaseData();;
+		SetupFramework.deleteDatabaseData();
 	}
 	
-	@Given("a sessionID $session for course $course")
-	public void givenASessionForAValidCourse(int session, int course) {
-		this.session = new Session(session, course, D_COMPULSORY, D_FREQ, D_TYPE);
+	@Given("a new session for course $course")
+	public void givenASessionForAValidCourse(int course) {
+		this.session = new Session(course, D_COMPULSORY, D_FREQ, D_TYPE);
 	}
 	
 	@When("a user tries to add it to the database")

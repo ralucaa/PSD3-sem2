@@ -88,7 +88,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		try {
 			stmt.executeUpdate(
 					"CREATE TABLE \"Session\" ("
-							+ "\"id\" INTEGER PRIMARY KEY,"
+							+ "\"id\" INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
 							+ "\"course\" INTEGER NOT NULL,"
 							+ "\"compulsory\" INTEGER DEFAULT 0 NOT NULL,"
 							+ "\"frequency\" INTEGER DEFAULT 0 NOT NULL,"
@@ -100,7 +100,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		try {
 			stmt.executeUpdate(
 					"CREATE TABLE \"TimetableSlot\" ("
-							+ "\"id\" INTEGER PRIMARY KEY,"
+							+ "\"id\" INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
 							+ "\"session\" INTEGER NOT NULL,"
 							+ "\"date\" VARCHAR(10),"
 							+ "\"start_time\" VARCHAR(8),"
