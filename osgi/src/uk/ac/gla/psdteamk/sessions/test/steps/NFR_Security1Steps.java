@@ -26,8 +26,8 @@ public class NFR_Security1Steps extends Steps {
 	@AfterScenario
 	public void afterScenario() throws Exception {
 	}
-	
-	@Given("a username $username and a password $password")
+
+	@Given("a username $username with password $password")
 	public void givenASessionAndAFrequency(String username, String password) {
 		this.username = username;
 		this.password = password;
@@ -38,7 +38,7 @@ public class NFR_Security1Steps extends Steps {
 		token = service.authenticate(username, password);
 	}
 	
-	@Then("he should be authenticated as a $type")
+	@Then("the user should be authenticated as a $type")
 	public void shouldBeAuthenticatedAsAType(String type) {
 		assertEquals(type, service.accountGetType(token));
 	}

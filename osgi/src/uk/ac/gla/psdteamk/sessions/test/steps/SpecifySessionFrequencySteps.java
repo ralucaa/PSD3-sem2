@@ -3,8 +3,7 @@ package uk.ac.gla.psdteamk.sessions.test.steps;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 
-import org.jbehave.core.annotations.AfterScenario;
-import org.jbehave.core.annotations.BeforeScenario;
+import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -18,35 +17,24 @@ public class SpecifySessionFrequencySteps extends Steps {
 	private boolean result;
 	private int lecturerToken;
 	
-	@BeforeScenario
-	public void beforeScenario() throws Exception {
+	@Given("a username $username, a password $password, a session $session and a frequency $frequency")
+	public void givenASessionAndAFrequency(String username, String password, int session, int frequency) throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
-		lecturerToken = service.authenticate("2222222A", "2222222A");
+		this.session = session;
+		this.frequency = frequency;
+		lecturerToken = service.authenticate(username, password);
 	}
 	
-	@AfterScenario
-	public void afterScenario() throws Exception {
-	}
-	
-	@Given("a session $session and a frequency $frequency")
-	public void givenASessionAndAFrequency(String session, String frequency) {
-		this.session = Integer.parseInt(session);
-		this.frequency = Integer.parseInt(frequency);
-	}
-	
-	@When("the user updates the session")
+	@When("the user updates the session frequency")
 	public void userUpdatesTheSession() {
 		result = service.changeFrequency(lecturerToken, session, frequency);
 	}
 	
-	@Then("the session frequency should be updated in the database and the function should return true")
-	public void shouldBeAddedToTheDatabaseAndReturnTrue() {
-		assertEquals(true, result);
-	}
-	
-	@Then("the session frequency should not be updated in the database and the function should return false")
-	public void shouldNotBeAddedToTheDatabaseAndReturnFalse() {
-		assertEquals(false, result);
+	@Then("the session frequency should be updated in the database and the function should return $expectedResult")
+	@Alias("the session frequency should not be updated in the database and the function should return $expectedResult")
+	public void shouldBeAddedToTheDatabaseAndReturnTrue(String expectedResult) {
+		boolean boolExpectedResult = Boolean.parseBoolean(expectedResult);
+		assertEquals(boolExpectedResult, result);
 	}
 }
