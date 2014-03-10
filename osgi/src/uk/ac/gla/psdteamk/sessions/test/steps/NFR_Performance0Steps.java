@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 public class NFR_Performance0Steps {
     String courseName;
-    boolean output = true;
+    boolean result = true;
     private SessionManagerService sms;
     
     @Given("a course name $courseName")
@@ -27,13 +27,14 @@ public class NFR_Performance0Steps {
     public void queryDatabase(int numOfAdded) {
         for (int i = 0; i < numOfAdded; i++) {
             //output = (output && dbs.addCourseToDatabase(new Course((i*i + 1337), courseName + i)));
-            output= (output && sms.addSessionToCourse(i, new Session(1,1,1,courseName)));
+            result= (result && sms.addSessionToCourse(i, new Session(1,1,1,courseName)));
             //output =(output && sms.addSessionToCourse(i, new Session(1,1,1,1,"")));
         }
     }
     
-    @Then("the output is true")
-    public void theOutputIs(boolean output) {
-        assertEquals(this.output, output);
+    @Then("the result of performance test 0 should be $output")
+    public void theOutputIs(String output) {
+    	boolean boolOutput = Boolean.parseBoolean(output);
+        assertEquals(boolOutput, result);
     }    
 }

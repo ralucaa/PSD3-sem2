@@ -20,7 +20,7 @@ import org.jbehave.core.steps.Steps;
 public class NFR_Performance2Steps extends Steps {
 	private DatabaseAdapterService dbs;
 	private int users;
-	private boolean imported;
+	private boolean result;
 	
 	@Given("a number of users $u")
 	public void givenADatabase(int u) {
@@ -46,29 +46,17 @@ public class NFR_Performance2Steps extends Steps {
 				preparedStatement.execute();
 			}
 			System.out.println("The course has been successfully imported!");
-			imported = true;
+			result = true;
 		} catch (SQLException ex) {
 			System.out.println("This course is already imported!");
-		} finally {
-			//Close the connections.
-			try {
-				if (preparedStatement != null){
-					preparedStatement.close();
-				}
-				if (con != null){
-					con.close();
-				}
-			}
-			catch (SQLException ex){
-				System.out.println(ex.getMessage());
-			}
 		}
-		imported =  false;
+		result =  false;
 	}
 	
-	@Then("it should return true")
-	public void check() {
-		assertEquals(true,imported);
+	@Then("the result of performance test 2 should be $output")
+	public void check(String output) {
+		boolean boolOutput = Boolean.parseBoolean(output);
+		assertEquals(boolOutput, result);
 	}
 
 }

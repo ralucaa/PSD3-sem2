@@ -15,7 +15,7 @@ import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 import org.jbehave.core.steps.Steps;
 
 public class ImportMyCampusCourseSteps extends Steps {
-	private boolean importCourses;
+	private boolean result;
 	private SessionManagerService service;
 	private Course myCourse;
 	private int lecturerToken;
@@ -35,18 +35,15 @@ public class ImportMyCampusCourseSteps extends Steps {
 		this.myCourse = new Course(co, "New Course");
 	}
 
-	@When("I try to retrieve the course information ")
+	@When("I try to retrieve the course information")
 	public void whenIRetrieveCourseInfo() {
-		importCourses = service.importCourse(lecturerToken, myCourse);
+		result = service.importCourse(lecturerToken, myCourse);
 	}
 
-	@Then("a function should accept this course and the function should return true")
-	public void thenTheOutcomeShould() {
-		assertEquals(true, importCourses);
-	}
-	@Then("a function should accept this course and the function should return false")
-	public void thenTheOutcomeShouldBeFalse() {
-		assertEquals(false, importCourses);
+	@Then("the result of the import should be $output")
+	public void thenTheOutcomeShould(String output) {
+		boolean boolOutput = Boolean.getBoolean(output);
+		assertEquals(boolOutput, result);
 	}
 	
 }

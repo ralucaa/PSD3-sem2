@@ -36,13 +36,9 @@ public class AddSessionToCourseSteps extends Steps {
 		result = service.addSessionToCourse(lecturerToken, session);
 	}
 	
-	@Then("it should be added to the database and the function should return true")
-	public void shouldBeAddedToTheDatabaseAndReturnTrue() {
-		assertEquals(true, result);
-	}
-	
-	@Then("it should not be added to the database and the function should return false")
-	public void shouldNotBeAddedToTheDatabaseAndReturnFalse() {
-		assertEquals(false, result);
+	@Then("the result of the addition should be $output")
+	public void shouldBeAddedToTheDatabaseAndReturnTrue(String output) {
+		boolean boolOutput = Boolean.parseBoolean(output);
+		assertEquals(result, boolOutput);
 	}
 }
