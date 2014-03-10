@@ -453,7 +453,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	 */
 	public Session getSession(int session_id) {
 		// Retrieve room details from the database
-		String query = "SELECT * FROM \"Session\" WHERE id = ?";
+		String query = "SELECT * FROM \"Session\" WHERE \"id\" = ?";
 		Connection con = null;
 		Session session = null;
 		PreparedStatement preparedStatement = null;
@@ -507,7 +507,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	
 	public TimetableSlot getTimetableSlot(int slotId) {
 		// Retrieve room details from the database
-		String query = "SELECT * FROM \"TimetableSlot\" WHERE id = ?";
+		String query = "SELECT * FROM \"TimetableSlot\" WHERE \"id\" = ?";
 		Connection con = null;
 		TimetableSlot slot = null;
 		PreparedStatement preparedStatement = null;
