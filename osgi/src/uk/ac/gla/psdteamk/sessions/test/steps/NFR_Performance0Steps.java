@@ -17,17 +17,9 @@ public class NFR_Performance0Steps {
     boolean output = true;
     private SessionManagerService sms;
     
-    @BeforeScenario
-    public void beforeScenario() throws Exception {
-        sms= SetupFramework.getSessionManagerService();
-    }
-    
-    @AfterScenario
-    public void afterScenario() throws Exception {
-    }
-    
     @Given("a course name $courseName")
-    public void aStudentUsername(String courseName) {            
+    public void aStudentUsername(String courseName) {   
+        sms= SetupFramework.getSessionManagerService();         
         this.courseName = courseName;
     }
     

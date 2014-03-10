@@ -22,17 +22,9 @@ public class NFR_Performance2Steps extends Steps {
 	private int users;
 	private boolean imported;
 	
-	@BeforeScenario
-	public void beforeScenario() throws Exception {
-		dbs = SetupFramework.getDatabaseAdapterService();
-	}
-	
-	@AfterScenario
-	public void afterScenario() throws Exception {
-	}
-	
 	@Given("a number of users $u")
 	public void givenADatabase(int u) {
+		dbs = SetupFramework.getDatabaseAdapterService();
 		this.users = u;
 	}
 	

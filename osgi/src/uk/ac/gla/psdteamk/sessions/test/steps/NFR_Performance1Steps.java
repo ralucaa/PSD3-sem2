@@ -18,17 +18,9 @@ public class NFR_Performance1Steps {
 	int courseId;
 	boolean output = true;
 	
-	@BeforeScenario
-	public void beforeScenario() throws Exception {
-		dbs = SetupFramework.getDatabaseAdapterService();
-	}
-	
-	@AfterScenario
-	public void afterScenario() throws Exception {
-	}
-	
 	@Given("a course id $courseName")
-	public void aStudentUsername(int courseId) {			
+	public void aStudentUsername(int courseId) {	
+		dbs = SetupFramework.getDatabaseAdapterService();		
 		this.courseId = courseId;
 	}
 	

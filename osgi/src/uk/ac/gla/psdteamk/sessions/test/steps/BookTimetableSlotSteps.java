@@ -22,13 +22,21 @@ public class BookTimetableSlotSteps {
 		public void aStudentUsername(int slotId) throws Exception {
 			SetupFramework.defaultPopulate();
 			service = SetupFramework.getSessionManagerService();
-			studentToken = service.authenticate("3333333B", "3333333B");		
+			studentToken = service.authenticate("3333333C", "3333333C");		
 			this.slotId = slotId;
 		}
 		
 		@When("the database request is made")
 		public void queryDatabase() {
+			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+			System.out.println("queryDabase() - before booking the slot");
+			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+			
 			output = service.bookSlot(studentToken, slotId);
+			
+			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+			System.out.println("queryDabase() - after booking the slot");
+			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 		}
 		
 		@Then("the booking function's output is true")
