@@ -44,16 +44,9 @@ public class CreateTimetableSlotForSessionSteps extends Steps{
 		result=service.createTimetableSlot(adminToken, timetableSlot);
 	}
 	
-	@Then("true is returned")
-	public void returnResultTrue(){
-		assertEquals(true,result);
+	@Then("the result of creating the timetable slot is $output")
+	public void returnResultTrue(String output){
+		boolean boolOutput = Boolean.getBoolean(output);
+		assertEquals(boolOutput, result);
 	}
-	
-	@Then("false is returned")
-	public void returnResultFalse(){
-		assertEquals(false,result);
-	}
-	
-
-	
 }
