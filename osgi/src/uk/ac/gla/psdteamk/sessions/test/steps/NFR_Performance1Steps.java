@@ -32,8 +32,9 @@ public class NFR_Performance1Steps {
 	}
 	
 	@Then("the database adding indicator has to be $output")
-	public void theOutputIs(boolean output) {
-		assertEquals(this.output, output);
+	public void theOutputIs(String output) {
+		boolean boolOutput = Boolean.parseBoolean(output);
+		assertEquals(this.output, boolOutput);
 	}	
 }
 

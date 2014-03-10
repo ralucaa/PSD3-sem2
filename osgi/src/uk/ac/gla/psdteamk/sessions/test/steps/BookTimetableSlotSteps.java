@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 public class BookTimetableSlotSteps {
 		private SessionManagerService service;		
 		int slotId;
-		boolean output;
+		boolean result;
 		private int studentToken;
 		
 		@Given("a slotId $slotId")
@@ -32,21 +32,17 @@ public class BookTimetableSlotSteps {
 			System.out.println("queryDabase() - before booking the slot");
 			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 			
-			output = service.bookSlot(studentToken, slotId);
+			result = service.bookSlot(studentToken, slotId);
 			
 			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 			System.out.println("queryDabase() - after booking the slot");
 			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 		}
 		
-		@Then("the booking function's output is true")
-		public void theOutputIsTrue() {
-			assertEquals(true, output);
-		}	
-		
-		@Then("the booking function's output is false")
-		public void theOutputIsFalse() {
-			assertEquals(false, output);
-		}	
+		@Then("the booking function's output is $output")
+		public void theOutputIsTrue(String output) {
+			boolean boolOutput = Boolean.getBoolean(output);
+			assertEquals(result, boolOutput);
+		}
 
 }
