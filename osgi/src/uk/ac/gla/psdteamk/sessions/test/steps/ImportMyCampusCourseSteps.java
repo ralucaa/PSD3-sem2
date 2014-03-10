@@ -20,14 +20,14 @@ public class ImportMyCampusCourseSteps extends Steps {
 	private Course myCourse;
 	private int lecturerToken;
 	
-	@Given("a valid MyCampus course $co")
+	@Given("a valid MyCampus course with id $co")
 	public void givenAMyCampusID(int co)  throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		lecturerToken = service.authenticate("2222222A", "2222222A");
 		this.myCourse = new Course(co, "New course");
 	}
-	@Given("a false MyCampus course $co")
+	@Given("an already existing MyCampus course with id $co")
 	public void givenAFalseMyCampusID(int co) throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
@@ -35,7 +35,7 @@ public class ImportMyCampusCourseSteps extends Steps {
 		this.myCourse = new Course(co, "New Course");
 	}
 
-	@When("I try to retrieve the course information")
+	@When("I try to add it into the database")
 	public void whenIRetrieveCourseInfo() {
 		result = service.importCourse(lecturerToken, myCourse);
 	}
