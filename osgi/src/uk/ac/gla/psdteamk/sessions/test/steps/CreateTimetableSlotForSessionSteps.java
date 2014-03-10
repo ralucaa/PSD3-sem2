@@ -40,7 +40,7 @@ public class CreateTimetableSlotForSessionSteps extends Steps{
 	}
 	
 	@When("the administrator tries to create a timetable slot for a session")
-	public void createSlot(Session session){
+	public void createSlot(){
 		result=service.createTimetableSlot(adminToken, timetableSlot);
 	}
 	
