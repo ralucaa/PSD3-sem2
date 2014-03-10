@@ -28,15 +28,7 @@ public class BookTimetableSlotSteps {
 		
 		@When("the database request is made")
 		public void queryDatabase() {
-			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-			System.out.println("queryDabase() - before booking the slot");
-			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-			
 			result = service.bookSlot(studentToken, slotId);
-			
-			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-			System.out.println("queryDabase() - after booking the slot");
-			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 		}
 		
 		@Then("the booking function's output is $output")

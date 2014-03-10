@@ -39,6 +39,6 @@ public class AddSessionToCourseSteps extends Steps {
 	@Then("the result of the addition should be $output")
 	public void shouldBeAddedToTheDatabaseAndReturnTrue(String output) {
 		boolean boolOutput = Boolean.parseBoolean(output);
-		assertEquals(result, boolOutput);
+		assertEquals(boolOutput, result);
 	}
 }

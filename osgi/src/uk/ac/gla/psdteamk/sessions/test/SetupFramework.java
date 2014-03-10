@@ -161,8 +161,8 @@ public class SetupFramework {
 		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(9,'17/01/2014','10:00','12:00',2,080)");
 		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(9,'17/01/2014','14:00','15:00',5,120)");
 		
-		stmt.close();
-		conn.close();
+		//stmt.close();
+		//conn.close();
 	}
 	
 	public static void stop() throws Exception{

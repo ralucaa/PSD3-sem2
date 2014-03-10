@@ -13,7 +13,6 @@ class SpecifySessionFrequency {
 	 * @param frequency - number of days that indicates how often the session occurs
 	 */
 	protected static boolean changeFrequency(DatabaseAdapterService da, int sessionId, int frequency) {
-		System.out.println("================FREQ: " + frequency + " Ses ID: " + sessionId);
 		// Check that the frequency and sessionId are valid.
 		if (frequency < 0 || da.getSession(sessionId) == null) {
 			return false;
@@ -34,7 +33,6 @@ class SpecifySessionFrequency {
 			//Execute the statement and get the result.
 			preparedStatement.execute();
 
-			System.out.println("Frequency of value=" + frequency + " has been assigned to session (id=" + sessionId + ")");
 			return true;
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());

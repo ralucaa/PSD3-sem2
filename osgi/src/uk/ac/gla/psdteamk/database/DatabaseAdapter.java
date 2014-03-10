@@ -117,7 +117,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	public boolean deleteEverything() {
 		Connection conn = getConnection();
 		if (conn == null) {
-			System.out.println("Connection null in deleteEverything (retrying)");
+			System.out.println(">>> Connection is null in deleteEverything");
 		}
 		try {
 			Statement stmt = conn.createStatement();
@@ -129,10 +129,9 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			stmt.executeUpdate("DELETE FROM \"TimetableSlot\"");
 			stmt.close();
 			conn.close();
-			System.out.println("deleteEverything completed");
 			return true;
 		} catch (SQLException e) {
-			System.out.println("deleteEverything : " + e.getMessage() + " (retrying)");
+			System.out.println(">>> deleteEverything : " + e.getMessage());
 			return false;
 		}
 	}
@@ -369,6 +368,11 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	}
 
 	public boolean addSessionToDatabase(Session session) {
+		// Ensure the provided session object is valid.
+		if (getCourse(session.getCourse()) == null || session.getFrequency() < 0 || (session.getCompulsory() != 0 && session.getCompulsory() != 1)) {
+			return false;
+		}
+		
 		// Add to database.
 		String sql = "INSERT INTO \"Session\"(\"course\", \"compulsory\", \"frequency\", \"type\") VALUES (?, ?, ?, ?)";
 		Connection con = null;

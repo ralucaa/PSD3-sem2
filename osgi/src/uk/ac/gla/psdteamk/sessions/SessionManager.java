@@ -40,9 +40,6 @@ public class SessionManager implements SessionManagerService {
 	
 	public String accountGetType(int token) {
 		Account acc = logins.get(token);
-		System.out.println("******************************Got a type!");
-		System.out.println(token);
-		System.out.println("Type is " + acc.getType() + "!");
 		return acc.getType();
 	}
 	
