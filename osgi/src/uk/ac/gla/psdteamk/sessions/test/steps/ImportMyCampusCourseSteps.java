@@ -21,18 +21,18 @@ public class ImportMyCampusCourseSteps extends Steps {
 	private int lecturerToken;
 	
 	@Given("a valid MyCampus course $co")
-	public void givenAMyCampusID(String co)  throws Exception {
+	public void givenAMyCampusID(int co)  throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		lecturerToken = service.authenticate("2222222A", "2222222A");
-		this.myCourse = new Course(0, co);
+		this.myCourse = new Course(co, "New course");
 	}
 	@Given("a false MyCampus course $co")
-	public void givenAFalseMyCampusID(String co) throws Exception {
+	public void givenAFalseMyCampusID(int co) throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		lecturerToken = service.authenticate("2222222A", "2222222A");
-		this.myCourse = new Course(0, co);
+		this.myCourse = new Course(co, "New Course");
 	}
 
 	@When("I try to retrieve the course information ")
@@ -40,7 +40,7 @@ public class ImportMyCampusCourseSteps extends Steps {
 		importCourses = service.importCourse(lecturerToken, myCourse);
 	}
 
-	@Then("a function should accept this course and the function should return the sessions for this course")
+	@Then("a function should accept this course and the function should return true")
 	public void thenTheOutcomeShould() {
 		assertEquals(true, importCourses);
 	}
