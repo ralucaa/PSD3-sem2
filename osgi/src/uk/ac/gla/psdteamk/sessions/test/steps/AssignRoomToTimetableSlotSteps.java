@@ -26,20 +26,11 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 	private int roomId;
 	private int adminToken;
 	
-	@BeforeScenario
-	public void beforeScenario() throws Exception {
+	@Given("a sessionId $sessionId and roomId $roomId")
+	public void validSessionRoomId(int sessionId, int roomId) throws Exception  {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		adminToken = service.authenticate("1111111A", "1111111A");
-	}
-	
-	@AfterScenario
-	public void afterScenario() throws Exception {
-		SetupFramework.deleteDatabaseData();
-	}
-	
-	@Given("a sessionId $sessionId and roomId $roomId")
-	public void validSessionRoomId(int sessionId, int roomId) {
 		this.sessionId=sessionId;
 		this.roomId=roomId;
 	}

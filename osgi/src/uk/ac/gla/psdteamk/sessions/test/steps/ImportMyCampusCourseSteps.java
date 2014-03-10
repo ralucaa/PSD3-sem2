@@ -19,24 +19,19 @@ public class ImportMyCampusCourseSteps extends Steps {
 	private SessionManagerService service;
 	private Course myCourse;
 	private int lecturerToken;
-
-	@BeforeScenario
-	public void beforeScenario() throws Exception {
+	
+	@Given("a valid MyCampus course $co")
+	public void givenAMyCampusID(String co)  throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		lecturerToken = service.authenticate("2222222A", "2222222A");
-	}
-
-	@AfterScenario
-	public void afterScenario() throws Exception {
-	}
-
-	@Given("a valid MyCampus course $co")
-	public void givenAMyCampusID(String co) {
 		this.myCourse = new Course(0, co);
 	}
 	@Given("a false MyCampus course $co")
-	public void givenAFalseMyCampusID(String co) {
+	public void givenAFalseMyCampusID(String co) throws Exception {
+		SetupFramework.defaultPopulate();
+		service = SetupFramework.getSessionManagerService();
+		lecturerToken = service.authenticate("2222222A", "2222222A");
 		this.myCourse = new Course(0, co);
 	}
 

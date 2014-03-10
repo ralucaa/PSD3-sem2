@@ -15,18 +15,10 @@ public class CheckCompulsoryCoursesSteps {
 	boolean output;
 	private int studentToken;
 	
-	@BeforeScenario
-	public void beforeScenario() throws Exception {
+	@Given("a student with username $username and password $password")
+	public void aStudentUsername(String username, String password) throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
-	}
-	
-	@AfterScenario
-	public void afterScenario() throws Exception {
-	}
-	
-	@Given("a student with username $username and password $password")
-	public void aStudentUsername(String username, String password) {
 		studentToken = service.authenticate(username, password);
 	}
 	

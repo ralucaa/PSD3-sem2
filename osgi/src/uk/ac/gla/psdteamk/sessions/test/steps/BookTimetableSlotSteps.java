@@ -18,19 +18,11 @@ public class BookTimetableSlotSteps {
 		boolean output;
 		private int studentToken;
 		
-		@BeforeScenario
-		public void beforeScenario() throws Exception {
+		@Given("a slotId $slotId")
+		public void aStudentUsername(int slotId) throws Exception {
 			SetupFramework.defaultPopulate();
 			service = SetupFramework.getSessionManagerService();
-			studentToken = service.authenticate("3333333B", "3333333B");
-		}
-		
-		@AfterScenario
-		public void afterScenario() throws Exception {
-		}
-		
-		@Given("a slotId $slotId")
-		public void aStudentUsername(int slotId) {			
+			studentToken = service.authenticate("3333333B", "3333333B");		
 			this.slotId = slotId;
 		}
 		

@@ -17,18 +17,10 @@ public class NFR_Security0Steps extends Steps {
 	private String username, password;
 	private int token;
 	
-	@BeforeScenario
-	public void beforeScenario() throws Exception {
+	@Given("a username $username and a password $password")
+	public void givenASessionAndAFrequency(String username, String password) throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
-	}
-	
-	@AfterScenario
-	public void afterScenario() throws Exception {
-	}
-	
-	@Given("a username $username and a password $password")
-	public void givenASessionAndAFrequency(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}

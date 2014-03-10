@@ -22,19 +22,12 @@ public class NFR_Performance3Steps extends Steps {
 	private static final int D_ID = 2500, D_CAPACITY = 100, D_ROOM = 1;
 	private static final DateTime D_DATE = DateTime.now(), D_START_TIME = DateTime.now(), D_END_TIME = DateTime.now().plusHours(2);
 	
-	@BeforeScenario
-	public void beforeScenario() throws Exception {
+	
+	@Given("an admin tries to add more than 20 timetable slots to the session $id")
+	public void assignSession(int id) throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		adminToken = service.authenticate("1111111A", "11111111A");
-	}
-	
-	@AfterScenario
-	public void afterScenario() throws Exception {
-	}
-	
-	@Given("an admin tries to add more than 20 timetable slots to the session $id")
-	public void assignSession(int id) {
 		this.id = id;
 	}
 	

@@ -31,20 +31,7 @@ public class ImportMyCampusCourses {
 			return true;
 		} catch (SQLException ex) {
 			System.out.println("This course is already imported!");
-		} finally {
-			//Close the connections.
-			try {
-				if (preparedStatement != null){
-					preparedStatement.close();
-				}
-				if (con != null){
-					con.close();
-				}
-			}
-			catch (SQLException ex){
-				System.out.println(ex.getMessage());
-			}
-		}
+		} 
 		return false;
 	}
 }

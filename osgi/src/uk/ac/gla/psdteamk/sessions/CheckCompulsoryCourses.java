@@ -67,23 +67,7 @@ class CheckCompulsoryCourses {
 		} catch (SQLException ex) {
 			System.out.println("Probably student number not present in the database");
 			ex.printStackTrace();
-		} finally {
-			//Close the connections.
-			try {
-				if (registered != null){
-					registered.close();
-				}
-				if(notRegistered != null){
-					notRegistered.close();
-				}
-				if (con != null){
-					con.close();
-				}
-			}
-			catch (SQLException ex){
-				System.out.println(ex.getMessage());
-			}
-		}
+		} 
 		return false;
 	}
 }

@@ -16,19 +16,11 @@ public class NFR_Security1Steps extends Steps {
 	private SessionManagerService service;
 	private String username, password;
 	private int token;
-	
-	@BeforeScenario
-	public void beforeScenario() throws Exception {
-		SetupFramework.defaultPopulate();
-		service = SetupFramework.getSessionManagerService();
-	}
-	
-	@AfterScenario
-	public void afterScenario() throws Exception {
-	}
 
 	@Given("a username $username with password $password")
-	public void givenASessionAndAFrequency(String username, String password) {
+	public void givenASessionAndAFrequency(String username, String password) throws Exception {
+		SetupFramework.defaultPopulate();
+		service = SetupFramework.getSessionManagerService();
 		this.username = username;
 		this.password = password;
 	}

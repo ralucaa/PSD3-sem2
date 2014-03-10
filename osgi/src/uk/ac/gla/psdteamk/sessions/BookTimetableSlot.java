@@ -37,19 +37,6 @@ class BookTimetableSlot {
 			return true;
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
-		} finally {
-			//Close the connections.
-			try {
-				if (preparedStatement != null){
-					preparedStatement.close();
-				}
-				if (con != null){
-					con.close();
-				}
-			}
-			catch (SQLException ex){
-				System.out.println(ex.getMessage());
-			}
 		}
 		return false;
 	}

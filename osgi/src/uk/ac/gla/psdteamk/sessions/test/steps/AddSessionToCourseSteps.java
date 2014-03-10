@@ -23,20 +23,11 @@ public class AddSessionToCourseSteps extends Steps {
 	private boolean result;
 	private int lecturerToken;
 	
-	@BeforeScenario
-	public void beforeScenario() throws Exception {
+	@Given("a new session for course $course")
+	public void givenASessionForAValidCourse(int course) throws Exception{
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		lecturerToken = service.authenticate("2222222A", "2222222A");
-	}
-	
-	@AfterScenario
-	public void afterScenario() throws Exception {
-		SetupFramework.deleteDatabaseData();
-	}
-	
-	@Given("a new session for course $course")
-	public void givenASessionForAValidCourse(int course) {
 		this.session = new Session(course, D_COMPULSORY, D_FREQ, D_TYPE);
 	}
 	

@@ -55,7 +55,7 @@ class CheckSessionDetails {
 					tutors.add(resultSet.getString(10));
 				}	
 			}
-			statement.close();
+
 			//session info displayed. if it was a lab session then tutor matric numbers added into the tutor ArrayList
 			//If it was a lab session, print the tutors
 			if(isLab){
@@ -76,18 +76,6 @@ class CheckSessionDetails {
 						break;
 					}
 				}
-
-				try {
-					if (tutorStatement != null){
-						tutorStatement.close();
-					}
-					if (myCampusCon != null){
-						myCampusCon.close();
-					}
-				}
-				catch (SQLException ex){
-					System.out.println(ex.getMessage());
-				}
 			}
 			//////////////////////////////////////////////////////////////////
 			//print all the students
@@ -101,7 +89,6 @@ class CheckSessionDetails {
 			while(resultSet.next()){
 				students.add(resultSet.getString(1));
 			}
-			statement.close();
 			System.out.println("\nStudents in this session:");
 			studentsQuery = "SELECT name FROM User WHERE guid = ?";
 			Connection myCampusCon = da.getConnection();
@@ -118,7 +105,6 @@ class CheckSessionDetails {
 					System.out.println("no students in this session");
 				}
 			}
-			myCampusCon.close();
 
 
 			System.out.println("\nQuery successfull!");
@@ -126,21 +112,7 @@ class CheckSessionDetails {
 		} catch (SQLException ex) {
 			System.out.println("Probably student number not present in the database");
 			ex.printStackTrace();
-		} finally {
-			//Close the connections.
-			try {
-				if (statement != null){
-					statement.close();
-				}
-
-				if (con != null){
-					con.close();
-				}
-			}
-			catch (SQLException ex){
-				System.out.println(ex.getMessage());
-			}
-		}
+		} 
 		return false;
 	}
 }

@@ -31,19 +31,11 @@ public class CreateTimetableSlotForSessionSteps extends Steps{
 	private TimetableSlot timetableSlot;
 	private int adminToken;
 	
-	@BeforeScenario
-	public void beforeScenario() throws Exception {
+	@Given("a session $session")
+	public void aSession(int session)throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		adminToken = service.authenticate("1111111A", "1111111A");
-	}
-	
-	@AfterScenario
-	public void afterScenario() throws Exception {
-	}
-	
-	@Given("a session $session")
-	public void aSession(int session){
 		timetableSlot = new TimetableSlot(D_ID, session, D_DATE, D_START_TIME, D_END_TIME, D_ROOM, D_CAPACITY);
 	}
 	
