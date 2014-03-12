@@ -12,7 +12,7 @@ class BookTimetableSlot {
 	 * @param slotId - a session reference in the database
 	 * @param roomId - a room reference in the Central Room Booking database
 	 */
-	static boolean bookSession(DatabaseAdapterService da, int slotId, String username) {
+	static boolean bookSlot(DatabaseAdapterService da, int slotId, String username) {
 		// Check if slotId exists in the database		
 		if (da.getTimetableSlot(slotId) == null) {
 			return false;
