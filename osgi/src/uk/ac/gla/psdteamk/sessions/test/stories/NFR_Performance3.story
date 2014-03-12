@@ -5,5 +5,5 @@ I want to support at least 20 different timetable slots per session
 
 Scenario: session slot num greater than 20
 Given an admin tries to add more than 20 timetable slots to the session 03
-When a database operation is performed
-Then it should do more than 20 insertions correctly
+When the admin adds all these timetable slots to a session
+Then it should do at least 20 insertions correctly
