@@ -7,6 +7,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.steps.Steps;
+import org.joda.time.DateTime;
 
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
@@ -25,6 +26,10 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 	private int sessionId;
 	private int roomId;
 	private int adminToken;
+	private DateTime date;
+	private DateTime start_time;
+	private DateTime end_time;
+	private int capacity;
 	
 	@Given("a sessionId $sessionId and roomId $roomId")
 	public void validSessionRoomId(int sessionId, int roomId) throws Exception  {
@@ -37,18 +42,16 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 	
 	@When("the assignRoom method is executed")
 	public void assignRoom(){
-		result=service.assignRoom(adminToken, sessionId, roomId);
+			result=service.assignRoom(adminToken, sessionId, roomId);
 	}
 	
-	@Then("the method returns true")
-	public void returnResultTrue(){
-		assertEquals(true,result);
+	@Then("the method returns output $output")
+	public void returnResultTrue(String output){
+		boolean boolOutput = Boolean.parseBoolean(output);
+		assertEquals(boolOutput, result);
 	}
 	
-	@Then("the method returns false")
-	public void returnResultFalse(){
-		assertEquals(false,result);
-	}
+	
 	
 	
 }
