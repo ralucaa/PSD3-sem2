@@ -64,4 +64,14 @@ public class MyCampusStub implements MyCampusService {
 	public synchronized ArrayList<Course> getAllCourses(){
 		return new ArrayList<Course>(courses);
 	}
+	
+	public synchronized boolean addUser(Account account) {
+		for (Account account1 : accounts) {
+			if (account.getUsername().equals(account1.getUsername())) {
+				return false;
+			}
+		}
+		accounts.add(account);
+		return true;
+	}
 }
