@@ -46,5 +46,4 @@ public class NFR_Performance3Steps extends Steps {
 	public void shouldBeGreaterThanTwenty(int expectedNumberOfSlots) {
 		assertEquals(true, (this.addedSessions > expectedNumberOfSlots));
 	}
-
 }

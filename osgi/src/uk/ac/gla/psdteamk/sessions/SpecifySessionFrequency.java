@@ -12,7 +12,7 @@ class SpecifySessionFrequency {
 	 * @param sessionId - a session reference in the database
 	 * @param frequency - number of days that indicates how often the session occurs
 	 */
-	protected static boolean changeFrequency(DatabaseAdapterService da, int sessionId, int frequency) {
+	public static boolean changeFrequency(DatabaseAdapterService da, int sessionId, int frequency) {
 		// Check that the frequency and sessionId are valid.
 		if (frequency < 0 || da.getSession(sessionId) == null) {
 			return false;

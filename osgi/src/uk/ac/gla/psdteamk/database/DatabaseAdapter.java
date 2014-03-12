@@ -28,7 +28,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		try {
 			Connection conn = DriverManager.getConnection(DB_CONNECTION);
 			//System.out.println("getConnection");
-			while (!doneInit) {
+			if  (!doneInit) {
 				System.out.println("Could not initialise tables! Retrying.");
 				doneInit = createTables(conn);
 			}

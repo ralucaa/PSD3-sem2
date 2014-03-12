@@ -38,6 +38,3 @@ public class NFR_Performance1Steps {
 		assertEquals(boolOutput,this.output);
 	}	
 }
-
-
-
