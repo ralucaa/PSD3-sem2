@@ -15,11 +15,13 @@ import static org.junit.Assert.assertEquals;
 public class NFR_Performance0Steps {
     String courseName;
     boolean result = true;
+    private int lecturerToken;
     private SessionManagerService sms;
     
     @Given("a course name $courseName")
     public void aStudentUsername(String courseName) {   
-        sms= SetupFramework.getSessionManagerService();         
+        sms= SetupFramework.getSessionManagerService();  
+        lecturerToken = sms.authenticate("2222222A", "2222222A");
         this.courseName = courseName;
     }
     
@@ -27,7 +29,8 @@ public class NFR_Performance0Steps {
     public void queryDatabase(int numOfAdded) {
         for (int i = 0; i < numOfAdded; i++) {
             //output = (output && dbs.addCourseToDatabase(new Course((i*i + 1337), courseName + i)));
-            result= (result && sms.addSessionToCourse(i, new Session(1,1,1,courseName)));
+            result= (result && sms.addSessionToCourse(lecturerToken, new Session(1,1,1,courseName)));
+            System.out.println("The result is " + result);
             //output =(output && sms.addSessionToCourse(i, new Session(1,1,1,1,"")));
         }
     }
