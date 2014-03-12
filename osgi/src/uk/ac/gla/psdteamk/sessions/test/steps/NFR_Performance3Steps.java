@@ -32,18 +32,19 @@ public class NFR_Performance3Steps extends Steps {
 		this.numberOfSlots = number;
 	}
 	
-	@When("a database operation is performed")
+	@When("the admin adds all these timetable slots to a session")
 	public void addsSessions() {
 		for(int i=0;i<numberOfSlots;i++){
 			TimetableSlot timetableSlot = new TimetableSlot(D_ID, id, D_DATE, D_START_TIME, D_END_TIME, D_ROOM, D_CAPACITY);
-			service.createTimetableSlot(this.adminToken, timetableSlot);
-			this.addedSessions++;
+			if (service.createTimetableSlot(this.adminToken, timetableSlot)) {
+				this.addedSessions++;
+			}
 		}
 		
 	}
 	
-	@Then("it should do more than $expectedNumberOfSlots insertions correctly")
+	@Then("it should do at least $expectedNumberOfSlots insertions correctly")
 	public void shouldBeGreaterThanTwenty(int expectedNumberOfSlots) {
-		assertEquals(true, (this.addedSessions > expectedNumberOfSlots));
+		assertEquals(true, (this.addedSessions >= expectedNumberOfSlots));
 	}
 }
