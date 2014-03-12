@@ -28,10 +28,7 @@ public class NFR_Performance0Steps {
     @When("I try to add it a $numOfAdded times to the database")
     public void queryDatabase(int numOfAdded) {
         for (int i = 0; i < numOfAdded; i++) {
-            //output = (output && dbs.addCourseToDatabase(new Course((i*i + 1337), courseName + i)));
-            result= (result && sms.addSessionToCourse(lecturerToken, new Session(1,1,1,courseName)));
-            System.out.println("The result is " + result);
-            //output =(output && sms.addSessionToCourse(i, new Session(1,1,1,1,"")));
+            result = (result && sms.addSessionToCourse(lecturerToken, new Session(1,1,1,courseName)));
         }
     }
     
