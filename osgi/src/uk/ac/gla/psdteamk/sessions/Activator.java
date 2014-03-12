@@ -11,8 +11,8 @@ import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 public class Activator implements BundleActivator {
     public synchronized void start(BundleContext context)
     {
-    	ServiceReference dbRef = context.getServiceReference(DatabaseAdapterService.class.getName());
-    	ServiceReference mcRef = context.getServiceReference(MyCampusService.class.getName());
+    	ServiceReference<DatabaseAdapterService> dbRef = context.getServiceReference(DatabaseAdapterService.class);
+    	ServiceReference<MyCampusService> mcRef = context.getServiceReference(MyCampusService.class);
      
     	if (dbRef == null) {
     		System.out.println("Can't find Database Adapter service!");

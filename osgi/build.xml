@@ -105,10 +105,6 @@
 		<jar update="no" destfile="jars/sessions-service.jar" manifest="config/osgi/SESSIONS-SERVICE.MF">
 			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/sessions/service/*.class" />
 		</jar>
-
-		<jar update="no" destfile="jars/menus.jar" manifest="config/osgi/MENUS.MF">
-			<fileset dir="bin/" includes="uk/ac/gla/psdteamk/menus/*.class" />
-		</jar>
 		
 	</target>
 	
