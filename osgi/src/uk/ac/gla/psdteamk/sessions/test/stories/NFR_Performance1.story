@@ -8,3 +8,7 @@ Given a course id 04
 When I try to add 10 sessions types to this course
 Then the database adding indicator has to be false
 
+Scenario: add 10 sessions to an valid courseId 1
+Given a course id 1
+When I try to add 10 sessions types to this course
+Then the database adding indicator has to be true
