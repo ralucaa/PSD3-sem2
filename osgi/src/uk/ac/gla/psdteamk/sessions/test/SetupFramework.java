@@ -12,6 +12,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.launch.Framework;
 import org.osgi.framework.ServiceReference;
 
+import uk.ac.gla.psdteamk.mycampus.service.MyCampusService;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 
@@ -23,6 +24,7 @@ public class SetupFramework {
 	private static Bundle mycampusServiceBundle, mycampusBundle;
 	private static Bundle sessionServiceBundle, sessionBundle;
 	
+	private static MyCampusService myCampusService = null;
 	private static DatabaseAdapterService databaseAdapterService = null;
 	private static SessionManagerService sessionManagerService = null;
 	
@@ -32,6 +34,10 @@ public class SetupFramework {
 	
 	public static DatabaseAdapterService getDatabaseAdapterService() {
 		return databaseAdapterService;
+	}
+	
+	public static MyCampusService getMyCampusService() {
+		return myCampusService;
 	}
 	
 	public static void start() throws Exception {
@@ -91,13 +97,20 @@ public class SetupFramework {
 		ServiceReference<DatabaseAdapterService> databaseAdapterServiceReference = 
 				bundleContext.getServiceReference(DatabaseAdapterService.class);
 		databaseAdapterService = bundleContext.getService(databaseAdapterServiceReference);
+		
+		ServiceReference<MyCampusService> myCampusServiceReference =
+				bundleContext.getServiceReference(MyCampusService.class);
+		//myCampusService = bundleContext.getService(myCampusServiceReference);
+		//?????
+		
+		defaultPopulate();
 	}
 	
-	public static void resetDatabaseTables() {
+	private static void resetDatabaseTables() {
 		databaseAdapterService.resetTables();
 	}
 	
-	public static void defaultPopulate() throws Exception {
+	private static void defaultPopulate() throws Exception {
 		resetDatabaseTables();
 		
 		Connection conn = databaseAdapterService.getConnection();
