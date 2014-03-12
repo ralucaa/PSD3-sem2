@@ -26,14 +26,14 @@ public class BookTimetableSlotSteps {
 			this.slotId = slotId;
 		}
 		
-		@When("the database request is made")
+		@When("the student tries to book the timetable slot")
 		public void queryDatabase() {
 			result = service.bookSlot(studentToken, slotId);
 		}
 		
 		@Then("the booking function's output is $output")
 		public void theOutputIsTrue(String output) {
-			boolean boolOutput = Boolean.getBoolean(output);
+			boolean boolOutput = Boolean.parseBoolean(output);
 			assertEquals(result, boolOutput);
 		}
 

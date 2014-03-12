@@ -15,6 +15,7 @@ class BookTimetableSlot {
 	static boolean bookSlot(DatabaseAdapterService da, int slotId, String username) {
 		// Check if slotId exists in the database		
 		if (da.getTimetableSlot(slotId) == null) {
+			System.out.println("getTimetableSlot for slotId " + slotId + " was null");
 			return false;
 		}
 		
