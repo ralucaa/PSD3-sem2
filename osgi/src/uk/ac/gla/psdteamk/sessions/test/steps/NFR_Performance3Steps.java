@@ -27,7 +27,7 @@ public class NFR_Performance3Steps extends Steps {
 	public void assignSession(int number, int id) throws Exception {
 		SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
-		adminToken = service.authenticate("1111111A", "11111111A");
+		adminToken = service.authenticate("1111111A", "1111111A");
 		this.id = id;
 		this.numberOfSlots = number;
 	}

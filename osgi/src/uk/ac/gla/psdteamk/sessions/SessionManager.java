@@ -67,7 +67,7 @@ public class SessionManager implements SessionManagerService {
 	public boolean bookSlot(int token, int slotId) {
 		if (accountIsType(token, Account.TYPE_STUDENT)) {
 			Account acc = logins.get(token);
-			return BookTimetableSlot.bookSession(da, slotId, acc.getUsername());
+			return BookTimetableSlot.bookSlot(da, slotId, acc.getUsername());
 		} else {
 			System.out.println("Access denied");
 			return false;

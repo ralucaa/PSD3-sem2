@@ -60,7 +60,7 @@ class CheckSessionDetails {
 			//If it was a lab session, print the tutors
 			if(isLab){
 				System.out.println("\nTutors in this session:");
-				String tutorQuery = "SELECT name FROM User WHERE guid = ?";
+				String tutorQuery = "SELECT \"name\" FROM \"User\" WHERE \"guid\" = ?";
 				Connection myCampusCon = da.getConnection();
 				//Prepare the SQL statement.
 				PreparedStatement tutorStatement = myCampusCon.prepareStatement(tutorQuery);
@@ -79,9 +79,9 @@ class CheckSessionDetails {
 			}
 			//////////////////////////////////////////////////////////////////
 			//print all the students
-			String studentsQuery = "SELECT student "+
-					"FROM Session,Registration "+
-					"WHERE Session.id = Registration.session AND Session.id =?";
+			String studentsQuery = "SELECT \"student\" "+
+					"FROM \"Session\",\"Registration\" "+
+					"WHERE \"Session\".\"id\" = \"Registration\".\"session\" AND \"Session\".\"id\" =?";
 			statement = con.prepareStatement(studentsQuery);
 			statement.setInt(1, sessionID);
 			resultSet = statement.executeQuery();
@@ -90,7 +90,7 @@ class CheckSessionDetails {
 				students.add(resultSet.getString(1));
 			}
 			System.out.println("\nStudents in this session:");
-			studentsQuery = "SELECT name FROM User WHERE guid = ?";
+			studentsQuery = "SELECT \"name\" FROM \"User\" WHERE \"guid\" = ?";
 			Connection myCampusCon = da.getConnection();
 			//Prepare the SQL statement.
 			statement = myCampusCon.prepareStatement(studentsQuery);
