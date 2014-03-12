@@ -46,7 +46,7 @@ public class CreateTimetableSlotForSessionSteps extends Steps{
 	
 	@Then("the result of creating the timetable slot is $output")
 	public void returnResultTrue(String output){
-		boolean boolOutput = Boolean.getBoolean(output);
+		boolean boolOutput = Boolean.parseBoolean(output);
 		assertEquals(boolOutput, result);
 	}
 }
