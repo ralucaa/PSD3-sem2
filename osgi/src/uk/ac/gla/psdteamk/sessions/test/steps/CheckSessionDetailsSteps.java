@@ -2,6 +2,7 @@ package uk.ac.gla.psdteamk.sessions.test.steps;
 
 import static org.junit.Assert.assertEquals;
 
+import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;  
@@ -21,7 +22,8 @@ public class CheckSessionDetailsSteps extends Steps{
 	private int lecturerToken;
 	private int id;
 
-	@Given("some nice session $id")  
+	@Given("some nice session $id")
+	@Alias("an invalid session id with characters $id")
 	public void givenASession(int id) throws Exception {
 		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();

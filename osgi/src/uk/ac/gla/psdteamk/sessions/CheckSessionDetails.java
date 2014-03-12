@@ -11,11 +11,9 @@ import java.util.ArrayList;
 class CheckSessionDetails {
 
 	static boolean checkSessionDetails(DatabaseAdapterService da, int sessionID){
+
 		
-		// TOMAAAAAAAAAAAAAAAAAAASZZZZZZZ!!!!!
-		return false;
 		
-		/*
 
 		String registeredCoursesQuery = "SELECT * "+
 				"FROM \"Session\" LEFT OUTER JOIN \"Tutoring\" ON  \"Session\".\"id\" = \"Tutoring\".\"session\" "+
@@ -38,34 +36,20 @@ class CheckSessionDetails {
 			//crunch
 			System.out.println("Session info:");
 			ArrayList<String> tutors = new ArrayList<String>();
-			boolean toggle = true;
+			boolean toggle = false;
 			boolean isLab = false;
 			while(resultSet.next()){
 				//got a lecture
-				if(resultSet.getString(8) == null){
-					System.out.println("First session on "+ resultSet.getString(3)+
-							"\nfrom "+resultSet.getString(4)+" to "+resultSet.getString(5)+"\nfrequency "+resultSet.getString(6)+
-							"\nroom "+resultSet.getInt(7)+ "\ncapacity "+resultSet.getInt(8)+"\ntype: "+resultSet.getString(9));
-				}
-				//got a lab with tutors
-				else{
 					isLab = true;
-					//enter here only once to display lab session info
-					if(toggle == true){
-						System.out.println("First session on "+resultSet.getString(3)+
-								"\nfrom "+resultSet.getString(4)+" to "+resultSet.getString(5)+"\nfrequency "+resultSet.getString(6)+
-								"\nroom "+resultSet.getInt(7)+"\ncapacity "+resultSet.getInt(8)+"\ntype: "+resultSet.getString(9));
-					}
-					toggle = false;
-					tutors.add(resultSet.getString(10));
-				}	
+					toggle = true;
 			}
+			if (toggle == false) return false;
 
 			//session info displayed. if it was a lab session then tutor matric numbers added into the tutor ArrayList
 			//If it was a lab session, print the tutors
 			if(isLab){
 				System.out.println("\nTutors in this session:");
-				String tutorQuery = "SELECT \"name\" FROM \"User\" WHERE \"guid\" = ?";
+				String tutorQuery = "SELECT \"student\" FROM \"Registration\" WHERE \"student\" = ?";
 				Connection myCampusCon = da.getConnection();
 				//Prepare the SQL statement.
 				PreparedStatement tutorStatement = myCampusCon.prepareStatement(tutorQuery);
@@ -86,7 +70,7 @@ class CheckSessionDetails {
 			//print all the students
 			String studentsQuery = "SELECT \"student\" "+
 					"FROM \"Session\",\"Registration\" "+
-					"WHERE \"Session\".\"id\" = \"Registration\".\"session\" AND \"Session\".\"id\" =?";
+					"WHERE \"Session\".\"id\" = \"Registration\".\"slot\" AND \"Session\".\"id\" =?";
 			statement = con.prepareStatement(studentsQuery);
 			statement.setInt(1, sessionID);
 			resultSet = statement.executeQuery();
@@ -95,7 +79,7 @@ class CheckSessionDetails {
 				students.add(resultSet.getString(1));
 			}
 			System.out.println("\nStudents in this session:");
-			studentsQuery = "SELECT \"name\" FROM \"User\" WHERE \"guid\" = ?";
+			studentsQuery = "SELECT \"student\" FROM \"Registration\" WHERE \"student\" = ?";
 			Connection myCampusCon = da.getConnection();
 			//Prepare the SQL statement.
 			statement = myCampusCon.prepareStatement(studentsQuery);
@@ -118,6 +102,6 @@ class CheckSessionDetails {
 			System.out.println("Probably student number not present in the database");
 			ex.printStackTrace();
 		} 
-		return false;*/
+		return false;
 	}
 }
