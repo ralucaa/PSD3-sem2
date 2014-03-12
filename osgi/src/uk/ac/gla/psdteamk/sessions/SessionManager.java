@@ -106,9 +106,9 @@ public class SessionManager implements SessionManagerService {
 	}
 	
 	@Override
-	public synchronized boolean importCourse(int token, Course course) {
+	public synchronized boolean importCourse(int token, String courseTitle) {
 		if (accountIsType(token, Account.TYPE_LECTURER)) {
-			return ImportMyCampusCourses.importCourse(da, course);
+			return ImportMyCampusCourses.importCourse(da, mc, courseTitle);
 		} else {
 			System.out.println("Access denied");
 			return false;

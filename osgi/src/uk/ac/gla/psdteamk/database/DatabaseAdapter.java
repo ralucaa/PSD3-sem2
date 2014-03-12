@@ -77,7 +77,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			stmt.executeUpdate(
 					"CREATE TABLE \"Course\" ("
 							+ "\"id\" INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
-							+ "\"title\" VARCHAR(128) NOT NULL)"
+							+ "\"title\" VARCHAR(128) UNIQUE NOT NULL)"
 					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());

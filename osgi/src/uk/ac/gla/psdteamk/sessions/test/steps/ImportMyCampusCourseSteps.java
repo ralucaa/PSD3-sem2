@@ -17,32 +17,25 @@ import org.jbehave.core.steps.Steps;
 public class ImportMyCampusCourseSteps extends Steps {
 	private boolean result;
 	private SessionManagerService service;
-	private Course myCourse;
+	private String courseTitle;
 	private int lecturerToken;
 	
-	@Given("a valid MyCampus course with id $co")
-	public void givenAMyCampusID(int co)  throws Exception {
+	@Given("a MyCampus course with title $title")
+	public void givenAMyCampusCourse(String title) throws Exception {
 		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		lecturerToken = service.authenticate("2222222A", "2222222A");
-		this.myCourse = new Course(co, "New course");
-	}
-	@Given("an already existing MyCampus course with id $co")
-	public void givenAFalseMyCampusID(int co) throws Exception {
-		//SetupFramework.defaultPopulate();
-		service = SetupFramework.getSessionManagerService();
-		lecturerToken = service.authenticate("2222222A", "2222222A");
-		this.myCourse = new Course(co, "New Course");
+		courseTitle = title;
 	}
 
-	@When("I try to add it into the database")
-	public void whenIRetrieveCourseInfo() {
-		result = service.importCourse(lecturerToken, myCourse);
+	@When("I try to import the MyCampus course")
+	public void whenITryToImportMyCampusCourse() {
+		result = service.importCourse(lecturerToken, courseTitle);
 	}
 
-	@Then("the result of the import should be $output")
+	@Then("the result of the MyCampus import should be $output")
 	public void thenTheOutcomeShould(String output) {
-		boolean boolOutput = Boolean.getBoolean(output);
+		boolean boolOutput = Boolean.parseBoolean(output);
 		assertEquals(boolOutput, result);
 	}
 	

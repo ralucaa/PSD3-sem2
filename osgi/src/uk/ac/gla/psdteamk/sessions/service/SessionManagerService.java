@@ -71,10 +71,10 @@ public interface SessionManagerService {
 	 * AS A lecturer I WANT TO import a MyCampus course, 
 	 * SO THAT teaching sessions can be identified (story 1).
 	 * @param token
-	 * @param course
+	 * @param courseName
 	 * @return true on success, false on failure
 	 */
-	public boolean importCourse(int token, Course course);
+	public boolean importCourse(int token, String courseTitle);
 	
 	/**
 	 * AS A lecturer I WANT TO specify that a session is a one off, or recurs weekly or fortnightly, 
