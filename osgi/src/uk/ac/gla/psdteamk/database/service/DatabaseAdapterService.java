@@ -18,5 +18,5 @@ public interface DatabaseAdapterService {
 	public boolean addSessionToDatabase(Session session);
 	public boolean addTimetableSlotToDatabase(TimetableSlot session);
 	public boolean addUserToDatabase(Account account);
-	public boolean deleteEverything();
+	public boolean resetTables();
 }

@@ -93,12 +93,12 @@ public class SetupFramework {
 		databaseAdapterService = bundleContext.getService(databaseAdapterServiceReference);
 	}
 	
-	public static void deleteDatabaseData() {
-		databaseAdapterService.deleteEverything();
+	public static void resetDatabaseTables() {
+		databaseAdapterService.resetTables();
 	}
 	
 	public static void defaultPopulate() throws Exception {
-		deleteDatabaseData();
+		resetDatabaseTables();
 		
 		Connection conn = databaseAdapterService.getConnection();
 		Statement stmt = conn.createStatement();

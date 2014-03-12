@@ -30,7 +30,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			//System.out.println("getConnection");
 			while (!doneInit) {
 				System.out.println("Could not initialise tables! Retrying.");
-				doneInit = initTables(conn);
+				doneInit = createTables(conn);
 			}
 			return conn;
 		} catch (SQLException e) {
@@ -43,8 +43,14 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 	//derby doesn't support CREATE TABLE IF NOT EXISTS:
 	//doing some bad things to get around it
-	private boolean initTables(Connection conn) throws SQLException {
-		Statement stmt = conn.createStatement();
+	private boolean createTables(Connection conn) {
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+		} catch (SQLException e) {
+			System.out.println("createTables can't create statement: " + e.getMessage());
+			return false;
+		}
 		try {
 			stmt.executeUpdate(
 					"CREATE TABLE \"Registration\" ("
@@ -116,31 +122,32 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			System.out.println("Table not created: " + e.getMessage());
 			return false;
 		}
-
-		stmt.close();
 		return true;
 	}
 
-	public boolean deleteEverything() {
+	public boolean resetTables() {
 		Connection conn = getConnection();
 		if (conn == null) {
 			System.out.println(">>> Connection is null in deleteEverything");
 		}
 		try {
 			Statement stmt = conn.createStatement();
-			stmt.executeUpdate("DELETE FROM \"Registration\"");
-			stmt.executeUpdate("DELETE FROM \"MandatoryCourses\"");
-			stmt.executeUpdate("DELETE FROM \"Course\"");
-			stmt.executeUpdate("DELETE FROM \"Tutoring\"");
-			stmt.executeUpdate("DELETE FROM \"Session\"");
-			stmt.executeUpdate("DELETE FROM \"TimetableSlot\"");
+			stmt.executeUpdate("DROP TABLE \"Registration\"");
+			stmt.executeUpdate("DROP TABLE \"MandatoryCourses\"");
+			stmt.executeUpdate("DROP TABLE \"Course\"");
+			stmt.executeUpdate("DROP TABLE \"Tutoring\"");
+			stmt.executeUpdate("DROP TABLE \"Session\"");
+			stmt.executeUpdate("DROP TABLE \"TimetableSlot\"");
 			stmt.close();
-			conn.close();
-			return true;
 		} catch (SQLException e) {
 			System.out.println(">>> deleteEverything : " + e.getMessage());
 			return false;
 		}
+		if (!createTables(conn)) {
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
