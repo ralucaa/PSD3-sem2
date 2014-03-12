@@ -34,7 +34,7 @@ public class SessionStories {
 		storyPaths.add("uk/ac/gla/psdteamk/sessions/test/stories/NFR_Security1.story");
 		storyPaths.add("uk/ac/gla/psdteamk/sessions/test/stories/SpecifySessionFrequency.story");
 		
-		Collections.reverse(storyPaths);
+		//Collections.reverse(storyPaths);
 		
 	    embedder.runStoriesAsPaths(storyPaths);
 	}
