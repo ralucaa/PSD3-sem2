@@ -30,15 +30,15 @@ public class MyCampusStub implements MyCampusService {
 		accounts.add(new Account("2222222J","2222222J","Iadh Ounis","lecturer",0));
 		
 		courses = new ArrayList<Course>();
-		courses.add(new Course(1,"Professional Software Development"));
-		courses.add(new Course(2,"Algorithmics"));
-		courses.add(new Course(3,"Advanced Programming"));
-		courses.add(new Course(4,"Programming Languages"));
-		courses.add(new Course(5,"Interactive Systems"));
-		courses.add(new Course(6,"Distributed Information Management"));
-		courses.add(new Course(7,"Network Systems"));
-		courses.add(new Course(8,"Operating Systems"));
-		courses.add(new Course(9,"Database Systems"));
+		courses.add(new Course("Professional Software Development"));
+		courses.add(new Course("Algorithmics"));
+		courses.add(new Course("Advanced Programming"));
+		courses.add(new Course("Programming Languages"));
+		courses.add(new Course("Interactive Systems"));
+		courses.add(new Course("Distributed Information Management"));
+		courses.add(new Course("Network Systems"));
+		courses.add(new Course("Operating Systems"));
+		courses.add(new Course("Database Systems"));
 	}
 	
 	/**

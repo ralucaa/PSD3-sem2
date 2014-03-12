@@ -28,10 +28,9 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		try {
 			Connection conn = DriverManager.getConnection(DB_CONNECTION);
 			//System.out.println("getConnection");
-			if (!doneInit) {
-				System.out.println("initTables");
-				initTables(conn);
-				doneInit = true;
+			while (!doneInit) {
+				System.out.println("Could not initialise tables! Retrying.");
+				doneInit = initTables(conn);
 			}
 			return conn;
 		} catch (SQLException e) {
@@ -44,7 +43,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 	//derby doesn't support CREATE TABLE IF NOT EXISTS:
 	//doing some bad things to get around it
-	private void initTables(Connection conn) throws SQLException {
+	private boolean initTables(Connection conn) throws SQLException {
 		Statement stmt = conn.createStatement();
 		try {
 			stmt.executeUpdate(
@@ -55,6 +54,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
+			return false;
 		}
 		try {
 			stmt.executeUpdate(
@@ -65,15 +65,17 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
+			return false;
 		}
 		try {
 			stmt.executeUpdate(
 					"CREATE TABLE \"Course\" ("
-							+ "  \"id\" INTEGER PRIMARY KEY, "
-							+ "  \"title\" VARCHAR(128) NOT NULL)"
+							+ "\"id\" INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
+							+ "\"title\" VARCHAR(128) NOT NULL)"
 					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
+			return false;
 		}
 		try {
 			stmt.executeUpdate(
@@ -84,6 +86,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
+			return false;
 		}
 		try {
 			stmt.executeUpdate(
@@ -96,6 +99,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
+			return false;
 		}
 		try {
 			stmt.executeUpdate(
@@ -110,8 +114,11 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 					);
 		} catch (SQLException e) {
 			System.out.println("Table not created: " + e.getMessage());
+			return false;
 		}
+
 		stmt.close();
+		return true;
 	}
 
 	public boolean deleteEverything() {
@@ -243,7 +250,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	public Course getCourse(int id) {
 
 		// Retrieve room details from the database
-		String query = "SELECT \"title\"  FROM \"Course\" WHERE \"id\" = ?";
+		String query = "SELECT \"title\" FROM \"Course\" WHERE \"id\" = ?";
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 
@@ -332,8 +339,13 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	}
 
 	public boolean addCourseToDatabase(Course course) {
+		if (course == null || course.getTitle() == null) {
+			System.out.println("You tried to add an null course.");
+			return false;
+		}
+		
 		// Add to database.
-		String sql = "INSERT INTO \"Course\"(\"id\", \"title\") VALUES (?, ?)";
+		String sql = "INSERT INTO \"Course\" (\"title\") VALUES (?)";
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 
@@ -343,11 +355,10 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			// Prepare the SQL statement.
 			preparedStatement = con.prepareStatement(sql);
 			// Add the parameters.
-			preparedStatement.setInt(1, course.getId());
-			preparedStatement.setString(2, course.getTitle());
+			preparedStatement.setString(1, course.getTitle());
 			// Execute the statement and get the result.
 			preparedStatement.execute();
-			System.out.println("The course has been successfully imported!");
+			System.out.println("The course has been successfully added!");
 			return true;
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());

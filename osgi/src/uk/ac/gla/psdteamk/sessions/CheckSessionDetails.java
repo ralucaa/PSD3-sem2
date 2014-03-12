@@ -11,6 +11,11 @@ import java.util.ArrayList;
 class CheckSessionDetails {
 
 	static boolean checkSessionDetails(DatabaseAdapterService da, int sessionID){
+		
+		// TOMAAAAAAAAAAAAAAAAAAASZZZZZZZ!!!!!
+		return false;
+		
+		/*
 
 		String registeredCoursesQuery = "SELECT * "+
 				"FROM \"Session\" LEFT OUTER JOIN \"Tutoring\" ON  \"Session\".\"id\" = \"Tutoring\".\"session\" "+
@@ -113,6 +118,6 @@ class CheckSessionDetails {
 			System.out.println("Probably student number not present in the database");
 			ex.printStackTrace();
 		} 
-		return false;
+		return false;*/
 	}
 }

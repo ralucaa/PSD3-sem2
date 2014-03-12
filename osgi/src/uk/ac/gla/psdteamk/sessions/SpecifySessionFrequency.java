@@ -31,7 +31,7 @@ class SpecifySessionFrequency {
 			preparedStatement.setInt(1, frequency);
 			preparedStatement.setInt(2, sessionId);
 			//Execute the statement and get the result.
-			preparedStatement.execute();
+			preparedStatement.executeUpdate();
 
 			return true;
 		} catch (SQLException ex) {

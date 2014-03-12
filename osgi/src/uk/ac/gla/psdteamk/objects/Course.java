@@ -13,6 +13,16 @@ public class Course {
 		this.id = id;
 		this.title = title;
 	}
+	
+	/**
+	 * Wrapper class for course details.
+	 * @param id - The id of the course.
+	 * @param title - The title of the course.
+	 */
+	public Course(String title){
+		this.id = -1;
+		this.title = title;
+	}
 
 	public int getId() {
 		return id;

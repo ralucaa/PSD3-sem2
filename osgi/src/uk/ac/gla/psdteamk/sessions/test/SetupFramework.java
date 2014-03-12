@@ -106,27 +106,25 @@ public class SetupFramework {
 		//do it roughly for now
 		
 		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(1,'3333333E')");
-		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(6,'3333333E')");
-		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(7,'3333333E')");
-		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(8,'3333333E')");
-		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(9,'3333333E')");
+		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(2,'3333333E')");
+		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(3,'3333333E')");
+		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(4,'3333333E')");
 		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(1,'3333333A')");
-		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(7,'3333333A')");
-		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(9,'3333333B')");
-		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(6,'3333333B')");
-		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(9,'3333333A')");
+		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(2,'3333333A')");
+		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(3,'3333333B')");
+		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(4,'3333333B')");
+		stmt.executeUpdate("INSERT INTO \"Registration\" VALUES(3,'3333333A')");
 
 		stmt.executeUpdate("INSERT INTO \"MandatoryCourses\" VALUES(3,1)");
-		stmt.executeUpdate("INSERT INTO \"MandatoryCourses\" VALUES(3,6)");
-		stmt.executeUpdate("INSERT INTO \"MandatoryCourses\" VALUES(3,7)");
-		stmt.executeUpdate("INSERT INTO \"MandatoryCourses\" VALUES(3,8)");
-		stmt.executeUpdate("INSERT INTO \"MandatoryCourses\" VALUES(3,9)");
+		stmt.executeUpdate("INSERT INTO \"MandatoryCourses\" VALUES(3,2)");
+		stmt.executeUpdate("INSERT INTO \"MandatoryCourses\" VALUES(3,3)");
+		stmt.executeUpdate("INSERT INTO \"MandatoryCourses\" VALUES(3,4)");
 
-		stmt.executeUpdate("INSERT INTO \"Course\" VALUES(1,'Professional Software Development')");
-		stmt.executeUpdate("INSERT INTO \"Course\" VALUES(6,'Distributed Information Management')");
-		stmt.executeUpdate("INSERT INTO \"Course\" VALUES(7,'Network Systems')");
-		stmt.executeUpdate("INSERT INTO \"Course\" VALUES(8,'Operating Systems')");
-		stmt.executeUpdate("INSERT INTO \"Course\" VALUES(9,'Database Systems')");
+		stmt.executeUpdate("INSERT INTO \"Course\" (\"title\") VALUES('Professional Software Development')");
+		stmt.executeUpdate("INSERT INTO \"Course\" (\"title\") VALUES('Distributed Information Management')");
+		stmt.executeUpdate("INSERT INTO \"Course\" (\"title\") VALUES('Network Systems')");
+		stmt.executeUpdate("INSERT INTO \"Course\" (\"title\") VALUES('Operating Systems')");
+		stmt.executeUpdate("INSERT INTO \"Course\" (\"title\") VALUES('Database Systems')");
 
 		stmt.executeUpdate("INSERT INTO \"Tutoring\" VALUES('4444444A',3)");
 		stmt.executeUpdate("INSERT INTO \"Tutoring\" VALUES('4444444C',5)");
@@ -137,16 +135,16 @@ public class SetupFramework {
 		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(1,1,7,'lecture')");
 		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(1,1,7,'lecture')");
 		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(1,1,7,'laboratory')");
-		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(6,1,7,'lecture')");
-		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(6,1,7,'laboratory')");
-		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(7,0,7,'lecture')");
-		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(7,1,7,'lecture')");
-		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(7,0,7,'laboratory')");
-		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(8,1,7,'lecture')");
-		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(8,0,7,'laboratory')");
-		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(9,0,7,'lecture')");
-		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(9,1,7,'laboratory')");
-		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(9,1,0,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(2,1,7,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(3,1,7,'laboratory')");
+		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(4,0,7,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(2,1,7,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(3,0,7,'laboratory')");
+		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(3,1,7,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(2,0,7,'laboratory')");
+		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(4,0,7,'lecture')");
+		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(3,1,7,'laboratory')");
+		stmt.executeUpdate("INSERT INTO \"Session\" (\"course\", \"compulsory\", \"frequency\", \"type\") VALUES(2,1,0,'lecture')");
 
 		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(1,'13/01/2014','09:00','10:00',1,120)");
 		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(2,'13/01/2014','14:00','15:00',2,120)");
@@ -161,8 +159,8 @@ public class SetupFramework {
 		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(9,'17/01/2014','10:00','12:00',2,080)");
 		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(9,'17/01/2014','14:00','15:00',5,120)");
 		
-		//stmt.close();
-		//conn.close();
+		stmt.close();
+		conn.close();
 	}
 	
 	public static void stop() throws Exception{

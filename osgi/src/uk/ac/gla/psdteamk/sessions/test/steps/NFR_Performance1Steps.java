@@ -18,16 +18,18 @@ public class NFR_Performance1Steps {
 	int courseId;
 	boolean output = true;
 	
-	@Given("a course id $courseName")
-	public void aStudentUsername(int courseId) {	
+	@Given("a course id $courseId")
+	public void givenADatabase(int courseId) throws Exception {
+		SetupFramework.defaultPopulate();
 		dbs = SetupFramework.getDatabaseAdapterService();		
 		this.courseId = courseId;
 	}
 	
-	@When("I try to add 10 sessions types to this course")
-	public void queryDatabase() {
-		for (int i = 0; i < 10; i++) {
+	@When("I try to add $number session types to this course")
+	public void queryDatabase(int number) {
+		for (int i = 0; i < number; i++) {
 			output = (output && dbs.addSessionToDatabase(new Session(courseId, 1, 7, "testType"+i)));
+			System.out.println("THE RESULT IS " + output);
 		}		 
 	}
 	

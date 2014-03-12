@@ -30,7 +30,7 @@ public class NFR_Performance2Steps extends Steps {
 	
 	@When("I try to populate the database with the users")
 	public void populateUserDB() {
-		String sql = "INSERT INTO Crap VALUES (?)"; 
+		String sql = "INSERT INTO \"Course\"(\"title\") VALUES (?)"; 
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 
@@ -40,12 +40,11 @@ public class NFR_Performance2Steps extends Steps {
 			//Prepare the SQL statement.
 			preparedStatement = con.prepareStatement(sql);
 			//Execute the statement and get the result.
-			preparedStatement.execute();
 			for (int i = 0;i<=users;i++){
-				preparedStatement.setDouble(1, Math.random());
+				preparedStatement.setString(1, "" + Math.random());
 				preparedStatement.execute();
 			}
-			System.out.println("The course has been successfully imported!");
+
 			result = true;
 		} catch (SQLException ex) {
 			System.out.println("This course is already imported!");
