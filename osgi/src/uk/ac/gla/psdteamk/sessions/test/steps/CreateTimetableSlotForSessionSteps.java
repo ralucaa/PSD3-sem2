@@ -33,7 +33,7 @@ public class CreateTimetableSlotForSessionSteps extends Steps{
 	
 	@Given("a session $session")
 	public void aSession(int session)throws Exception {
-		SetupFramework.defaultPopulate();
+		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		adminToken = service.authenticate("1111111A", "1111111A");
 		timetableSlot = new TimetableSlot(D_ID, session, D_DATE, D_START_TIME, D_END_TIME, D_ROOM, D_CAPACITY);

@@ -19,7 +19,7 @@ public class NFR_Security1Steps extends Steps {
 
 	@Given("a username $username with password $password")
 	public void givenASessionAndAFrequency(String username, String password) throws Exception {
-		SetupFramework.defaultPopulate();
+		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		this.username = username;
 		this.password = password;

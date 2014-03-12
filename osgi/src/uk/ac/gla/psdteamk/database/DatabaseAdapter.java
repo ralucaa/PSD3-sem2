@@ -23,7 +23,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	 * 
 	 * @return the connection or null if something failed
 	 */
-	public Connection getConnection() {
+	public synchronized Connection getConnection() {
 		// Attempt to create the connection and return it.
 		try {
 			Connection conn = DriverManager.getConnection(DB_CONNECTION);
@@ -43,7 +43,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 	//derby doesn't support CREATE TABLE IF NOT EXISTS:
 	//doing some bad things to get around it
-	private boolean createTables(Connection conn) {
+	private synchronized boolean createTables(Connection conn) {
 		Statement stmt;
 		try {
 			stmt = conn.createStatement();
@@ -125,7 +125,8 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		return true;
 	}
 
-	public boolean resetTables() {
+	public synchronized boolean resetTables() {
+		/*
 		Connection conn = getConnection();
 		if (conn == null) {
 			System.out.println(">>> Connection is null in deleteEverything");
@@ -146,7 +147,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		if (!createTables(conn)) {
 			return false;
 		}
-		
+		*/
 		return true;
 	}
 
@@ -155,7 +156,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	 * 
 	 * @return the courses
 	 */
-	public ArrayList<Course> getAllCourses() {
+	public synchronized ArrayList<Course> getAllCourses() {
 		// Attempt to get the user's type.
 		String sql = "SELECT \"id\", \"title\" FROM \"Course\"";
 		Connection con = null;
@@ -198,7 +199,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	 * 
 	 * @return an ArrayList of Session objects
 	 */
-	public ArrayList<Session> getAllSessions() {
+	public synchronized ArrayList<Session> getAllSessions() {
 
 		ArrayList<Session> r = new ArrayList<Session>();
 
@@ -254,7 +255,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	 *            - course reference in the database
 	 * @return Course object
 	 */
-	public Course getCourse(int id) {
+	public synchronized Course getCourse(int id) {
 
 		// Retrieve room details from the database
 		String query = "SELECT \"title\" FROM \"Course\" WHERE \"id\" = ?";
@@ -299,7 +300,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	 * 
 	 * @return an ArrayList of Account objects for the students
 	 */
-	public ArrayList<String> getAllStudents() {
+	public synchronized ArrayList<String> getAllStudents() {
 
 		ArrayList<String> students = new ArrayList<String>();
 
@@ -345,7 +346,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 
 	}
 
-	public boolean addCourseToDatabase(Course course) {
+	public synchronized boolean addCourseToDatabase(Course course) {
 		if (course == null || course.getTitle() == null) {
 			System.out.println("You tried to add an null course.");
 			return false;
@@ -365,7 +366,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			preparedStatement.setString(1, course.getTitle());
 			// Execute the statement and get the result.
 			preparedStatement.execute();
-			System.out.println("The course has been successfully added!");
+
 			return true;
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
@@ -385,7 +386,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		return false;
 	}
 
-	public boolean addSessionToDatabase(Session session) {
+	public synchronized boolean addSessionToDatabase(Session session) {
 		// Ensure the provided session object is valid.
 		if (getCourse(session.getCourse()) == null || session.getFrequency() < 0 || (session.getCompulsory() != 0 && session.getCompulsory() != 1)) {
 			return false;
@@ -408,7 +409,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			preparedStatement.setString(4, session.getType());
 			// Execute the statement and get the result.
 			preparedStatement.execute();
-			System.out.println("The session has been successfully imported!");
+
 			return true;
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
@@ -428,7 +429,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		return false;
 	}
 
-	public boolean addUserToDatabase(Account account) {
+	public synchronized boolean addUserToDatabase(Account account) {
 		if (account == null) {
 			return false;
 		}
@@ -449,7 +450,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			preparedStatement.setInt(4, 3);
 			// Execute the statement and get the result.
 			preparedStatement.execute();
-			System.out.println("The users have been successfully imported!");
+
 			return true;
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
@@ -474,7 +475,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	 * @param session_id - The session id.
 	 * @return a Session object matching the requested session or null if could not retrieve
 	 */
-	public Session getSession(int session_id) {
+	public synchronized Session getSession(int session_id) {
 		// Retrieve room details from the database
 		String query = "SELECT * FROM \"Session\" WHERE \"id\" = ?";
 		Connection con = null;
@@ -528,7 +529,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	 * @return a TimetableSlot object matching the requested slot or null if could not retrieve
 	 */
 
-	public TimetableSlot getTimetableSlot(int slotId) {
+	public synchronized TimetableSlot getTimetableSlot(int slotId) {
 		// Retrieve room details from the database
 		String query = "SELECT * FROM \"TimetableSlot\" WHERE \"id\" = ?";
 		Connection con = null;
@@ -585,7 +586,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 	 * @param timetableSlot - The TimetableSlot object you wish to add.
 	 * @return true if the operation succeeded, false otherwise
 	 */
-	public boolean addTimetableSlotToDatabase(TimetableSlot timetableSlot) {
+	public synchronized boolean addTimetableSlotToDatabase(TimetableSlot timetableSlot) {
 		// Check that the parameter is not null.
 		if (timetableSlot == null) {
 			return false;
@@ -615,7 +616,7 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 			preparedStatement.setInt(6, timetableSlot.getCapacity());
 			// Execute the statement and get the result.
 			preparedStatement.execute();
-			System.out.println("The course has been successfully imported!");
+
 			return true;
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());

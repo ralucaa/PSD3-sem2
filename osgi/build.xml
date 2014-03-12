@@ -75,17 +75,6 @@
 		description="Builds OSGi bundles for the project."
 		depends="compile"
 	>
-		<jar update="no" destfile="jars/example1.jar" manifest="config/osgi/EXAMPLE1.MF">
-			<fileset dir="bin/" includes="tutorial/example1/*.class" />
-		</jar>
-		
-		<jar update="no" destfile="jars/example2.jar" manifest="config/osgi/EXAMPLE2.MF">
-			<fileset dir="bin/" includes="tutorial/example2/*.class tutorial/example2/service/*.class " />
-		</jar>
-		
-		<jar update="no" destfile="jars/example3.jar" manifest="config/osgi/EXAMPLE3.MF">
-			<fileset dir="bin/" includes="tutorial/example3/*.class" />
-		</jar>
 		
 		<jar update="no" destfile="jars/shared.jar" manifest="config/osgi/SHARED.MF">
 			<fileset dir="bin/" includes="

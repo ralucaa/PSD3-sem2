@@ -20,7 +20,7 @@ public class BookTimetableSlotSteps {
 		
 		@Given("a slotId $slotId")
 		public void aStudentUsername(int slotId) throws Exception {
-			SetupFramework.defaultPopulate();
+			//SetupFramework.defaultPopulate();
 			service = SetupFramework.getSessionManagerService();
 			studentToken = service.authenticate("3333333C", "3333333C");		
 			this.slotId = slotId;

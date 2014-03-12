@@ -25,7 +25,7 @@ public class AddSessionToCourseSteps extends Steps {
 	
 	@Given("a new session for course $course")
 	public void givenASessionForAValidCourse(int course) throws Exception{
-		SetupFramework.defaultPopulate();
+		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		lecturerToken = service.authenticate("2222222A", "2222222A");
 		this.session = new Session(course, D_COMPULSORY, D_FREQ, D_TYPE);

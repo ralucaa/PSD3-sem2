@@ -8,13 +8,13 @@ import uk.ac.gla.psdteamk.database.DatabaseAdapter;
 
 
 public class Activator implements BundleActivator {
-    public void start(BundleContext context)
+    public synchronized void start(BundleContext context)
     {
     	context.registerService(
                 DatabaseAdapterService.class.getName(), new DatabaseAdapter(), null);
     }
     
-    public void stop(BundleContext context)
+    public synchronized void stop(BundleContext context)
     {
     	
     }

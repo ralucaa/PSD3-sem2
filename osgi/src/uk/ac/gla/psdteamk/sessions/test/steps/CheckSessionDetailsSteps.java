@@ -23,7 +23,7 @@ public class CheckSessionDetailsSteps extends Steps{
 
 	@Given("some nice session $id")  
 	public void givenASession(int id) throws Exception {
-		SetupFramework.defaultPopulate();
+		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		lecturerToken = service.authenticate("2222222A", "2222222A");
 

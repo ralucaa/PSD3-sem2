@@ -25,7 +25,7 @@ public class NFR_Performance3Steps extends Steps {
 	
 	@Given("an admin tries to add more than $number timetable slots to the session $id")
 	public void assignSession(int number, int id) throws Exception {
-		SetupFramework.defaultPopulate();
+		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		adminToken = service.authenticate("1111111A", "1111111A");
 		this.id = id;

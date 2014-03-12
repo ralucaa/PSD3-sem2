@@ -10,6 +10,7 @@ public class BeforeAfterSteps extends Steps{
 	@BeforeStories
 	public void beforeStories() throws Exception {
 		SetupFramework.start();
+		SetupFramework.defaultPopulate();
 	}
 	
 	@AfterStories

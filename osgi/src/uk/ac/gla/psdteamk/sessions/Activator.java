@@ -9,7 +9,7 @@ import uk.ac.gla.psdteamk.mycampus.service.MyCampusService;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 
 public class Activator implements BundleActivator {
-    public void start(BundleContext context)
+    public synchronized void start(BundleContext context)
     {
     	ServiceReference dbRef = context.getServiceReference(DatabaseAdapterService.class.getName());
     	ServiceReference mcRef = context.getServiceReference(MyCampusService.class.getName());
@@ -30,7 +30,7 @@ public class Activator implements BundleActivator {
 
     }
     
-    public void stop(BundleContext context)
+    public synchronized void stop(BundleContext context)
     {
     	
     }

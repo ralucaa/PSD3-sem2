@@ -24,7 +24,7 @@ public class SessionManager implements SessionManagerService {
 
 	/** create a login session - return auth token, or -1 if failed */
 	@Override
-	public int authenticate(String username, String password) {
+	public synchronized int authenticate(String username, String password) {
 		Account acc = mc.authenticate(username, password);
 		if (acc != null) {
 			logins.put(acc.getToken(), acc);
@@ -33,18 +33,18 @@ public class SessionManager implements SessionManagerService {
 		return -1;
 	}
 	
-	private boolean accountIsType(int token, String type) {
+	private synchronized boolean accountIsType(int token, String type) {
 		Account acc = logins.get(token);
 		return (acc != null && acc.getType().equals(type));
 	}
 	
-	public String accountGetType(int token) {
+	public synchronized String accountGetType(int token) {
 		Account acc = logins.get(token);
 		return acc.getType();
 	}
 	
 	@Override
-	public boolean addSessionToCourse(int token, Session session) {
+	public synchronized boolean addSessionToCourse(int token, Session session) {
 		if (accountIsType(token, Account.TYPE_LECTURER)) {
 			return AddSessionToCourse.addSessionToDatabase(da, session);
 		} else {
@@ -54,7 +54,7 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean assignRoom(int token, int sessionId, int roomId) {
+	public synchronized boolean assignRoom(int token, int sessionId, int roomId) {
 		if (accountIsType(token, Account.TYPE_ADMIN)) {
 			return AssignRoomToTimetableSlot.assignRoom(da, sessionId, roomId);
 		} else {
@@ -64,7 +64,7 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean bookSlot(int token, int slotId) {
+	public synchronized boolean bookSlot(int token, int slotId) {
 		if (accountIsType(token, Account.TYPE_STUDENT)) {
 			Account acc = logins.get(token);
 			return BookTimetableSlot.bookSlot(da, slotId, acc.getUsername());
@@ -75,7 +75,7 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean checkIfFullyRegistered(int token) {
+	public synchronized boolean checkIfFullyRegistered(int token) {
 		if (accountIsType(token, Account.TYPE_STUDENT)) {
 			Account acc = logins.get(token);
 			return CheckCompulsoryCourses.checkIfFullyRegistered(da, acc);
@@ -86,7 +86,7 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean checkSessionDetails(int token, int sessionID) {
+	public synchronized boolean checkSessionDetails(int token, int sessionID) {
 		if (accountIsType(token, Account.TYPE_LECTURER)) {
 			return CheckSessionDetails.checkSessionDetails(da, sessionID);
 		} else {
@@ -96,7 +96,7 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean createTimetableSlot(int token, TimetableSlot timetableSlot) {
+	public synchronized boolean createTimetableSlot(int token, TimetableSlot timetableSlot) {
 		if (accountIsType(token, Account.TYPE_ADMIN)) {
 			return CreateTimetableSlotForSession.createTimetableSlot(da, timetableSlot);
 		} else {
@@ -106,7 +106,7 @@ public class SessionManager implements SessionManagerService {
 	}
 	
 	@Override
-	public boolean importCourse(int token, Course course) {
+	public synchronized boolean importCourse(int token, Course course) {
 		if (accountIsType(token, Account.TYPE_LECTURER)) {
 			return ImportMyCampusCourses.importCourse(da, course);
 		} else {
@@ -116,7 +116,7 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public boolean changeFrequency(int token, int sessionId, int frequency) {
+	public synchronized boolean changeFrequency(int token, int sessionId, int frequency) {
 		if (accountIsType(token, Account.TYPE_LECTURER)) {
 			return SpecifySessionFrequency.changeFrequency(da, sessionId, frequency);
 		} else {
@@ -126,7 +126,7 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public List<Session> checkForClashes(int token) {
+	public synchronized List<Session> checkForClashes(int token) {
 		if (accountIsType(token, Account.TYPE_ADMIN)) {
 			return CheckForClashes.checkForClashes(da);
 		} else {

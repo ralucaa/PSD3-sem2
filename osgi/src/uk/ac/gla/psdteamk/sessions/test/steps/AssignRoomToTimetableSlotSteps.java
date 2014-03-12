@@ -33,7 +33,7 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 	
 	@Given("a sessionId $sessionId and roomId $roomId")
 	public void validSessionRoomId(int sessionId, int roomId) throws Exception  {
-		SetupFramework.defaultPopulate();
+		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		adminToken = service.authenticate("1111111A", "1111111A");
 		this.sessionId=sessionId;

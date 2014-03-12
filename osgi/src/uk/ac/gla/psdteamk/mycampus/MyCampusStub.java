@@ -48,7 +48,7 @@ public class MyCampusStub implements MyCampusService {
 	 * @param password - The password.
 	 * @return an Account object that contains the user's details or null if invalid credentials
 	 */
-	public Account authenticate(String username, String password) {
+	public synchronized Account authenticate(String username, String password) {
 		for (Account account : accounts) {
 			if (account.getUsername().equals(username) && account.checkPassword(password)) {
 				return account;
@@ -61,7 +61,7 @@ public class MyCampusStub implements MyCampusService {
 	 * Gets all the courses available in MyCampus.
 	 * @return the courses
 	 */
-	public ArrayList<Course> getAllCourses(){
+	public synchronized ArrayList<Course> getAllCourses(){
 		return new ArrayList<Course>(courses);
 	}
 }

@@ -20,7 +20,7 @@ public class NFR_Performance1Steps {
 	
 	@Given("a course id $courseId")
 	public void givenADatabase(int courseId) throws Exception {
-		SetupFramework.defaultPopulate();
+		//SetupFramework.defaultPopulate();
 		dbs = SetupFramework.getDatabaseAdapterService();		
 		this.courseId = courseId;
 	}
@@ -29,7 +29,6 @@ public class NFR_Performance1Steps {
 	public void queryDatabase(int number) {
 		for (int i = 0; i < number; i++) {
 			output = (output && dbs.addSessionToDatabase(new Session(courseId, 1, 7, "testType"+i)));
-			System.out.println("THE RESULT IS " + output);
 		}		 
 	}
 	

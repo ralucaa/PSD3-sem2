@@ -17,7 +17,7 @@ public class CheckCompulsoryCoursesSteps {
 	
 	@Given("a student with username $username and password $password")
 	public void aStudentUsername(String username, String password) throws Exception {
-		SetupFramework.defaultPopulate();
+		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		studentToken = service.authenticate(username, password);
 	}

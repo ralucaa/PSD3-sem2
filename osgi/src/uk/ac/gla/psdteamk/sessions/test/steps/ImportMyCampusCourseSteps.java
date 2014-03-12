@@ -22,14 +22,14 @@ public class ImportMyCampusCourseSteps extends Steps {
 	
 	@Given("a valid MyCampus course with id $co")
 	public void givenAMyCampusID(int co)  throws Exception {
-		SetupFramework.defaultPopulate();
+		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		lecturerToken = service.authenticate("2222222A", "2222222A");
 		this.myCourse = new Course(co, "New course");
 	}
 	@Given("an already existing MyCampus course with id $co")
 	public void givenAFalseMyCampusID(int co) throws Exception {
-		SetupFramework.defaultPopulate();
+		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		lecturerToken = service.authenticate("2222222A", "2222222A");
 		this.myCourse = new Course(co, "New Course");

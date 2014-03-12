@@ -19,7 +19,7 @@ public class SpecifySessionFrequencySteps extends Steps {
 	
 	@Given("a username $username, a password $password, a session $session and a frequency $frequency")
 	public void givenASessionAndAFrequency(String username, String password, int session, int frequency) throws Exception {
-		SetupFramework.defaultPopulate();
+		//SetupFramework.defaultPopulate();
 		service = SetupFramework.getSessionManagerService();
 		this.session = session;
 		this.frequency = frequency;

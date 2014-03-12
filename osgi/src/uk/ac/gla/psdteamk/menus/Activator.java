@@ -7,7 +7,7 @@ import org.osgi.framework.ServiceReference;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 
 public class Activator implements BundleActivator {
-    public void start(BundleContext context)
+    public synchronized void start(BundleContext context)
     {
     	ServiceReference ref = context.getServiceReference(SessionManagerService.class.getName());
     	
@@ -20,7 +20,7 @@ public class Activator implements BundleActivator {
     	
     }
     
-    public void stop(BundleContext context)
+    public synchronized void stop(BundleContext context)
     {
     	
     }

@@ -20,6 +20,7 @@ public class NFR_Performance0Steps {
     
     @Given("a course name $courseName")
     public void givenADatabase(String courseName) {   
+		//SetupFramework.defaultPopulate();
         sms= SetupFramework.getSessionManagerService();  
         lecturerToken = sms.authenticate("2222222A", "2222222A");
         this.courseName = courseName;
