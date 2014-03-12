@@ -102,13 +102,15 @@ public class SetupFramework {
 				bundleContext.getServiceReference(MyCampusService.class);
 		//myCampusService = bundleContext.getService(myCampusServiceReference);
 		//?????
+		
+		defaultPopulate();
 	}
 	
-	public static void resetDatabaseTables() {
+	private static void resetDatabaseTables() {
 		databaseAdapterService.resetTables();
 	}
 	
-	public static void defaultPopulate() throws Exception {
+	private static void defaultPopulate() throws Exception {
 		resetDatabaseTables();
 		
 		Connection conn = databaseAdapterService.getConnection();
