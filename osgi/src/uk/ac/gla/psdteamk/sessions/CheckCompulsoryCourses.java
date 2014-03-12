@@ -15,21 +15,23 @@ class CheckCompulsoryCourses {
 	 * @param student - The current Account object.
 	 */
 	static boolean checkIfFullyRegistered(DatabaseAdapterService da, Account student){
-		String registeredCoursesQuery = "SELECT CoursesRegistered.*, Course.title "+
-										"FROM Course, "+
-										"(SELECT DISTINCT Session.course AS cr "+
-										"FROM Registration, Session "+
-										"WHERE Registration.session = Session.id  AND Registration.student = ?) AS CoursesRegistered "+
-										"WHERE Course.id = CoursesRegistered.cr";
+		String registeredCoursesQuery = "SELECT \"CoursesRegistered\".*, \"Course\".\"title\" "+
+										"FROM \"Course\", "+
+										"(SELECT DISTINCT \"Session\".\"course\" AS \"cr\" "+
+										"FROM \"Registration\", \"Session\" "+
+										"WHERE \"Registration\".\"session\" = \"Session\".\"id\" "+
+										"AND \"Registration\".\"student\" = ?) AS \"CoursesRegistered\" "+
+										"WHERE \"Course\".\"id\" = \"CoursesRegistered\".\"cr\"";
 		
-		String notRegisteredMandatoryCoursesQuery = "SELECT Course.id,Course.title "+
-													"FROM Course, "+
-													"(SELECT MandatoryCourses.course AS NotRegistered FROM MandatoryCourses "+
+		String notRegisteredMandatoryCoursesQuery = "SELECT \"Course\".\"id\",\"Course\".\"title\" "+
+													"FROM \"Course\", "+
+													"(SELECT \"MandatoryCourses\".\"course\" AS \"NotRegistered\" FROM \"MandatoryCourses\" "+
 													"EXCEPT "+
-													"SELECT DISTINCT Session.course "+
-													"FROM Registration, Session "+
-													"WHERE Registration.session = Session.id  AND Registration.student = ? )AS NR "+
-													"WHERE Course.id = NR.NotRegistered";
+													"SELECT DISTINCT \"Session\".\"course\" "+
+													"FROM \"Registration\", \"Session\" "+
+													"WHERE \"Registration\".\"session\" = \"Session\".\"id\" "+
+													"AND \"Registration\".\"student\" = ? )AS \"NR\" "+
+													"WHERE \"Course\".\"id\" = \"NR\".\"NotRegistered\"";
 		
 		Connection con = null;
 		PreparedStatement registered = null;
