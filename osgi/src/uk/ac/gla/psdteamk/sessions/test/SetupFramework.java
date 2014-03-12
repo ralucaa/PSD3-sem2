@@ -41,7 +41,7 @@ public class SetupFramework {
 	}
 	
 	public static void start() throws Exception {
-		String extraPackages = "uk.ac.gla.psdteamk.sessions.service,uk.ac.gla.psdteamk.database.service,uk.ac.gla.psdteamk.objects";
+		String extraPackages = "uk.ac.gla.psdteamk.sessions.service,uk.ac.gla.psdteamk.database.service,uk.ac.gla.psdteamk.mycampus.service,uk.ac.gla.psdteamk.objects";
 		
 		System.out.println("framework start");
 		
@@ -100,8 +100,7 @@ public class SetupFramework {
 		
 		ServiceReference<MyCampusService> myCampusServiceReference =
 				bundleContext.getServiceReference(MyCampusService.class);
-		//myCampusService = bundleContext.getService(myCampusServiceReference);
-		//?????
+		myCampusService = bundleContext.getService(myCampusServiceReference);
 		
 		defaultPopulate();
 	}
