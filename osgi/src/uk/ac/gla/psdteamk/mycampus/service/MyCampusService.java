@@ -8,4 +8,6 @@ public interface MyCampusService {
 	public Account authenticate(String username, String password);
 	
 	public ArrayList<Course> getAllCourses();
+	
+	public boolean addUser(Account account);
 }
