@@ -37,7 +37,7 @@ public class AssignRoomToTimetableSlotSteps extends Steps {
 			result=service.assignRoom(adminToken, sessionId, roomId);
 	}
 	
-	@Then("the method returns output $output")
+	@Then("the result of the room assignment operation is output $output")
 	public void returnResultTrue(String output){
 		boolean boolOutput = Boolean.parseBoolean(output);
 		assertEquals(boolOutput, result);
