@@ -9,7 +9,7 @@ public class Account {
 	private final int token;
 	private final Date loginTime;
 	
-	public Account(String username, String password, String name, String type, int year){
+	public Account(String username, String password, String name, String type){
 		this.username = username;
 		this.password = password;
 		this.name = name;

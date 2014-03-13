@@ -40,5 +40,4 @@ public class NFR_Performance2Steps extends Steps {
 		boolean boolOutput = Boolean.parseBoolean(output);
 		assertEquals(boolOutput, result);
 	}
-
 }
