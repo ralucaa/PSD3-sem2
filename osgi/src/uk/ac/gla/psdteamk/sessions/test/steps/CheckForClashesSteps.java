@@ -14,7 +14,7 @@ public class CheckForClashesSteps extends Steps {
 	private SessionManagerService service;
 	private boolean result;
 	private int adminToken;
-
+/*
 	@Given("a course id $courseId")
 	public void givenACourseId(int courseId) throws Exception{
 		service = SetupFramework.getSessionManagerService();
@@ -34,5 +34,5 @@ public class CheckForClashesSteps extends Steps {
 	@Then("he should be informed that there are timetable clashes")
 	public void withTimetableClashes() {
 		assertEquals(true, result);
-	}	
+	}	*/
 }
