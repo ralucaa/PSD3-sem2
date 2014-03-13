@@ -8,14 +8,16 @@ public class Account {
 	private final String username, password, name, type;
 	private final int token;
 	private final Date loginTime;
+	private int year;
 	
-	public Account(String username, String password, String name, String type){
+	public Account(String username, String password, String name, String type, int year){
 		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.type = type;
 		this.token = new Random().nextInt(Integer.MAX_VALUE);
 		this.loginTime = new Date();
+		this.year = year;
 	}
 	
 	public String getUsername(){
@@ -40,5 +42,9 @@ public class Account {
 	
 	public Date getLoginTime() {
 		return loginTime;
+	}
+
+	public int getYear() {
+		return year;
 	}
 }

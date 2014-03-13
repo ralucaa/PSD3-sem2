@@ -14,6 +14,7 @@ import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 
 public class NFR_Performance4Steps extends Steps {
 	private static final String D_NAME = "Ptest Four Usr";
+	private static final int D_YEAR = 2;
 	private MyCampusService mcs;
 	private SessionManagerService sms;
 	private int result;
@@ -26,7 +27,7 @@ public class NFR_Performance4Steps extends Steps {
 		for (int i = startNo; i < startNo + number; i++) {
 			// Create the new user.
 			String username = i + "T";
-			Account account = new Account(username, username, D_NAME, Account.TYPE_STUDENT);
+			Account account = new Account(username, username, D_NAME, Account.TYPE_STUDENT, D_YEAR);
 			mcs.addUser(account);
 			// Authenticate him.
 			sms.authenticate(username, username);

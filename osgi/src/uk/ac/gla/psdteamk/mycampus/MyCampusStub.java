@@ -12,22 +12,22 @@ public class MyCampusStub implements MyCampusService {
 	
 	public MyCampusStub() {
 		accounts = new ArrayList<Account>();
-		accounts.add(new Account("1111111A","1111111A","Joe Sventek","admin"));
-		accounts.add(new Account("2222222A","2222222A","Tim Storer","lecturer"));
-		accounts.add(new Account("2222222B","2222222B","Jeremy Singer","lecturer"));
-		accounts.add(new Account("3333333A","3333333A","Martynas Buivys","student"));
-		accounts.add(new Account("3333333B","3333333B","Raluca Criste","student"));
-		accounts.add(new Account("3333333C","3333333C","Helen Foster","student"));
-		accounts.add(new Account("3333333D","3333333D","Tomasz Sadowski","student"));
-		accounts.add(new Account("3333333E","3333333E","Vlad Schnakovszki","student"));
-		accounts.add(new Account("2222222C","2222222C","Gethin Norman","lecturer"));
-		accounts.add(new Account("2222222D","2222222D","David Watt","lecturer"));
-		accounts.add(new Account("2222222E","2222222E","Matthew Chalmers","lecturer"));
-		accounts.add(new Account("2222222F","2222222F","Stephen Brewster","lecturer"));
-		accounts.add(new Account("2222222G","2222222G","Leif Azzopardi","lecturer"));
-		accounts.add(new Account("2222222H","2222222H","Colin Perkins","lecturer"));
-		accounts.add(new Account("2222222I","2222222I","Wim Vanderbauwhede","lecturer"));
-		accounts.add(new Account("2222222J","2222222J","Iadh Ounis","lecturer"));
+		accounts.add(new Account("1111111A","1111111A","Joe Sventek","admin",0));
+		accounts.add(new Account("2222222A","2222222A","Tim Storer","lecturer",0));
+		accounts.add(new Account("2222222B","2222222B","Jeremy Singer","lecturer",0));
+		accounts.add(new Account("3333333A","3333333A","Martynas Buivys","student",3));
+		accounts.add(new Account("3333333B","3333333B","Raluca Criste","student",3));
+		accounts.add(new Account("3333333C","3333333C","Helen Foster","student",3));
+		accounts.add(new Account("3333333D","3333333D","Tomasz Sadowski","student",3));
+		accounts.add(new Account("3333333E","3333333E","Vlad Schnakovszki","student",3));
+		accounts.add(new Account("2222222C","2222222C","Gethin Norman","lecturer",0));
+		accounts.add(new Account("2222222D","2222222D","David Watt","lecturer",0));
+		accounts.add(new Account("2222222E","2222222E","Matthew Chalmers","lecturer",0));
+		accounts.add(new Account("2222222F","2222222F","Stephen Brewster","lecturer",0));
+		accounts.add(new Account("2222222G","2222222G","Leif Azzopardi","lecturer",0));
+		accounts.add(new Account("2222222H","2222222H","Colin Perkins","lecturer",0));
+		accounts.add(new Account("2222222I","2222222I","Wim Vanderbauwhede","lecturer",0));
+		accounts.add(new Account("2222222J","2222222J","Iadh Ounis","lecturer",0));
 		
 		courses = new ArrayList<Course>();
 		courses.add(new Course("Professional Software Development"));
