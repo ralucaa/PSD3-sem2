@@ -21,6 +21,7 @@ public class NFR_Performance4Steps extends Steps {
 	@Given("$number concurrently logged in users")
 	public void givenANumberOfConcurrentlyLoggedInUsers(int number) {
 		mcs = SetupFramework.getMyCampusService();
+		sms = SetupFramework.getSessionManagerService();
 		int startNo = 3000000;
 		for (int i = startNo; i < startNo + number; i++) {
 			// Create the new user.
@@ -28,7 +29,7 @@ public class NFR_Performance4Steps extends Steps {
 			Account account = new Account(username, username, D_NAME, Account.TYPE_STUDENT);
 			mcs.addUser(account);
 			// Authenticate him.
-			//sms.authenticate(username, username);
+			sms.authenticate(username, username);
 		}
 
 	}
