@@ -14,6 +14,12 @@ public interface SessionManagerService {
 	public int authenticate(String username, String password);
 	
 	/**
+	 * Gets the number of logged-in users.
+	 * @return the number of logged-in users.
+	 */
+	public int getLoggedInUserCount();
+	
+	/**
 	 * AS A lecturer I WANT TO add a session to a course, SO THAT timetable slots can be identified (story 2).
 	 * @param token
 	 * @param session

@@ -37,6 +37,12 @@ public class SessionManager implements SessionManagerService {
 		return (acc != null && acc.getType().equals(type));
 	}
 	
+	@Override
+	public int getLoggedInUserCount() {
+		return logins.size();
+	}
+	
+	@Override
 	public synchronized String accountGetType(int token) {
 		Account acc = logins.get(token);
 		return acc.getType();

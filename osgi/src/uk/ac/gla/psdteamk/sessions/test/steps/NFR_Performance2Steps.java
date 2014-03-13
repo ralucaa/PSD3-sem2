@@ -27,7 +27,7 @@ public class NFR_Performance2Steps extends Steps {
 		int unum = 4444444;
 		for (int i = 0; i < users; i ++) {
 			String username = unum + "Z";
-			Account account = new Account(username, username, "Bob", "student", 1);
+			Account account = new Account(username, username, "Bob", "student");
 			if (!mcs.addUser(account)) {
 				result = false;
 			}
