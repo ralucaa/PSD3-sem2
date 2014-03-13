@@ -1,5 +1,6 @@
 package uk.ac.gla.psdteamk.sessions.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import uk.ac.gla.psdteamk.objects.*;
@@ -96,9 +97,10 @@ public interface SessionManagerService {
 	 * AS A administrator I WANT TO check that there are no timetable slot clashes between courses 
 	 * SO THAT students are able to complete the course.
 	 * @param token
+	 * @param courseId
 	 * @return list of clashing sessions, or null on failure
 	 */
-	public List<Session> checkForClashes(int token);
+	public HashMap<Integer, Integer> checkForClashes(int token, int courseId);
 	
 	/**
 	 * Gets the user type for the user who owns the specified token.

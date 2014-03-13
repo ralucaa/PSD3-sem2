@@ -193,6 +193,99 @@ public class DatabaseAdapter implements DatabaseAdapterService {
 		}
 		return null;
 	}
+	
+	/**
+	 * Gets all the timetable slots from the database
+	 * 
+	 * @return an ArraryList of TimetableSlot objects
+	 */
+	public synchronized ArrayList<TimetableSlot> getAllTimetableSlots() {
+		// Attempt to get the user's type.
+		String sql = "SELECT \"id\", \"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\" FROM \"TimetableSlot\"";
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			// Get the database connection.
+			con = getConnection();
+			// Prepare the SQL statement.
+			preparedStatement = con.prepareStatement(sql);
+			// Execute the statement and get the result.
+			ResultSet rs = preparedStatement.executeQuery();
+			// Read the courses.
+			ArrayList<TimetableSlot> timetableSlots = new ArrayList<TimetableSlot>();
+			while (rs.next()) {
+				timetableSlots.add(new TimetableSlot(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7)));
+			}
+			// Return the timetable slots
+			return timetableSlots;
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+			// Close the connections.
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+		return null;
+	}	
+
+	/**
+	 * Gets all the timetable slots for a given course
+	 * 
+	 * @return an ArraryList of TimetableSlot objects
+	 */
+	public synchronized ArrayList<TimetableSlot> getAllTimetableSlotsByCourse(int courseId) {
+		// Attempt to get the user's type.
+		String sql = "SELECT \"id\", \"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\" " +
+					 "FROM \"TimetableSlot\", \"Session\", \"Course\" " +
+					 "WHERE \"Course\".\"id\" = \"Session\".\"course\" " +
+					 "AND \"Session\".\"id\" = \"TimetableSlot\".\"session\" " +
+					 "AND \"Course\".\"id\" = ?";
+		
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			// Get the database connection.
+			con = getConnection();
+			// Prepare the SQL statement.
+			preparedStatement = con.prepareStatement(sql);
+			// Add the parameters.
+			preparedStatement.setInt(1, courseId);			
+			// Execute the statement and get the result.
+			ResultSet rs = preparedStatement.executeQuery();
+			// Read the courses.
+			ArrayList<TimetableSlot> timetableSlots = new ArrayList<TimetableSlot>();
+			while (rs.next()) {
+				timetableSlots.add(new TimetableSlot(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7)));
+			}
+			// Return the timetable slots
+			return timetableSlots;
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+			// Close the connections.
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+		return null;
+	}		
 
 	/**
 	 * Retrieve all sessions from the database

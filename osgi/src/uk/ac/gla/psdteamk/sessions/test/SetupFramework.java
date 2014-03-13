@@ -160,9 +160,9 @@ public class SetupFramework {
 
 		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(1,'13/01/2014','09:00','10:00',1,120)");
 		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(2,'13/01/2014','14:00','15:00',2,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(4,'13/01/2014','14:00','15:00',2,120)");
 		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(1,'14/01/2014','15:00','16:00',3,120)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(3,'14/01/2014','10:00','12:00',1,080)");
-		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(4,'14/01/2014','14:00','15:00',3,120)");
+		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(3,'14/01/2014','10:00','12:00',1,080)");		
 		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(5,'15/01/2014','10:00','11:00',1,080)");
 		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(6,'15/01/2014','14:00','15:00',3,080)");
 		stmt.executeUpdate("INSERT INTO \"TimetableSlot\" (\"session\", \"date\", \"start_time\", \"end_time\", \"room\", \"capacity\") VALUES(7,'15/01/2014','15:00','16:00',3,120)");

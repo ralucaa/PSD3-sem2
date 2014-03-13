@@ -7,6 +7,7 @@ import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 import uk.ac.gla.psdteamk.database.service.DatabaseAdapterService;
 import uk.ac.gla.psdteamk.mycampus.service.MyCampusService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -131,9 +132,9 @@ public class SessionManager implements SessionManagerService {
 	}
 
 	@Override
-	public synchronized List<Session> checkForClashes(int token) {
+	public synchronized HashMap<Integer, Integer> checkForClashes(int token, int courseId) {
 		if (accountIsType(token, Account.TYPE_ADMIN)) {
-			return CheckForClashes.checkForClashes(da);
+			return CheckForClashes.checkForClashes(da, courseId);
 		} else {
 			System.out.println("Access denied");
 			return null;

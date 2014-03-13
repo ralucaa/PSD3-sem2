@@ -13,6 +13,8 @@ public interface DatabaseAdapterService {
 	public Session getSession(int session_id);
 	public ArrayList<Session> getAllSessions();
 	public TimetableSlot getTimetableSlot(int slotId);
+	public ArrayList<TimetableSlot> getAllTimetableSlots();
+	public ArrayList<TimetableSlot> getAllTimetableSlotsByCourse(int courseId);
 	public ArrayList<String> getAllStudents();
 	public boolean addCourseToDatabase(Course course);
 	public boolean addSessionToDatabase(Session session);
