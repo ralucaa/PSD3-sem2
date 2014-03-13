@@ -1,7 +1,6 @@
 package uk.ac.gla.psdteamk.sessions;
 
 import uk.ac.gla.psdteamk.objects.Account;
-import uk.ac.gla.psdteamk.objects.Course;
 import uk.ac.gla.psdteamk.objects.Session;
 import uk.ac.gla.psdteamk.objects.TimetableSlot;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;

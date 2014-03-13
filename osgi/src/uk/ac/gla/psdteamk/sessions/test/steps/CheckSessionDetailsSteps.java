@@ -3,7 +3,6 @@ package uk.ac.gla.psdteamk.sessions.test.steps;
 import static org.junit.Assert.assertEquals;
 
 import org.jbehave.core.annotations.Alias;
-import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;  
 import org.jbehave.core.annotations.When;  
@@ -14,9 +13,6 @@ import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 import org.jbehave.core.steps.Steps;
 
 public class CheckSessionDetailsSteps extends Steps{
-	private static final String D_TYPE = "lecture";
-	private static final int D_FREQ = 7, D_COMPULSORY = 1;
-
 	private boolean detailsChecked;
 	private SessionManagerService service;
 	private int lecturerToken;

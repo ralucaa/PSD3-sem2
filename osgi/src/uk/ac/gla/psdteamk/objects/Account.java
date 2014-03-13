@@ -6,7 +6,7 @@ import java.util.Date;
 public class Account {
 	public static final String TYPE_ADMIN = "admin", TYPE_LECTURER = "lecturer", TYPE_TUTOR = "tutor", TYPE_STUDENT = "student";
 	private final String username, password, name, type;
-	private final int token, year;
+	private final int token;
 	private final Date loginTime;
 	
 	public Account(String username, String password, String name, String type, int year){
@@ -14,7 +14,6 @@ public class Account {
 		this.password = password;
 		this.name = name;
 		this.type = type;
-		this.year = year;
 		this.token = new Random().nextInt(Integer.MAX_VALUE);
 		this.loginTime = new Date();
 	}

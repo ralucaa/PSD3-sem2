@@ -1,7 +1,6 @@
 package uk.ac.gla.psdteamk.sessions.test;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import org.jbehave.core.embedder.Embedder;
 import org.junit.Test;
@@ -30,8 +29,6 @@ public class SessionStories {
 		storyPaths.add("uk/ac/gla/psdteamk/sessions/test/stories/NFR_Security0.story");
 		storyPaths.add("uk/ac/gla/psdteamk/sessions/test/stories/NFR_Security1.story");
 		storyPaths.add("uk/ac/gla/psdteamk/sessions/test/stories/SpecifySessionFrequency.story");
-		
-		//Collections.reverse(storyPaths);
 		
 	    embedder.runStoriesAsPaths(storyPaths);
 	}

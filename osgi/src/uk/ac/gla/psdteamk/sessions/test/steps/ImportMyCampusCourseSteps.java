@@ -1,14 +1,10 @@
 package uk.ac.gla.psdteamk.sessions.test.steps;
 
 import static org.junit.Assert.assertEquals;
-
-import org.jbehave.core.annotations.AfterScenario;
-import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import uk.ac.gla.psdteamk.objects.Course;
 import uk.ac.gla.psdteamk.sessions.service.SessionManagerService;
 import uk.ac.gla.psdteamk.sessions.test.SetupFramework;
 
